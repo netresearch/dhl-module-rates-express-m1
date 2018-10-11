@@ -1,0 +1,52 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <rateresp:RateResponse xmlns:rateresp="http://scxgxtt.phx-dc.dhl.com/euExpressRateBook/RateMsgResponse">
+            <Provider code="DHL">
+                <Notification code="0">
+                    <Message/>
+                </Notification>
+                <Service type="Q">
+                    <TotalNet>
+                        <Currency>EUR</Currency>
+                        <Amount>331.13</Amount>
+                    </TotalNet>
+                    <Charges>
+                        <Currency>EUR</Currency>
+                        <Charge>
+                            <ChargeType>MEDICAL EXPRESS</ChargeType>
+                            <ChargeAmount>280.62</ChargeAmount>
+                        </Charge>
+                        <Charge>
+                            <ChargeType>FUEL SURCHARGE</ChargeType>
+                            <ChargeAmount>50.51</ChargeAmount>
+                        </Charge>
+                    </Charges>
+                    <DeliveryTime>2018-11-30T12:00:00</DeliveryTime>
+                    <CutoffTime>2018-11-26T16:30:00</CutoffTime>
+                    <NextBusinessDayInd>N</NextBusinessDayInd>
+                </Service>
+                <Service type="P">
+                    <TotalNet>
+                        <Currency>EUR</Currency>
+                        <Amount>331.13</Amount>
+                    </TotalNet>
+                    <Charges>
+                        <Currency>EUR</Currency>
+                        <Charge>
+                            <ChargeType>EXPRESS WORLDWIDE</ChargeType>
+                            <ChargeAmount>280.62</ChargeAmount>
+                        </Charge>
+                        <Charge>
+                            <ChargeType>FUEL SURCHARGE</ChargeType>
+                            <ChargeAmount>50.51</ChargeAmount>
+                        </Charge>
+                    </Charges>
+                    <DeliveryTime>2018-11-30T23:59:00</DeliveryTime>
+                    <CutoffTime>2018-11-26T16:30:00</CutoffTime>
+                    <NextBusinessDayInd>N</NextBusinessDayInd>
+                </Service>
+            </Provider>
+        </rateresp:RateResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
