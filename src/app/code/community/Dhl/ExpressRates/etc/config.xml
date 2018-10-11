@@ -11,6 +11,11 @@
         </Dhl_ExpressRates>
     </modules>
     <global>
+        <blocks>
+            <dhl_expressrates>
+                <class>Dhl_ExpressRates_Block</class>
+            </dhl_expressrates>
+        </blocks>
         <helpers>
             <dhl_expressrates>
                 <class>Dhl_ExpressRates_Helper</class>
@@ -34,11 +39,27 @@
         </events>
     </global>
 
+    <adminhtml>
+        <layout>
+            <updates>
+                <dhl_expressrates>
+                    <file>dhl_expressrates.xml</file>
+                </dhl_expressrates>
+            </updates>
+        </layout>
+    </adminhtml>
+
     <default>
         <dhl_expressrates>
             <dev>
                 <autoload_enabled>1</autoload_enabled>
             </dev>
         </dhl_expressrates>
+
+        <carriers>
+            <dhl_expressrates>
+                <active>1</active>
+            </dhl_expressrates>
+        </carriers>
     </default>
 </config>

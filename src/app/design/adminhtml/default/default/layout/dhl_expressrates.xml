@@ -4,12 +4,12 @@
  * See LICENSE.md for license details.
  */
 -->
-<layout version="0.1.0">
-    <dhl_expressrates_handle>
+<layout>
+    <adminhtml_system_config_edit>
         <reference name="head">
-            <action method="addCss" ifconfig="customer/dhl_expressrates/active">
-                <stylesheet>css/dhl_expressrates.css</stylesheet>
+            <action method="addCss">
+                <stylesheet>dhl_expressrates.css</stylesheet>
             </action>
         </reference>
-    </dhl_expressrates_handle>
+    </adminhtml_system_config_edit>
 </layout>

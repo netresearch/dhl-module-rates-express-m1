@@ -14,7 +14,7 @@
     color: #4088bf;
 }
 
-.dhl-express-custom-info .col{
+.dhl-express-custom-info .col {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -26,8 +26,7 @@
 }
 
 .dhl-express-custom-info .content ul,
-.dhl-express-custom-info .content ol
-{
+.dhl-express-custom-info .content ol {
     margin-left: 1.5em;
 }
 
@@ -54,15 +53,15 @@
     border-top: none;
 }
 
-.dhl-express-custom-info aside ul{
+.dhl-express-custom-info aside ul {
     padding-left: 15px;
 }
 
-.dhl-express-custom-info aside li{
+.dhl-express-custom-info aside li {
     list-style-position: inside;
 }
 
-.dhl-express-custom-info aside h3{
+.dhl-express-custom-info aside h3 {
     font-size: 14px;
     font-weight: 600;
 }

@@ -9,7 +9,9 @@
         <Dhl_ExpressRates>
             <active>true</active>
             <codePool>community</codePool>
-            <depends/>
+            <depends>
+                <Mage_Shipping />
+            </depends>
         </Dhl_ExpressRates>
     </modules>
 </config>
