@@ -1,0 +1,28 @@
+<?php
+/**
+ * See LICENSE.md for license details.
+ */
+
+/**
+ * Dhl_ExpressRates_Model_Config
+ *
+ * @category Dhl
+ * @package  Dhl_ExpressRates
+ * @author   Rico Sonntag <rico.sonntag@netresearch.de>
+ * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link     http://www.netresearch.de/
+ */
+class Dhl_ExpressRates_Model_Config
+{
+    const CONFIG_XML_PATH_AUTOLOAD_ENABLED = 'dhl_expressrates/dev/autoload_enabled';
+
+    /**
+     * Check if custom autoloader should be registered.
+     *
+     * @return bool
+     */
+    public function isAutoloadEnabled()
+    {
+        return Mage::getStoreConfigFlag(self::CONFIG_XML_PATH_AUTOLOAD_ENABLED);
+    }
+}

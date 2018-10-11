@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * See LICENSE.md for license details.
+ */
+-->
+<config>
+    <modules>
+        <Dhl_ExpressRates>
+            <version>1.0.0</version>
+        </Dhl_ExpressRates>
+    </modules>
+    <global>
+        <helpers>
+            <dhl_expressrates>
+                <class>Dhl_ExpressRates_Helper</class>
+            </dhl_expressrates>
+        </helpers>
+        <models>
+            <dhl_expressrates>
+                <class>Dhl_ExpressRates_Model</class>
+            </dhl_expressrates>
+        </models>
+        <events>
+            <controller_front_init_before>
+                <observers>
+                    <register_autoload>
+                        <class>dhl_expressrates/observer_autoload</class>
+                        <method>registerAutoload</method>
+                        <type>singleton</type>
+                    </register_autoload>
+                </observers>
+            </controller_front_init_before>
+        </events>
+    </global>
+
+    <default>
+        <dhl_expressrates>
+            <dev>
+                <autoload_enabled>1</autoload_enabled>
+            </dev>
+        </dhl_expressrates>
+    </default>
+</config>
