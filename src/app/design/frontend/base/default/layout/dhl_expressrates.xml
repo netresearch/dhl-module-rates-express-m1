@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * See LICENSE.md for license details.
+ */
+-->
+<layout version="0.1.0">
+    <dhl_expressrates_handle>
+        <reference name="head">
+            <!--
+                TBD
+            -->
+        </reference>
+    </dhl_expressrates_handle>
+
+    <checkout_onepage_index module="page">
+        <update handle="dhl_expressrates_handle" />
+
+        <!--
+            TBD
+        -->
+    </checkout_onepage_index>
+</layout>

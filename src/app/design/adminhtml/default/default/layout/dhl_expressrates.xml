@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * See LICENSE.md for license details.
+ */
+-->
+<layout version="0.1.0">
+    <dhl_expressrates_handle>
+        <reference name="head">
+            <action method="addCss" ifconfig="customer/dhl_expressrates/active">
+                <stylesheet>css/dhl_expressrates.css</stylesheet>
+            </action>
+        </reference>
+    </dhl_expressrates_handle>
+</layout>

@@ -1,0 +1,19 @@
+{
+    "name": "dhl/module-rates-express-m1",
+    "version": "1.0.0",
+    "license": "OSL-3.0",
+    "type": "magento-module",
+    "description": "Rates in Checkout implementation for DHL Express API",
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "^3.0.6"
+    },
+    "require": {
+        "php": "^5.4 || ^7.0"
+    },
+    "authors": [
+        {
+            "name": "Rico Sonntag",
+            "email": "rico.sonntag@netresearch.de"
+        }
+    ]
+}
