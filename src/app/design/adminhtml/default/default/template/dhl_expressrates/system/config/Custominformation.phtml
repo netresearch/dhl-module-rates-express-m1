@@ -1,0 +1,54 @@
+<?php /** @var Dhl_ExpressRates_Block_Adminhtml_System_Config_Custominformation $this */ ?>
+<div class="dhl-express-custom-info">
+    <header>
+        <img src="<?php echo $this->escapeUrl($this->getLogoUrl()) ?>">
+        <p class="info"><?php echo $this->__('Version:') ?> <?php echo $this->getModuleVersion() ?></p>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col content">
+                <p>
+                    <?php echo $this->__(
+                        'Our DHL Express Rates at Checkout extension provides real-time DHL Express shipping quotes based on your customer’s cart details and shipping address. You can also customize the price displayed to the customer by automatically including insurance and a markup of your choosing.'
+                    ) ?>
+                </p>
+                <p><?php echo $this->__('To get started:') ?></p>
+                <ol>
+                    <li>
+                        <?php echo $this->__('You must have a valid DHL Express business account') ?>
+                        <br/>
+                        <small>
+                            <?php echo $this->__(
+                                'If you don’t have an account or your account is with another DHL division, <a href=\'https://mydhl.express.dhl/index/en.html\' target=\'_blank\'>please contact DHL Express</a> to establish or expand your relationship'
+                            ) ?>
+                        </small>
+                    </li>
+                    <li>
+                        <?php echo $this->__('Your DHL Express business account must be configured for API access') ?>
+                        <br/>
+                        <small>
+                            <?php echo $this->__(
+                                'If you didn’t discuss this with your account representative when you set up your account, please consult them to enable your API access'
+                            ) ?>
+                        </small>
+                    </li>
+                </ol>
+                <p>
+                    <?php echo $this->__(
+                        'Also note, this extension will only display rates. It won’t produce shipping labels, schedule courier pickups, or integrate tracking data to your store. Please use your current processes to book your shipments with DHL Express or discuss available options with your account representative.'
+                    ) ?>
+                </p>
+            </div>
+            <div class="col side">
+                <aside>
+                    <div class="section">
+                        <h3><?php echo $this->__('DHL & Magento') ?></h3>
+                        <p>
+                            <?php echo $this->__('Having issues configuring the extension? Contact your DHL Express account representative who will facilitate technical assistance.') ?>
+                        </p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>

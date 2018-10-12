@@ -4,6 +4,7 @@ src/app/design/adminhtml/default/default/template/dhl_expressrates/  app/design/
 src/app/design/frontend/base/default/layout/dhl_expressrates.xml     app/design/frontend/base/default/layout/dhl_expressrates.xml
 src/app/design/frontend/base/default/template/dhl_expressrates/      app/design/frontend/base/default/template/dhl_expressrates/
 src/app/etc/modules/Dhl_ExpressRates.xml                             app/etc/modules/Dhl_ExpressRates.xml
+src/app/locale/en_US/Dhl_ExpressRates.csv                            app/locale/en_US/Dhl_ExpressRates.csv
 
 src/skin/adminhtml/default/default/dhl_expressrates.css              skin/adminhtml/default/default/dhl_expressrates.css
 src/skin/adminhtml/default/default/images/dhl_expressrates/          skin/adminhtml/default/default/images/dhl_expressrates/

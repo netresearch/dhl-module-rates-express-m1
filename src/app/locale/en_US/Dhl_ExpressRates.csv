@@ -1,0 +1,12 @@
+"Display DHL Express live rates at checkout","Display DHL Express live rates at checkout"
+
+"Version","Version"
+"Our DHL Express Rates at Checkout extension provides real-time DHL Express shipping quotes based on your customer’s cart details and shipping address. You can also customize the price displayed to the customer by automatically including insurance and a markup of your choosing.","Our DHL Express Rates at Checkout extension provides real-time DHL Express shipping quotes based on your customer’s cart details and shipping address. You can also customize the price displayed to the customer by automatically including insurance and a markup of your choosing."
+"To get started:","To get started:"
+"You must have a valid DHL Express business account","You must have a valid DHL Express business account"
+"If you don’t have an account or your account is with another DHL division, <a href='https://mydhl.express.dhl/index/en.html' target='_blank'>please contact DHL Express</a> to establish or expand your relationship","If you don’t have an account or your account is with another DHL division, <a href='https://mydhl.express.dhl/index/en.html' target='_blank'>please contact DHL Express</a> to establish or expand your relationship"
+"Your DHL Express business account must be configured for API access","Your DHL Express business account must be configured for API access"
+"If you didn’t discuss this with your account representative when you set up your account, please consult them to enable your API access","If you didn’t discuss this with your account representative when you set up your account, please consult them to enable your API access"
+"Also note, this extension will only display rates. It won’t produce shipping labels, schedule courier pickups, or integrate tracking data to your store. Please use your current processes to book your shipments with DHL Express or discuss available options with your account representative.","Also note, this extension will only display rates. It won’t produce shipping labels, schedule courier pickups, or integrate tracking data to your store. Please use your current processes to book your shipments with DHL Express or discuss available options with your account representative."
+"DHL & Magento","DHL & Magento"
+"Having issues configuring the extension? Contact your DHL Express account representative who will facilitate technical assistance.","Having issues configuring the extension? Contact your DHL Express account representative who will facilitate technical assistance."
