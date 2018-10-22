@@ -6,11 +6,10 @@
 /**
  * Dhl_ExpressRates_Block_Adminhtml_System_Config_CustomInformation
  *
- * @category Dhl
- * @package  Dhl_ExpressRates
- * @author   Rico Sonntag <rico.sonntag@netresearch.de>
- * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link     http://www.netresearch.de/
+ * @package Dhl\ExpressRates\Block
+ * @author  Rico Sonntag <rico.sonntag@netresearch.de>
+ * @license https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link    https://www.netresearch.de/
  */
 class Dhl_ExpressRates_Block_Adminhtml_System_Config_Custominformation
     extends Mage_Adminhtml_Block_System_Config_Form_Field
@@ -25,7 +24,7 @@ class Dhl_ExpressRates_Block_Adminhtml_System_Config_Custominformation
         parent::_prepareLayout();
 
         if (!$this->getTemplate()) {
-            $this->setTemplate('dhl_expressrates/system/config/Custominformation.phtml');
+            $this->setTemplate('dhl_expressrates/system/config/custominformation.phtml');
         }
 
         return $this;
@@ -62,7 +61,6 @@ class Dhl_ExpressRates_Block_Adminhtml_System_Config_Custominformation
      */
     public function getLogoUrl()
     {
-        $skinPath = Mage::getDesign()->getSkinBaseUrl(['_area'=>'adminhtml']);
-        return $skinPath . 'images/dhl_expressrates/logo.svg';
+        return Mage::getDesign()->getSkinUrl('images/dhl_expressrates/logo.svg');
     }
 }

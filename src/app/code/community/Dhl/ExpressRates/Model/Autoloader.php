@@ -6,11 +6,10 @@
 /**
  * Dhl_ExpressRates_Model_Autoloader
  *
- * @category Dhl
- * @package  Dhl_ExpressRates
- * @author   Rico Sonntag <rico.sonntag@netresearch.de>
- * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link     http://www.netresearch.de/
+ * @package Dhl\ExpressRates\Model
+ * @author  Rico Sonntag <rico.sonntag@netresearch.de>
+ * @license https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link    https://www.netresearch.de/
  */
 class Dhl_ExpressRates_Model_Autoloader
 {

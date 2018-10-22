@@ -6,11 +6,10 @@
 /**
  * Helper class used by the Magento translation system.
  *
- * @category Dhl
- * @package  Dhl_ExpressRates
- * @author   Rico Sonntag <rico.sonntag@netresearch.de>
- * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link     http://www.netresearch.de/
+ * @package Dhl\ExpressRates\Helper
+ * @author  Rico Sonntag <rico.sonntag@netresearch.de>
+ * @license https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link    https://www.netresearch.de/
  */
 class Dhl_ExpressRates_Helper_Data extends Mage_Core_Helper_Abstract
 {

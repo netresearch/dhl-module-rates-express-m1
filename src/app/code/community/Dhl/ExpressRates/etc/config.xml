@@ -47,6 +47,15 @@
                 </dhl_expressrates>
             </updates>
         </layout>
+        <translate>
+            <modules>
+                <Dhl_ExpressRates>
+                    <files>
+                        <default>Dhl_ExpressRates.csv</default>
+                    </files>
+                </Dhl_ExpressRates>
+            </modules>
+        </translate>
     </adminhtml>
 
     <default>
@@ -57,9 +66,21 @@
         </dhl_expressrates>
 
         <carriers>
-            <dhl_expressrates>
-                <active>1</active>
-            </dhl_expressrates>
+            <dhlexpress>
+                <active>0</active>
+                <sallowspecific>0</sallowspecific>
+                <model>dhl_expressrates/carrier_express</model>
+                <title>DHL Express</title>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+            </dhlexpress>
         </carriers>
     </default>
+
+    <phpunit>
+        <suite>
+            <modules>
+                <Dhl_ExpressRates/>
+            </modules>
+        </suite>
+    </phpunit>
 </config>
