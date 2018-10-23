@@ -29,11 +29,11 @@
         <events>
             <controller_front_init_before>
                 <observers>
-                    <register_autoload>
+                    <dhl_expressrates_register_autoload>
                         <class>dhl_expressrates/observer_autoload</class>
                         <method>registerAutoload</method>
                         <type>singleton</type>
-                    </register_autoload>
+                    </dhl_expressrates_register_autoload>
                 </observers>
             </controller_front_init_before>
         </events>
