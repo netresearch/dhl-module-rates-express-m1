@@ -72,7 +72,6 @@
                         <showmethod translate="label">
                             <label>Show Method if Not Applicable</label>
                             <frontend_type>select</frontend_type>
-                            <frontend_class>shipping-skip-hide</frontend_class>
                             <sort_order>60</sort_order>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <show_in_default>1</show_in_default>
