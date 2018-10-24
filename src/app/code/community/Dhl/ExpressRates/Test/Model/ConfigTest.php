@@ -16,7 +16,7 @@ class Dhl_ExpressRates_Test_Model_ConfigTest extends \EcomDev_PHPUnit_Test_Case
     /**
      * @test
      */
-    public function autoloadIsEnabled()
+    public function autoloadIsDisabled()
     {
         Mage::app()->getStore()->setConfig(\Dhl_ExpressRates_Model_Config::CONFIG_XML_PATH_AUTOLOAD_ENABLED, '0');
 
@@ -26,7 +26,7 @@ class Dhl_ExpressRates_Test_Model_ConfigTest extends \EcomDev_PHPUnit_Test_Case
     /**
      * @test
      */
-    public function autoloadIsDisabled()
+    public function autoloadIsEnabled()
     {
         Mage::app()->getStore()->setConfig(\Dhl_ExpressRates_Model_Config::CONFIG_XML_PATH_AUTOLOAD_ENABLED, '1');
 
@@ -56,5 +56,55 @@ class Dhl_ExpressRates_Test_Model_ConfigTest extends \EcomDev_PHPUnit_Test_Case
         $errorMsg = $carrier->getConfigData('specificerrmsg');
         $this->assertInternalType('string', $errorMsg);
         $this->assertSame('meow.', $errorMsg);
+    }
+
+    /**
+     * @test
+     * @loadFixture express
+     */
+    public function getAccountSettings()
+    {
+        $config = Mage::getModel('dhl_expressrates/config');
+
+        $this->assertSame('123456789', $config->getAccountNumber('store_one'));
+        $this->assertSame('123456', $config->getAccountNumber('store_two'));
+
+        $this->assertSame('foo', $config->getUsername('store_one'));
+        $this->assertSame('bar', $config->getUsername('store_two'));
+
+        // save encrypted password in config
+        $passwordOne = '5ecReTf00';
+        $passwordTwo = '5ecReT84r';
+        $passwordPath = sprintf(
+            '%s/%s/%s',
+            \Dhl_ExpressRates_Model_Config::CONFIG_SECTION,
+            \Dhl_ExpressRates_Model_Config::CONFIG_GROUP,
+            \Dhl_ExpressRates_Model_Config::CONFIG_FIELD_PASSWORD
+        );
+        Mage::app()->getStore('store_one')->setConfig($passwordPath, Mage::helper('core')->encrypt($passwordOne));
+        Mage::app()->getStore('store_two')->setConfig($passwordPath, Mage::helper('core')->encrypt($passwordTwo));
+
+        // assert password gets read decrypted via config model
+        $this->assertSame($passwordOne, $config->getPassword('store_one'));
+        $this->assertSame($passwordTwo, $config->getPassword('store_two'));
+    }
+
+    /**
+     * @test
+     * @loadFixture express
+     */
+    public function getLogSettings()
+    {
+        $config = Mage::getModel('dhl_expressrates/config');
+
+        $loggingEnabled = $config->isLoggingEnabled('store_one');
+        $this->assertFalse($loggingEnabled);
+        $loggingEnabled = $config->isLoggingEnabled('store_two');
+        $this->assertTrue($loggingEnabled);
+
+        $logLevel = $config->getLogLevel('store_one');
+        $this->assertSame(\Zend_Log::ERR, $logLevel);
+        $logLevel = $config->getLogLevel('store_two');
+        $this->assertSame(\Zend_Log::INFO, $logLevel);
     }
 }

@@ -4,14 +4,14 @@
  */
 
 /**
- * Class Dhl_ExpressRates_Test_Block_ModuleInfoTest
+ * Class Dhl_ExpressRates_Test_Block_ConfigForm_CustomInfoTest
  *
  * @package Dhl\ExpressRates\Test
  * @author  Christoph Aßmann <christoph.assmann@netresearch.de>
  * @license https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link    https://www.netresearch.de/
  */
-class Dhl_ExpressRates_Test_Block_CustomInfoTest extends \EcomDev_PHPUnit_Test_Case
+class Dhl_ExpressRates_Test_Block_ConfigForm_CustomInfoTest extends \EcomDev_PHPUnit_Test_Case
 {
     const BLOCK_ALIAS = 'dhl_expressrates/adminhtml_system_config_custominformation';
 
@@ -55,10 +55,10 @@ class Dhl_ExpressRates_Test_Block_CustomInfoTest extends \EcomDev_PHPUnit_Test_C
     {
         /** @var \Dhl_ExpressRates_Block_Adminhtml_System_Config_Custominformation $block */
         $block = Mage::app()->getLayout()->createBlock(self::BLOCK_ALIAS);
-
         $this->assertInstanceOf('Mage_Adminhtml_Block_System_Config_Form_Field', $block);
 
-        $infoHtml = $block->toHtml();
+        $element = new Varien_Data_Form_Element_Text(array('frontend_model' => self::BLOCK_ALIAS));
+        $infoHtml = $block->render($element);
         $this->assertContains('dhl-express-custom-info', $infoHtml);
     }
 }

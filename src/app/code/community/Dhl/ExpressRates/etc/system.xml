@@ -24,6 +24,14 @@
                         </header>
 
                         <!-- General settings -->
+                        <header_general_settings>
+                            <label>General Settings</label>
+                            <frontend_model>dhl_expressrates/adminhtml_system_config_heading</frontend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </header_general_settings>
                         <active translate="label" module="dhl_expressrates">
                             <label>Display DHL Express live rates at checkout</label>
                             <frontend_type>select</frontend_type>
@@ -86,6 +94,66 @@
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
                         </sort_order>
+                        <logging translate="label">
+                            <label>Logging</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </logging>
+                        <loglevel translate="label comment">
+                            <label>Logging Level</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>dhl_expressrates/adminhtml_system_config_source_loglevel</source_model>
+                            <comment><![CDATA[The log level Debug should only be set while resolving problems. It may result in very large log files]]></comment>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <logging>1</logging>
+                            </depends>
+                        </loglevel>
+
+                        <!-- Account Settings -->
+                        <heading_fields_account translate="label comment">
+                            <label>DHL Express Account</label>
+                            <frontend_model>dhl_expressrates/adminhtml_system_config_heading</frontend_model>
+                            <comment><![CDATA[Your account information will allow you to access the necessary API. New to DHL? <a href="https://mydhl.express.dhl/index/en.html" target="_blank">Apply for a business account</a>]]></comment>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_fields_account>
+                        <accountnumber translate="label">
+                            <label>Account Number</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-length maximum-length-9 minimum-length-9 validate-digits</validate>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </accountnumber>
+                        <username translate="label comment">
+                            <label>API Credentials</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Please talk to your account representative to add API access to your business account</comment>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </username>
+                        <password translatw="label">
+                            <label>Password</label>
+                            <frontend_type>obscure</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+                            <sort_order>230</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </password>
                     </fields>
                 </dhlexpress>
             </groups>

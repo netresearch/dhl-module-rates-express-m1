@@ -72,6 +72,11 @@
                 <model>dhl_expressrates/carrier_express</model>
                 <title>DHL Express</title>
                 <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+
+                <logging>0</logging>
+                <loglevel>3</loglevel>
+
+                <password backend_model="adminhtml/system_config_backend_encrypted"/>
             </dhlexpress>
         </carriers>
     </default>

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.8/phpunit.xsd"
+         cacheTokens="true"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         stopOnError="false"
+         stopOnFailure="false"
+         stopOnIncomplete="false"
+         stopOnSkipped="false"
+         verbose="false"
+         bootstrap="app/code/community/EcomDev/PHPUnit/bootstrap.php">
+    <listeners>
+        <listener file="app/code/community/EcomDev/PHPUnit/Test/Listener.php"
+                  class="EcomDev_PHPUnit_Test_Listener"/>
+    </listeners>
+    <testsuites>
+        <testsuite name="Magento Test Suite">
+            <file>app/code/community/EcomDev/PHPUnit/Test/Suite.php</file>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">app/code/community/Dhl/ExpressRates</directory>
+            <exclude>
+                <directory suffix=".php">app/code/community/Dhl/ExpressRates/Test</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-html" target="var/phpunit/coverage"/>
+    </logging>
+    <php>
+        <server name="ECOMDEV_PHPUNIT_CUSTOM_BOOTSTRAP" value="app/code/community/Dhl/ExpressRates/Test/autoload.php"/>
+    </php>
+</phpunit>
