@@ -154,6 +154,100 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
                         </password>
+
+                        <!-- Shipping Preferences -->
+                        <shipmentsettings_heading translate="label">
+                            <label><![CDATA[Shipping Preferences]]></label>
+                            <frontend_model>dhl_expressrates/adminhtml_system_config_heading</frontend_model>
+                            <sort_order>300</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </shipmentsettings_heading>
+                        <allowedinternationalproducts translate="label">
+                            <label><![CDATA[Allowed International Products]]></label>
+                            <frontend_type>radios</frontend_type>
+                            <sort_order>310</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </allowedinternationalproducts>
+                        <alloweddomesticproducts translate="label">
+                            <label><![CDATA[Allowed Domestic Products]]></label>
+                            <sort_order>320</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </alloweddomesticproducts>
+                        <packaging_weight translate="label comment tooltip">
+                            <label><![CDATA[Packaging Weight]]></label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[The package weight specified here will be added to the weight of all items in the cart. This combined weight will be used to calculate shipping rates]]></comment>
+                            <tooltip><![CDATA[Your weight unit can be configured under Stores>General>Locale Options>Weight Unit. You may enter a full number or a decimal value  (ex. 1.3)]]></tooltip>
+                            <validate>validate-number validate-zero-or-greater</validate>
+                            <sort_order>330</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </packaging_weight>
+                        <cut_off_time translate="label comment tooltip">
+                            <label><![CDATA[Order Cut-off Time]]></label>
+                            <frontend_type>time</frontend_type>
+                            <source_model>adminhtml/system_config_source_date_short</source_model>
+                            <comment><![CDATA[Enter an order cut-off time that will allow for preparing the shipment before the DHL Express courier pick up time]]></comment>
+                            <tooltip><![CDATA[Orders confirmed before the cut-off time are expected to ship the same day.  Orders confirmed after the cut-off time are expected to ship the following day. Holidays and weekends globally between the origin and destination are taken into account.]]></tooltip>
+                            <sort_order>340</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </cut_off_time>
+                        <pickup_time translate="tooltip label comment">
+                            <label><![CDATA[Pickup/Handover Time]]></label>
+                            <frontend_type>time</frontend_type>
+                            <source_model>adminhtml/system_config_source_date_short</source_model>
+                            <comment><![CDATA[Enter the time when shipments will be handed over to DHL Express]]></comment>
+                            <sort_order>350</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </pickup_time>
+                        <regular_pickup translate="label">
+                            <label><![CDATA[Pickup Type]]></label>
+                            <sort_order>360</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </regular_pickup>
+                        <terms_of_trade translate="label comment">
+                            <label><![CDATA[Duties & Taxes]]></label>
+                            <comment>In some cases, additional fees may apply. Consult your account representative for more details</comment>
+                            <sort_order>370</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </terms_of_trade>
+                        <package_insurance translate="label">
+                            <label><![CDATA[Package Insurance]]></label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>380</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </package_insurance>
+                        <package_insurance_from_value translate="label comment">
+                            <label><![CDATA[Minimum Cart Value]]></label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Shipping costs will include shipment protection costs for any cart value equal to or greater than this amount]]></comment>
+                            <validate>validate-number validate-zero-or-greater</validate>
+                            <sort_order>390</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <package_insurance>1</package_insurance>
+                            </depends>
+                        </package_insurance_from_value>
                     </fields>
                 </dhlexpress>
             </groups>
