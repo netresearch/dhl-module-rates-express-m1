@@ -23,16 +23,6 @@ class Dhl_ExpressRates_Model_Carrier_Express
     protected $_code = self::CODE;
 
     /**
-     * @var Dhl_ExpressRates_Model_Config
-     */
-    protected $moduleConfig;
-
-    /**
-     * @var Mage_Core_Model_Logger
-     */
-    protected $logWriter;
-
-    /**
      * @var Dhl_ExpressRates_Model_Rate_CheckoutProvider
      */
     protected $rateProvider;
@@ -44,9 +34,7 @@ class Dhl_ExpressRates_Model_Carrier_Express
     {
         parent::__construct();
 
-        $this->moduleConfig = Mage::getModel('dhl_expressrates/config');
-        $this->logWriter = Mage::getModel('core/logger');
-        $this->rateProvider = Mage::getModel('dhl_expressrates/rate_checkoutProvider');
+        $this->rateProvider = Mage::getSingleton('dhl_expressrates/rate_checkoutProvider');
     }
 
     /**
@@ -58,25 +46,7 @@ class Dhl_ExpressRates_Model_Carrier_Express
             return false;
         }
 
-        /** @var  Mage_Shipping_Model_Rate_Result $result */
-        $result = Mage::getModel('shipping/rate_result');
-        try {
-            $rates = $this->rateProvider->getRates($request);
-            /** @todo(nr): Map rates to Magento Rate objects and append to rate result. */
-        } catch(Exception $exception){
-            $result = Mage::getModel('shipping/rate_result');
-            /** @var Mage_Shipping_Model_Rate_Result_Error $error */
-            $error = Mage::getModel('shipping/rate_result_error');
-            $logger = new Dhl_ExpressRates_Model_Logger_Mage($this->logWriter);
-
-            $logger->error($exception->getMessage());
-            $error->setCarrier(self::CODE);
-            $error->setCarrierTitle($this->getConfigData('title'));
-            $error->setErrorMessage($this->getConfigData('specificerrmsg'));
-            $result->append($error);
-        }
-
-        return $result;
+        return $this->rateProvider->getRates($request);
     }
 
     /**

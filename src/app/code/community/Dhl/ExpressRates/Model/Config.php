@@ -22,6 +22,7 @@ class Dhl_ExpressRates_Model_Config
     const CONFIG_FIELD_USERNAME = 'username';
     const CONFIG_FIELD_PASSWORD = 'password';
     const CONFIG_FIELD_TITLE = 'title';
+    const CONFIG_FIELD_SPECIFIC_ERR_MSG = 'specificerrmsg';
 
     /**
     * Wrap store config access.
@@ -118,5 +119,14 @@ class Dhl_ExpressRates_Model_Config
     public function getTitle($store = null)
     {
         return (string) $this->getStoreConfig(self::CONFIG_FIELD_TITLE, $store);
+    }
+
+    /**
+     * @param mixed $store
+     * @return string
+     */
+    public function getSpecificErrorMessage($store = null)
+    {
+        return (string)$this->getStoreConfig(self::CONFIG_FIELD_SPECIFIC_ERR_MSG, $store);
     }
 }

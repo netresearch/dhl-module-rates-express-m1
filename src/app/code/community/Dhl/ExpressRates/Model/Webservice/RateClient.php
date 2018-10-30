@@ -22,17 +22,19 @@ class Dhl_ExpressRates_Model_Webservice_RateClient
     protected $moduleConfig;
 
     /**
-     * @var Dhl_ExpressRates_Model_Logger_Writer
+     * @var Dhl_ExpressRates_Model_Logger_Mage
      */
-    protected $logWriter;
+    protected $logger;
 
     /**
      * Dhl_ExpressRates_Model_Webservice_RateClient constructor.
      */
     public function __construct()
     {
-        $this->moduleConfig = Mage::getModel('dhl_expressrates/config');
-        $this->logWriter = Mage::getModel('dhl_expressrates/logger_writer');
+        /** @var Mage_Core_Model_Logger $logWriter */
+        $logWriter = Mage::getSingleton('core/logger');
+        $this->logger = new Dhl_ExpressRates_Model_Logger_Mage($logWriter);
+        $this->moduleConfig = Mage::getSingleton('dhl_expressrates/config');
     }
 
     /**
@@ -45,12 +47,11 @@ class Dhl_ExpressRates_Model_Webservice_RateClient
     public function performRatesRequest(RateRequestInterface $request)
     {
         $store = Mage::app()->getStore()->getId();
-        $logger = new Dhl_ExpressRates_Model_Logger_Mage($this->logWriter);
         $factory = new Dhl\Express\Webservice\SoapServiceFactory();
         $rateService = $factory->createRateService(
-            $this->moduleConfig->getUserName($store),
+            $this->moduleConfig->getUsername($store),
             $this->moduleConfig->getPassword($store),
-            $logger
+            $this->logger
         );
 
         return $rateService->collectRates($request);

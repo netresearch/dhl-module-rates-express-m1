@@ -22,21 +22,23 @@ class Dhl_ExpressRates_Model_Webservice_Rate_ResponseDataMapper
     private $moduleConfig;
 
     /**
-     * @var Mage_Core_Model_Locale
+     * @var Mage_Core_Helper_Data
      */
-    protected $timeFormatter;
+    protected $helper;
 
     /**
      * @var Mage_Directory_Model_Currency
      */
     protected $currencyModel;
 
-
+    /**
+     * Dhl_ExpressRates_Model_Webservice_Rate_ResponseDataMapper constructor.
+     */
     public function __construct()
     {
-        $this->moduleConfig = Mage::getModel('dhl_expressrates/config');
-        $this->timeFormatter = Mage::app()->getLocale();
-        $this->currencyModel = Mage::getModel('directory/currency');
+        $this->moduleConfig = Mage::getSingleton('dhl_expressrates/config');
+        $this->helper = Mage::helper('core/data');
+        $this->currencyModel = Mage::getSingleton('directory/currency');
     }
 
     /**
@@ -46,25 +48,23 @@ class Dhl_ExpressRates_Model_Webservice_Rate_ResponseDataMapper
      */
     public function mapResult(RateResponseInterface $rateResponse)
     {
+        /** @var Mage_Shipping_Model_Rate_Result_Method[] $result */
         $result = array();
 
         /** @var Rate $rate */
         foreach ($rateResponse->getRates() as $rate) {
             $priceInBaseCurrency = $this->convertPriceToCurrency($rate->getAmount(), $rate->getCurrencyCode());
             
-            $result[] = Mage::getModel('shipping/rate_result_method', array(
-                    'data' => array(
-                        'carrier' => Dhl_ExpressRates_Model_Carrier_Express::CODE,
-                        'carrier_title' => $this->moduleConfig->getTitle(),
-                        'method' => $rate->getServiceCode(),
-                        'method_title' => $rate->getLabel(),
-                        'price' => $priceInBaseCurrency,
-                        'cost' => $priceInBaseCurrency,
-
-                        // Pass delivery date through the method description
-                        Dhl_ExpressRates_Model_Method_AdditionalInfo::ATTRIBUTE_KEY =>
-                            $this->getMethodAdditionalInformation($rate)
-                    ),
+            $result[] = Mage::getModel(
+                'shipping/rate_result_method',
+                array(
+                    'carrier' => Dhl_ExpressRates_Model_Carrier_Express::CODE,
+                    'carrier_title' => $this->moduleConfig->getTitle(),
+                    'method' => $rate->getServiceCode(),
+                    'method_title' => $rate->getLabel(),
+                    'price' => $priceInBaseCurrency,
+                    'cost' => $priceInBaseCurrency,
+                    'delivery_date' => $this->getFormattedDeliveryDate($rate->getDeliveryTime()),
                 )
             );
         }
@@ -79,11 +79,14 @@ class Dhl_ExpressRates_Model_Webservice_Rate_ResponseDataMapper
      *
      * @return string
      */
-    private function getFormattedDeliveryDate(\DateTime $dateTime)
+    protected function getFormattedDeliveryDate(\DateTime $dateTime)
     {
-        $format = $this->timeFormatter->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_MEDIUM);
+        $formattedDateString = $this->helper->formatDate(
+            $dateTime->format('Y-m-d'),
+            Mage_Core_Model_Locale::FORMAT_TYPE_MEDIUM
+        );
 
-        return $this->timeFormatter->date($dateTime, $format, null, false)->toString($format);
+        return $formattedDateString;
     }
 
     /**
@@ -92,7 +95,7 @@ class Dhl_ExpressRates_Model_Webservice_Rate_ResponseDataMapper
      * @return float
      * @throws Mage_Core_Model_Store_Exception
      */
-    private function convertPriceToCurrency($value, $inputCurrencyCode)
+    protected function convertPriceToCurrency($value, $inputCurrencyCode)
     {
         /** @var string $baseCurrencyCode */
         $baseCurrencyCode = Mage::app()->getStore()->getBaseCurrencyCode();
@@ -106,25 +109,5 @@ class Dhl_ExpressRates_Model_Webservice_Rate_ResponseDataMapper
         } catch (\Exception $e) {
             throw new \InvalidArgumentException("The given currency code $inputCurrencyCode is not valid.");
         }
-    }
-
-    /**
-     * @param Rate $rate
-     * @return Varien_Object
-     */
-    private function getMethodAdditionalInformation(Rate $rate)
-    {
-        $data = array();
-        /** not implemented yet */
-        /**
-        if ($this->moduleConfig->isCheckoutDeliveryTimeEnabled()) {
-            $deliveryDate = $this->getFormattedDeliveryDate($rate->getDeliveryTime());
-            $data[Dhl_ExpressRates_Model_Method_AdditionalInfo::DELIVERY_DATE] = $deliveryDate;
-        }
-        */
-        $additionalInformation = new Varien_Object();
-        $additionalInformation->setData($data);
-
-        return $additionalInformation;
     }
 }

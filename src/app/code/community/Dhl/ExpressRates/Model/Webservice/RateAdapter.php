@@ -3,10 +3,6 @@
  * See LICENSE.md for license details.
  */
 
-
-use Dhl\Express\Exception\RateRequestException;
-use Dhl\Express\Exception\SoapException;
-
 /**
  * Class RateAdapter
  *
@@ -37,15 +33,14 @@ class Dhl_ExpressRates_Model_Webservice_RateAdapter
      */
     public function __construct()
     {
-        $this->requestDataMapper = Mage::getModel('dhl_expressrates/webservice_rate_requestDataMapper');
-        $this->responseDataMapper = Mage::getModel('dhl_expressrates/webservice_rate_responseDataMapper');
-        $this->client = Mage::getModel('dhl_expressrates/webservice_rateClient');
+        $this->requestDataMapper = Mage::getSingleton('dhl_expressrates/webservice_rate_requestDataMapper');
+        $this->responseDataMapper = Mage::getSingleton('dhl_expressrates/webservice_rate_responseDataMapper');
+        $this->client = Mage::getSingleton('dhl_expressrates/webservice_rateClient');
     }
 
     /**
      * @param Mage_Shipping_Model_Rate_Request $request
-     *
-     * @return array Mage_Shipping_Model_Rate_Result_Method
+     * @return Mage_Shipping_Model_Rate_Result_Method[]
      * @throws Mage_Core_Exception
      */
     public function getRates(Mage_Shipping_Model_Rate_Request $request)
@@ -54,19 +49,12 @@ class Dhl_ExpressRates_Model_Webservice_RateAdapter
 
         try {
             $response = $this->client->performRatesRequest($requestModel);
-            $result = $this->responseDataMapper->mapResult($response);
-        } catch (RateRequestException $exception) {
-            Mage::throwException(
-                Mage::helper('dhl_expressrates/data')->__('Error during rate request.'),
-                $exception
-            );
-        } catch (SoapException $exception) {
-            Mage::throwException(
-                Mage::helper('dhl_expressrates/data')->__('Error during rate request.'),
-                $exception
-            );
+        } catch (\Dhl\Express\Exception\RateRequestException $exception) {
+            Mage::throwException('Error during rate request.');
+        } catch (\Dhl\Express\Exception\SoapException $exception) {
+            Mage::throwException('Error during rate request SOAP call.');
         }
 
-        return $result;
+        return $this->responseDataMapper->mapResult($response);
     }
 }
