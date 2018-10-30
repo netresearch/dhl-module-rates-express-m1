@@ -68,10 +68,18 @@
         <carriers>
             <dhlexpress>
                 <active>0</active>
-                <sallowspecific>0</sallowspecific>
                 <model>dhl_expressrates/carrier_express</model>
                 <title>DHL Express</title>
                 <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                <sallowspecific>0</sallowspecific>
+                <is_online>1</is_online>
+                <showmethod>1</showmethod>
+                <package_insurance_from_value>0</package_insurance_from_value>
+                <packaging_weight>0.0</packaging_weight>
+                <allowedinternationalproducts>P;D;U</allowedinternationalproducts>
+                <alloweddomesticproducts>N</alloweddomesticproducts>
+                <cut_off_time>13,00,00</cut_off_time>
+                <pickup_time>16,00,00</pickup_time>
 
                 <logging>0</logging>
                 <loglevel>3</loglevel>
