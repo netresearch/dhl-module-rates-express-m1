@@ -225,6 +225,8 @@
                         </regular_pickup>
                         <terms_of_trade translate="label comment">
                             <label><![CDATA[Duties & Taxes]]></label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>dhl_expressrates/adminhtml_system_config_source_termsoftrade</source_model>
                             <comment>In some cases, additional fees may apply. Consult your account representative for more details</comment>
                             <sort_order>370</sort_order>
                             <show_in_default>1</show_in_default>
@@ -253,6 +255,101 @@
                                 <package_insurance>1</package_insurance>
                             </depends>
                         </package_insurance_from_value>
+
+                        <!-- Checkout Presentation -->
+                        <checkout_presentation_heading translate="label">
+                            <label><![CDATA[Checkout Presentation]]></label>
+                            <frontend_model>dhl_expressrates/adminhtml_system_config_heading</frontend_model>
+                            <sort_order>400</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </checkout_presentation_heading>
+                        <title translate="label">
+                            <label><![CDATA[Display Title]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>410</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </title>
+                        <sort_order translate="label tooltip">
+                            <label><![CDATA[Sort Order]]></label>
+                            <frontend_type>text</frontend_type>
+                            <tooltip><![CDATA[This field determines where DHL Express will be displayed on the Checkout page. To display after Flat Rate or Free Shipping, enter a number just higher than the sort order value configured for those Shipping Methods.]]></tooltip>
+                            <validate>validate-number</validate>
+                            <sort_order>420</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </sort_order>
+                        <checkout_show_delivery_time translate="label comment">
+                            <label><![CDATA[Shipping Options Display]]></label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>dhl_expressrates/adminhtml_system_config_source_shippingoptiondisplay</source_model>
+                            <comment>Delivery date is based on your expected shipment date</comment>
+                            <sort_order>430</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </checkout_show_delivery_time>
+                        <show_method_if_not_applicable translate="label">
+                            <label><![CDATA[If No DHL Shipping Option Available]]></label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>dhl_expressrates/adminhtml_system_config_source_showifnotapplicable</source_model>
+                            <sort_order>440</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_method_if_not_applicable>
+                        <specificerrmsg translate="label">
+                            <label><![CDATA[Custom Message]]></label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>450</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <show_method_if_not_applicable>1</show_method_if_not_applicable>
+                            </depends>
+                        </specificerrmsg>
+                        <!-- Round prices -->
+                        <round_prices_format translate="label">
+                            <label><![CDATA[Round Prices]]></label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>dhl_expressrates/adminhtml_system_config_source_roundedpricesformat</source_model>
+                            <sort_order>460</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </round_prices_format>
+                        <round_prices_mode translate="label">
+                            <label><![CDATA[Rounding Direction]]></label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>dhl_expressrates/adminhtml_system_config_source_roundedpricesmode</source_model>
+                            <sort_order>470</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <round_prices_format separator=",">
+                                    <value>full_price,static_decimal</value>
+                                </round_prices_format>
+                            </depends>
+                        </round_prices_mode>
+                        <round_prices_static_decimal translate="label tooltip">
+                            <label><![CDATA[Decimal Value]]></label>
+                            <frontend_type>text</frontend_type>
+                            <tooltip><![CDATA[Enter the value without the decimal separator (ex. 99 for the shipping charges to be rounded to 99 cents)]]></tooltip>
+                            <validate>validate-length maximum-length-2 minimum-length-2 validate-digits</validate>
+                            <sort_order>480</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <round_prices_format>static_decimal</round_prices_format>
+                            </depends>
+                        </round_prices_static_decimal>
                     </fields>
                 </dhlexpress>
             </groups>

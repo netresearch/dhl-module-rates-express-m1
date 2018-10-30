@@ -5,7 +5,7 @@
 use Dhl\Express\Api\Data\ShippingProductsInterface;
 
 /**
- * Class Dhl_ExpressRates_Model_Adminhtml_System_Config_Source_InternationalProducts
+ * Class Dhl_ExpressRates_Model_Adminhtml_System_Config_Source_Internationalproducts
  *
  * @package Dhl\ExpressRates\Model\Adminhtml
  * @author  Andreas Müller <andreas.mueller@netreseach.de>
