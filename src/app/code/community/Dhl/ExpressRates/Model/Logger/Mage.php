@@ -34,10 +34,11 @@ class Dhl_ExpressRates_Model_Logger_Mage extends \Psr\Log\AbstractLogger
 
     /**
      * Dhl_ExpressRates_Model_Logger_Mage constructor.
-     * @param Dhl_ExpressRates_Model_Logger_Writer $writer
+     *
+     * @param Mage_Core_Model_Logger $writer
      * @param string $file
      */
-    public function __construct(Dhl_ExpressRates_Model_Logger_Writer $writer, $file = '')
+    public function __construct(Mage_Core_Model_Logger $writer, $file = '')
     {
         $this->_writer = $writer;
         if ($file) {
@@ -76,7 +77,7 @@ class Dhl_ExpressRates_Model_Logger_Mage extends \Psr\Log\AbstractLogger
      * @param string $message
      * @param mixed[] $context
      *
-     * @return null
+     * @return void
      */
     public function log($level, $message, array $context = array())
     {

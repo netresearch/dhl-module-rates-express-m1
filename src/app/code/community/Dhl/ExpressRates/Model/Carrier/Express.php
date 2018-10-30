@@ -28,7 +28,7 @@ class Dhl_ExpressRates_Model_Carrier_Express
     protected $moduleConfig;
 
     /**
-     * @var Dhl_ExpressRates_Model_Logger_Writer
+     * @var Mage_Core_Model_Logger
      */
     protected $logWriter;
 
@@ -38,8 +38,9 @@ class Dhl_ExpressRates_Model_Carrier_Express
     public function __construct()
     {
         parent::__construct();
+
         $this->moduleConfig = Mage::getModel('dhl_expressrates/config');
-        $this->logWriter = Mage::getModel('dhl_expressrates/logger_writer');
+        $this->logWriter = Mage::getModel('core/logger');
     }
 
 
@@ -53,7 +54,7 @@ class Dhl_ExpressRates_Model_Carrier_Express
         }
 
         $store = $request->getStoreId();
-        $username = $this->moduleConfig->getUserName($store);
+        $username = $this->moduleConfig->getUsername($store);
         $password = $this->moduleConfig->getPassword($store);
         $accountNumber = $this->moduleConfig->getAccountNumber($store);
 
@@ -63,7 +64,7 @@ class Dhl_ExpressRates_Model_Carrier_Express
 
         //create dummy request
         $date = new DateTime('now');
-        $readyTime = $date->modify('+1 day');
+        $readyTime = $date->modify('+2 day');
         $requestBuilder = new Dhl\Express\RequestBuilder\RateRequestBuilder();
 
         $requestBuilder->setShipperAccountNumber($accountNumber);
@@ -79,25 +80,35 @@ class Dhl_ExpressRates_Model_Carrier_Express
             $request->getCity()
         );
         $requestBuilder->setIsUnscheduledPickup(true);
-        $requestBuilder->setTermsOfTrade('');
-        $requestBuilder->addPackage('123456', $request->getPackageWeight(),'KG', '20', '10', '10','CM', true);
+        $requestBuilder->setTermsOfTrade('DDU');
+        $requestBuilder->addPackage(
+            '123456',
+            $request->getPackageWeight(),
+            'KG',
+            20,
+            10,
+            10,
+            'CM',
+            true
+        );
         $requestBuilder->setContentType('NON_DOCUMENTS');
         $requestBuilder->setReadyAtTimestamp($readyTime);
         $requestBuilder->setIsValueAddedServicesRequested(false);
         $requestBuilder->setNextBusinessDayIndicator(false);
 
         $request = $requestBuilder->build();
+        $result = Mage::getModel('shipping/rate_result');
         try {
-            $result = $client->collectRates($request);
-
+            $rates = $client->collectRates($request);
+            /** @todo(nr): Map rates to Magento Rate objects and append to rate result. */
         } catch(\Dhl\Express\Exception\ExpressApiException $exception) {
-            $result = Mage::getModel('shipping/rate_result');
             $error = Mage::getModel('shipping/rate_result_error');
             $error->setCarrier(self::CODE);
             $error->setCarrierTitle($this->getConfigData('title'));
             $error->setErrorMessage($this->getConfigData('specificerrmsg'));
             $result->append($error);
         }
+
         return $result;
     }
 
