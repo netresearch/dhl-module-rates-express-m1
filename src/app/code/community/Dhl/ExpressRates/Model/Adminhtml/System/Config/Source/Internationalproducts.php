@@ -2,7 +2,7 @@
 /**
  * See LICENSE.md for license details.
  */
-use Dhl\Express\Api\Data\ShippingProductsInterface;
+use Dhl\Express\Model\Data\ShippingProductNames;
 
 /**
  * Class Dhl_ExpressRates_Model_Adminhtml_System_Config_Source_Internationalproducts
@@ -21,7 +21,8 @@ class Dhl_ExpressRates_Model_Adminhtml_System_Config_Source_Internationalproduct
      */
     public function toOptionArray()
     {
-        $options = ShippingProductsInterface::PRODUCT_NAMES_INTERNATIONAL;
+        $shippingInternationalProductNames = new ShippingProductNames();
+        $options = $shippingInternationalProductNames->getProductNamesInternational();
 
         return array_map(
             function ($label, $value) {

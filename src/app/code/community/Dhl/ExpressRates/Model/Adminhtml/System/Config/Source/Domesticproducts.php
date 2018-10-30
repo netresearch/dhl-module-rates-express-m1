@@ -3,7 +3,7 @@
  * See LICENSE.md for license details.
  */
 
-use Dhl\Express\Api\Data\ShippingProductsInterface;
+use Dhl\Express\Model\Data\ShippingProductNames;
 
 /**
  * Class Dhl_ExpressRates_Model_Adminhtml_System_Config_Source_Domesticproducts
@@ -22,7 +22,8 @@ class Dhl_ExpressRates_Model_Adminhtml_System_Config_Source_Domesticproducts
      */
     public function toOptionArray()
     {
-        $options = ShippingProductsInterface::PRODUCT_NAMES_DOMESTIC;
+        $productNames = new ShippingProductNames();
+        $options = $productNames->getProductNamesDomestic();
 
         return array_map(
             function ($value, $label) {
