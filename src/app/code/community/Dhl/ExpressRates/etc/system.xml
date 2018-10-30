@@ -363,6 +363,7 @@
                         <!-- International rates calculation config fields -->
                         <international_affect_rates translate="label">
                             <label><![CDATA[International Shipping]]></label>
+                            <comment><![CDATA[Add markup to shipping price]]></comment>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>510</sort_order>
@@ -411,8 +412,9 @@
                             </depends>
                         </international_handling_fee_percentage>
                         <!-- Domestic rates calculation config fields -->
-                        <domestic_affect_rates translate="label">
+                        <domestic_affect_rates translate="label comment">
                             <label><![CDATA[Domestic Shipping]]></label>
+                            <comment><![CDATA[Add markup to shipping price]]></comment>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>550</sort_order>
@@ -460,6 +462,98 @@
                                 <domestic_handling_type>P</domestic_handling_type>
                             </depends>
                         </domestic_handling_fee_percentage>
+
+                        <!-- Free shipping calculation -->
+                        <free_shipping_enable_heading translate="label">
+                            <label><![CDATA[Free Shipping]]></label>
+                            <frontend_model>dhl_expressrates/adminhtml_system_config_heading</frontend_model>
+                            <sort_order>600</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </free_shipping_enable_heading>
+                        <free_shipping_virtual_products_enable translate="label comment">
+                            <label><![CDATA[Free Shipping Calculation]]></label>
+                            <comment>Include virtual products in totals</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>610</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </free_shipping_virtual_products_enable>
+                        <!-- International free shipping config fields -->
+                        <international_free_shipping_enable translate="label comment">
+                            <label><![CDATA[International Orders]]></label>
+                            <comment>Configure free shipping for international orders</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>620</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </international_free_shipping_enable>
+                        <international_free_shipping_products translate="label comment">
+                            <label><![CDATA[Free Shipping Available For]]></label>
+                            <comment><![CDATA[Choose allowed shipping products for Free Shipping]]></comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>dhl_expressrates/adminhtml_system_config_source_internationalproducts</source_model>
+                            <sort_order>630</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <international_free_shipping_enable>1</international_free_shipping_enable>
+                            </depends>
+                        </international_free_shipping_products>
+                        <international_free_shipping_subtotal translate="label">
+                            <label><![CDATA[International Minimum Order Amount]]></label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-zero-or-greater</validate>
+                            <sort_order>640</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <international_free_shipping_enable>1</international_free_shipping_enable>
+                            </depends>
+                        </international_free_shipping_subtotal>
+                        <!-- Domestic free shipping config fields -->
+                        <domestic_free_shipping_enable translate="label comment">
+                            <label><![CDATA[Domestic Orders]]></label>
+                            <comment>Configure free shipping for domestic orders</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>650</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </domestic_free_shipping_enable>
+                        <domestic_free_shipping_products translate="label comment">
+                            <label><![CDATA[Free Shipping Available For]]></label>
+                            <comment><![CDATA[Choose allowed shipping products for Free Shipping]]></comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>dhl_expressrates/adminhtml_system_config_source_domesticproducts</source_model>
+                            <sort_order>660</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <domestic_free_shipping_enable>1</domestic_free_shipping_enable>
+                            </depends>
+                        </domestic_free_shipping_products>
+                        <domestic_free_shipping_subtotal translate="label">
+                            <label><![CDATA[Domestic Minimum Order Amount]]></label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-zero-or-greater</validate>
+                            <sort_order>670</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <domestic_free_shipping_enable>1</domestic_free_shipping_enable>
+                            </depends>
+                        </domestic_free_shipping_subtotal>
                     </fields>
                 </dhlexpress>
             </groups>
