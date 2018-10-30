@@ -12,7 +12,7 @@ use Dhl\Express\Api\Data\ShippingProductsInterface;
  * @license https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link    https://www.netresearch.de/
  */
-class Dhl_ExpressRates_Model_Adminhtml_System_Config_Source_InternationalProducts
+class Dhl_ExpressRates_Model_Adminhtml_System_Config_Source_Internationalproducts
 {
     const DELIMITER = ';';
 
