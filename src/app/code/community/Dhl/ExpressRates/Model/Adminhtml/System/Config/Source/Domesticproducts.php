@@ -18,12 +18,24 @@ class Dhl_ExpressRates_Model_Adminhtml_System_Config_Source_Domesticproducts
     const DELIMITER = ';';
 
     /**
+     * @var ShippingProductNames
+     */
+    protected $shippingProductNames;
+
+    /**
+     * Dhl_ExpressRates_Model_Adminhtml_System_Config_Source_Domesticproducts constructor.
+     */
+    public function __construct()
+    {
+        $this->shippingProductNames = new ShippingProductNames();
+    }
+
+    /**
      * @inheritdoc
      */
     public function toOptionArray()
     {
-        $productNames = new ShippingProductNames();
-        $options = $productNames->getProductNamesDomestic();
+        $options = $this->shippingProductNames->getProductNamesDomestic();
 
         return array_map(
             function ($value, $label) {
