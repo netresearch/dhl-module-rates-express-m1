@@ -63,4 +63,25 @@ class Dhl_ExpressRates_Model_Carrier_Express
         // code => title
         return array();
     }
+
+    /**
+     * Determine whether zip-code is required for the country of destination
+     *
+     * @param string|null $countryId
+     * @return bool
+     */
+    public function isZipCodeRequired($countryId = null)
+    {
+        return true;
+    }
+
+    /**
+     * Check if city option required
+     *
+     * @return boolean
+     */
+    public function isCityRequired()
+    {
+        return true;
+    }
 }
