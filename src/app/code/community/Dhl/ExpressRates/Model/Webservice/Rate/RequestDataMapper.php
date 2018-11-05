@@ -3,6 +3,8 @@
  * See LICENSE.md for license details.
  */
 
+use Dhl\Express\Model\Request\Rate\ShipmentDetails;
+
 /**
  * Class Dhl_ExpressRates_Model_Webservice_Rate_RequestDataMapper
  *
@@ -16,26 +18,32 @@ class Dhl_ExpressRates_Model_Webservice_Rate_RequestDataMapper
     /**
      * @var Dhl_ExpressRates_Model_Config
      */
-    protected $moduleConfig;
+    private $moduleConfig;
 
     /**
      * @var Dhl\Express\RequestBuilder\RateRequestBuilder
      */
-    protected $requestBuilder;
+    private $requestBuilder;
+
+    /**
+     * @var Dhl_ExpressRates_Model_Rate_PickupTime
+     */
+    private $pickupTime;
 
     /**
      * Dhl_ExpressRates_Model_Webservice_Rate_RequestDataMapper constructor.
      */
     public function __construct()
     {
-        $this->moduleConfig = Mage::getSingleton('dhl_expressrates/config');
+        $this->moduleConfig   = Mage::getSingleton('dhl_expressrates/config');
         $this->requestBuilder = new Dhl\Express\RequestBuilder\RateRequestBuilder();
+        $this->pickupTime     = Mage::getSingleton('dhl_expressrates/rate_pickupTime');
     }
 
     /**
      * Maps the available application data to the DHL Express specific request object
      *
-     * @param Mage_Shipping_Model_Rate_Request $request
+     * @param Mage_Shipping_Model_Rate_Request $request The rate request
      *
      * @return \Dhl\Express\Model\RateRequest
      * @throws Mage_Core_Exception
@@ -43,94 +51,29 @@ class Dhl_ExpressRates_Model_Webservice_Rate_RequestDataMapper
     public function mapRequest(Mage_Shipping_Model_Rate_Request $request)
     {
         $this->requestBuilder->setShipperAddress(
-            $request->getCountryId(),
-            $request->getPostcode(),
-            $request->getCity()
+            $request->getData('country_id'),
+            $request->getData('postcode'),
+            $request->getData('city')
         );
 
-        $destPostcode = $request->getDestPostcode();
-        $destCity = $request->getDestCity();
-        if (empty($destPostcode)) {
+        $destinationPostcode = $request->getDestPostcode();
+        $destinationCity     = $request->getDestCity();
+
+        if (empty($destinationPostcode)) {
             Mage::throwException('The recipient postal code is missing, which is required to calculate rates');
         }
 
-        if (empty($destCity)) {
+        if (empty($destinationCity)) {
             Mage::throwException('The recipient city is missing, which is required to calculate rates');
         }
 
         $this->requestBuilder->setRecipientAddress(
             $request->getDestCountryId(),
-            $destPostcode,
-            $destCity,
+            $destinationPostcode,
+            $destinationCity,
             array(substr($request->getDestStreet(), 0, 35))
         );
 
-        /**
-         * @TODO(AMU): Switch to $this->build($request) once the method is fully implemented.
-         */
-        $this->buildFromDummyData($request);
-
-        return $this->requestBuilder->build();
-    }
-
-    /**
-     * Calculate the total weight of the package by adding the individiual weight of the items in the quote to the
-     * configured packaging weight.
-     *
-     * @TODO(AMU): Implement and use $this->moduleConfig->getPackagingWeight($request->getWebsiteId()) for packaging
-     * weight.
-     *
-     * @param Mage_Shipping_Model_Rate_Request $request
-     * @return float
-     */
-    protected function calculatePackageWeight(Mage_Shipping_Model_Rate_Request $request)
-    {
-        $itemWeight = (float)$request->getPackageWeight();
-        $packagingWeight = 1.02;
-
-        return $itemWeight + $packagingWeight;
-    }
-
-    /**
-     * @TODO(AMU): Remove once $this->build is finished.
-     *
-     * @param Mage_Shipping_Model_Rate_Request $request
-     */
-    protected function buildFromDummyData(Mage_Shipping_Model_Rate_Request $request)
-    {
-        $date = new DateTime('now');
-        $readyTime = $date->modify('+2 day');
-
-        $this->requestBuilder->setShipperAccountNumber($this->moduleConfig->getAccountNumber($request->getStoreId()));
-        $this->requestBuilder->setShipperAddress(
-            $request->getCountryId(),
-            $request->getPostcode(),
-            $request->getCity()
-        );
-        $this->requestBuilder->setIsUnscheduledPickup(true);
-        $this->requestBuilder->setTermsOfTrade('DDP');
-        $this->requestBuilder->addPackage(
-            '1',
-            $this->calculatePackageWeight($request),
-            'KG',
-            20,
-            10,
-            10,
-            'CM'
-        );
-        $this->requestBuilder->setContentType('NON_DOCUMENTS');
-        $this->requestBuilder->setReadyAtTimestamp($readyTime);
-        $this->requestBuilder->setIsValueAddedServicesRequested(false);
-        $this->requestBuilder->setNextBusinessDayIndicator(false);
-    }
-
-    /**
-     * @TODO(AMU): Implement necessary config getters, use pickupTime model to get ReadyAtTimestamp
-     *
-     * @param Mage_Shipping_Model_Rate_Request $request
-     */
-    protected function build(Mage_Shipping_Model_Rate_Request $request)
-    {
         $this->requestBuilder->addPackage(
             1,
             $this->calculatePackageWeight($request),
@@ -158,10 +101,31 @@ class Dhl_ExpressRates_Model_Webservice_Rate_RequestDataMapper
         if ($this->moduleConfig->isInsured() &&
             $request->getPackagePhysicalValue() >= $this->moduleConfig->insuranceFromValue()
         ) {
+            /** @var Mage_Directory_Model_Currency $baseCurrency*/
+            $baseCurrency = $request->getBaseCurrency();
+
             $this->requestBuilder->setInsurance(
                 $request->getPackagePhysicalValue(),
-                $request->getBaseCurrency()->getCurrencyCode()
+                $baseCurrency->getCurrencyCode()
             );
         }
+
+        return $this->requestBuilder->build();
+    }
+
+    /**
+     * Calculate the total weight of the package by adding the individual weight of the items in the quote to the
+     * configured packaging weight.
+     *
+     * @param Mage_Shipping_Model_Rate_Request $request
+     *
+     * @return float
+     */
+    protected function calculatePackageWeight(Mage_Shipping_Model_Rate_Request $request)
+    {
+        $itemWeight      = (float) $request->getPackageWeight();
+        $packagingWeight = $this->moduleConfig->getPackagingWeight($request->getWebsiteId());
+
+        return $itemWeight + $packagingWeight;
     }
 }

@@ -26,6 +26,7 @@ class Dhl_ExpressRates_Model_Config
     const CONFIG_FIELD_ALLOWED_INTERNATIONAL_PRODUCTS = 'allowedinternationalproducts';
     const CONFIG_FIELD_ALLOWED_DOMESTIC_PRODUCTS = 'alloweddomesticproducts';
     const CONFIG_FIELD_PACKAGING_WEIGHT = 'packaging_weight';
+    const CONFIG_FIELD_PACKAGING_WEIGHT_UNIT = 'packaging_weight_unit';
     const CONFIG_FIELD_CUT_OFF_TIME = 'cut_off_time';
     const CONFIG_FIELD_PICKUP_TIME = 'pickup_time';
     const CONFIG_FIELD_REGULAR_PICKUP = 'regular_pickup';
@@ -55,7 +56,6 @@ class Dhl_ExpressRates_Model_Config
     const CONFIG_XML_PATH_DOMESTIC_HANDLING_FEE = 'domestic_handling_fee';
     const CONFIG_XML_SUFFIX_FIXED = '_fixed';
     const CONFIG_XML_SUFFIX_PERCENTAGE = '_percentage';
-    const CONFIG_XML_PATH_WEIGHT_UNIT = 'general/locale/weight_unit';
     const CONFIG_XML_PATH_VERSION = 'version';
     const DEFAULT_DIMENSION_UNIT = 'in';
 
@@ -237,7 +237,20 @@ class Dhl_ExpressRates_Model_Config
      */
     public function getPackagingWeight($store = null)
     {
-        return (float)$this->getStoreConfig(self::CONFIG_FIELD_PACKAGING_WEIGHT, $store);
+        return (float) $this->getStoreConfig(self::CONFIG_FIELD_PACKAGING_WEIGHT, $store);
+    }
+
+    /**
+     * Get the general weight unit.
+     *
+     * @param null $store
+     * @return string
+     */
+    public function getWeightUnit($store = null)
+    {
+        $weightUOM = $this->getStoreConfig(self::CONFIG_FIELD_PACKAGING_WEIGHT_UNIT, $store);
+
+        return $this->normalizeWeightUOM($weightUOM);
     }
 
     /**
@@ -248,7 +261,19 @@ class Dhl_ExpressRates_Model_Config
      */
     public function getCutOffTime($store = null)
     {
-        return (string)$this->getStoreConfig(self::CONFIG_FIELD_CUT_OFF_TIME, $store);
+        return (string) $this->getStoreConfig(self::CONFIG_FIELD_CUT_OFF_TIME, $store);
+    }
+
+    /**
+     * Get the pickup time.
+     *
+     * @param mixed $store
+     *
+     * @return string
+     */
+    public function getPickupTime($store = null)
+    {
+        return (string) $this->getStoreConfig(self::CONFIG_FIELD_PICKUP_TIME, $store);
     }
 
     /**
@@ -259,7 +284,7 @@ class Dhl_ExpressRates_Model_Config
      */
     public function isRegularPickup($store = null)
     {
-        return (bool)$this->getStoreConfigFlag(self::CONFIG_FIELD_REGULAR_PICKUP, $store);
+        return (bool) $this->getStoreConfigFlag(self::CONFIG_FIELD_REGULAR_PICKUP, $store);
     }
 
     /**
@@ -270,7 +295,7 @@ class Dhl_ExpressRates_Model_Config
      */
     public function getTermsOfTrade($store = null)
     {
-        return (string)$this->getStoreConfig(self::CONFIG_FIELD_TERMS_OF_TRADE, $store);
+        return (string) $this->getStoreConfig(self::CONFIG_FIELD_TERMS_OF_TRADE, $store);
     }
 
     /**
@@ -281,7 +306,7 @@ class Dhl_ExpressRates_Model_Config
      */
     public function isInsured($store = null)
     {
-        return (bool)$this->getStoreConfigFlag(self::CONFIG_FIELD_PACKAGE_INSURANCE, $store);
+        return (bool) $this->getStoreConfigFlag(self::CONFIG_FIELD_PACKAGE_INSURANCE, $store);
     }
 
     /**
@@ -292,7 +317,7 @@ class Dhl_ExpressRates_Model_Config
      */
     public function insuranceFromValue($store = null)
     {
-        return (float)$this->getStoreConfig(self::CONFIG_FIELD_PACKAGE_INSURANCE_FROM_VALUE, $store);
+        return (float) $this->getStoreConfig(self::CONFIG_FIELD_PACKAGE_INSURANCE_FROM_VALUE, $store);
     }
 
     /**
@@ -303,7 +328,7 @@ class Dhl_ExpressRates_Model_Config
      */
     public function getTitle($store = null)
     {
-        return (string)$this->getStoreConfig(self::CONFIG_FIELD_TITLE, $store);
+        return (string) $this->getStoreConfig(self::CONFIG_FIELD_TITLE, $store);
     }
 
     /**
@@ -312,7 +337,7 @@ class Dhl_ExpressRates_Model_Config
      */
     public function getSpecificErrorMessage($store = null)
     {
-        return (string)$this->getStoreConfig(self::CONFIG_FIELD_ERROR_MESSAGE, $store);
+        return (string) $this->getStoreConfig(self::CONFIG_FIELD_ERROR_MESSAGE, $store);
     }
 
     /**
@@ -323,7 +348,7 @@ class Dhl_ExpressRates_Model_Config
      */
     public function getSortOrder($store = null)
     {
-        return (int)$this->getStoreConfig(self::CONFIG_FIELD_SORT_ORDER, $store);
+        return (int) $this->getStoreConfig(self::CONFIG_FIELD_SORT_ORDER, $store);
     }
 
     /**
@@ -347,7 +372,7 @@ class Dhl_ExpressRates_Model_Config
      */
     public function showIfNotApplicable($store = null)
     {
-        return (bool)$this->getStoreConfig(self::CONFIG_FIELD_SHOW_IF_NOT_APPLICABLE, $store);
+        return (bool) $this->getStoreConfig(self::CONFIG_FIELD_SHOW_IF_NOT_APPLICABLE, $store);
     }
 
     /**
@@ -358,7 +383,7 @@ class Dhl_ExpressRates_Model_Config
      */
     public function getNotApplicableErrorMessage($store = null)
     {
-        return (string)$this->getStoreConfig(self::CONFIG_FIELD_ERROR_MESSAGE, $store);
+        return (string) $this->getStoreConfig(self::CONFIG_FIELD_ERROR_MESSAGE, $store);
     }
 
     /**
@@ -369,7 +394,7 @@ class Dhl_ExpressRates_Model_Config
      */
     public function getRoundedPricesFormat($store = null)
     {
-        return (string)$this->getStoreConfig(self::CONFIG_FIELD_ROUNDED_PRICES_FORMAT, $store);
+        return (string) $this->getStoreConfig(self::CONFIG_FIELD_ROUNDED_PRICES_FORMAT, $store);
     }
 
     /**
@@ -380,7 +405,7 @@ class Dhl_ExpressRates_Model_Config
      */
     public function getRoundedPricesMode($store = null)
     {
-        return (string)$this->getStoreConfig(self::CONFIG_FIELD_ROUNDED_PRICES_MODE, $store);
+        return (string) $this->getStoreConfig(self::CONFIG_FIELD_ROUNDED_PRICES_MODE, $store);
     }
 
     /**
@@ -391,7 +416,7 @@ class Dhl_ExpressRates_Model_Config
      */
     public function getRoundedPricesStaticDecimal($store = null)
     {
-        return (float)$this->getStoreConfig(
+        return (float) $this->getStoreConfig(
             self::CONFIG_FIELD_ROUNDED_PRICES_STATIC_DECIMAL,
             $store
         ) / 100;
@@ -418,7 +443,7 @@ class Dhl_ExpressRates_Model_Config
     public function getInternationalHandlingType($store = null)
     {
         return $this->isInternationalRatesConfigurationEnabled($store)
-            ? (string)$this->getStoreConfig(self::CONFIG_FIELD_INTERNATIONAL_HANDLING_TYPE, $store)
+            ? (string) $this->getStoreConfig(self::CONFIG_FIELD_INTERNATIONAL_HANDLING_TYPE, $store)
             : '';
     }
 
@@ -443,7 +468,7 @@ class Dhl_ExpressRates_Model_Config
     public function getDomesticHandlingType($store = null)
     {
         return $this->isDomesticRatesConfigurationEnabled($store)
-            ? (string)$this->getStoreConfig(self::CONFIG_FIELD_DOMESTIC_HANDLING_TYPE, $store)
+            ? (string) $this->getStoreConfig(self::CONFIG_FIELD_DOMESTIC_HANDLING_TYPE, $store)
             : '';
     }
 
@@ -499,7 +524,7 @@ class Dhl_ExpressRates_Model_Config
     public function getInternationalFreeShippingSubTotal($store = null)
     {
         return $this->isInternationalFreeShippingEnabled($store) ?
-            (float)$this->getStoreConfig(
+            (float) $this->getStoreConfig(
                 self::CONFIG_FIELD_INTERNATIONAL_FREE_SHIPPING_SUBTOTAL,
                 $store
             ) : 0;
@@ -546,7 +571,7 @@ class Dhl_ExpressRates_Model_Config
     public function getDomesticFreeShippingSubTotal($store = null)
     {
         return $this->isDomesticFreeShippingEnabled($store) ?
-            (float)$this->getStoreConfig(
+            (float) $this->getStoreConfig(
                 self::CONFIG_FIELD_DOMESTIC_FREE_SHIPPING_SUBTOTAL,
                 $store
             ) : 0;
@@ -567,7 +592,7 @@ class Dhl_ExpressRates_Model_Config
                     self::CONFIG_XML_SUFFIX_FIXED :
                     self::CONFIG_XML_SUFFIX_PERCENTAGE;
 
-            return (float)$this->getStoreConfig(
+            return (float) $this->getStoreConfig(
                 self::CONFIG_XML_PATH_INTERNATIONAL_HANDLING_FEE . $type,
                 $store
             );
@@ -590,26 +615,13 @@ class Dhl_ExpressRates_Model_Config
                 self::CONFIG_XML_SUFFIX_FIXED :
                 self::CONFIG_XML_SUFFIX_PERCENTAGE;
 
-            return (float)$this->getStoreConfig(
+            return (float) $this->getStoreConfig(
                 self::CONFIG_XML_PATH_DOMESTIC_HANDLING_FEE . $type,
                 $store
             );
         }
 
         return 0;
-    }
-
-    /**
-     * Get the general weight unit.
-     *
-     * @param null $store
-     * @return string
-     */
-    public function getWeightUnit($store = null)
-    {
-        $weightUOM = $this->getStoreConfig(self::CONFIG_XML_PATH_WEIGHT_UNIT, $store);
-
-        return $this->normalizeWeightUOM($weightUOM);
     }
 
     /**
@@ -723,7 +735,7 @@ class Dhl_ExpressRates_Model_Config
      */
     public function getOriginCountry($store = null)
     {
-        return (string)$this->getStoreConfig(Mage_Shipping_Model_Config::XML_PATH_ORIGIN_COUNTRY_ID, $store);
+        return (string) $this->getStoreConfig(Mage_Shipping_Model_Config::XML_PATH_ORIGIN_COUNTRY_ID, $store);
     }
 
     /**

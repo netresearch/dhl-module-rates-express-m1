@@ -76,6 +76,7 @@
                 <showmethod>1</showmethod>
                 <package_insurance_from_value>0</package_insurance_from_value>
                 <packaging_weight>0.0</packaging_weight>
+                <packaging_weight_unit>kgs</packaging_weight_unit>
                 <allowedinternationalproducts>P;D;U</allowedinternationalproducts>
                 <alloweddomesticproducts>N</alloweddomesticproducts>
                 <cut_off_time>13,00,00</cut_off_time>
