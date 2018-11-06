@@ -10,6 +10,7 @@
             <version>1.0.0</version>
         </Dhl_ExpressRates>
     </modules>
+
     <global>
         <blocks>
             <dhl_expressrates>
@@ -25,6 +26,11 @@
             <dhl_expressrates>
                 <class>Dhl_ExpressRates_Model</class>
             </dhl_expressrates>
+            <sales>
+                <rewrite>
+                    <quote_address_rate>Dhl_ExpressRates_Model_Quote_Address_Rate</quote_address_rate>
+                </rewrite>
+            </sales>
         </models>
         <events>
             <controller_front_init_before>
@@ -38,6 +44,16 @@
             </controller_front_init_before>
         </events>
     </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <dhl_expressrates>
+                    <file>dhl_expressrates.xml</file>
+                </dhl_expressrates>
+            </updates>
+        </layout>
+    </frontend>
 
     <adminhtml>
         <layout>

@@ -11,6 +11,7 @@
             <codePool>community</codePool>
             <depends>
                 <Mage_Shipping />
+                <Mage_Checkout />
             </depends>
         </Dhl_ExpressRates>
     </modules>

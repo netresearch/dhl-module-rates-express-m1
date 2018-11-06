@@ -1,7 +1,8 @@
 src/app/code/community/Dhl/ExpressRates/                             app/code/community/Dhl/ExpressRates/
 src/app/design/adminhtml/default/default/layout/dhl_expressrates.xml app/design/adminhtml/default/default/layout/dhl_expressrates.xml
 src/app/design/adminhtml/default/default/template/dhl_expressrates/  app/design/adminhtml/default/default/template/dhl_expressrates/
-
+src/app/design/frontend/base/default/layout/dhl_expressrates.xml     app/design/frontend/base/default/layout/dhl_expressrates.xml
+src/app/design/frontend/base/default/template/dhl_expressrates/      app/design/frontend/base/default/template/dhl_expressrates/
 
 src/app/etc/modules/Dhl_ExpressRates.xml                             app/etc/modules/Dhl_ExpressRates.xml
 src/app/locale/en_US/Dhl_ExpressRates.csv                            app/locale/en_US/Dhl_ExpressRates.csv

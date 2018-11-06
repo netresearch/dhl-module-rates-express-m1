@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * See LICENSE.md for license details.
+ */
+-->
+<layout>
+    <checkout_onepage_shippingmethod>
+        <reference name="root">
+            <block type="dhl_expressrates/checkout_onepage_shipping_method_deliverydate"
+                   name="dhl_expressrates.delivery_date"
+                   output="toHtml"
+                   template="dhl_expressrates/checkout/onepage/shipping_method/delivery_date.phtml"/>
+        </reference>
+    </checkout_onepage_shippingmethod>
+</layout>

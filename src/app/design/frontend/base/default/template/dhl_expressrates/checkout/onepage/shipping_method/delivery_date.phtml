@@ -1,0 +1,13 @@
+<script type="text/javascript">
+//<![CDATA[
+
+var deliveryDates = <?php echo $this->getEstimatedDeliveryDates() ?>;
+
+for (var i = 0; i < deliveryDates.length; ++i) {
+    $('s_method_' + deliveryDates[i].code).next('label').insert(
+        '<p><small>Estimated delivery: ' + deliveryDates[i].delivery_date + '</small></p>'
+    );
+}
+
+//]]>
+</script>
