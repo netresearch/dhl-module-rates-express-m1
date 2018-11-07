@@ -23,9 +23,19 @@ class Dhl_ExpressRates_Model_Carrier_Express
     protected $_code = self::CODE;
 
     /**
+     * @var \Dhl\Express\Model\Data\ShippingProductNames
+     */
+    protected $productNames;
+
+    /**
      * @var Dhl_ExpressRates_Model_Rate_CheckoutProvider
      */
     protected $rateProvider;
+
+    /**
+     * @var Dhl_ExpressRates_Model_Config
+     */
+    protected $config;
 
     /**
      * Dhl_ExpressRates_Model_Carrier_Express constructor.
@@ -34,7 +44,9 @@ class Dhl_ExpressRates_Model_Carrier_Express
     {
         parent::__construct();
 
+        $this->productNames = new \Dhl\Express\Model\Data\ShippingProductNames();
         $this->rateProvider = Mage::getSingleton('dhl_expressrates/rate_checkoutProvider');
+        $this->config = Mage::getSingleton('dhl_expressrates/config');
     }
 
     /**
@@ -53,15 +65,20 @@ class Dhl_ExpressRates_Model_Carrier_Express
      * This is only used in sales rules.
      * @see \Mage_SalesRule_Model_Rule_Condition_Address::getValueSelectOptions
      *
-     * todo(nr): return the methods enabled via config ("offered products")
-     * @link https://bugs.nr/DHLEX-16
-     *
      * @inheritDoc
      */
     public function getAllowedMethods()
     {
-        // code => title
-        return array();
+        $allowedCodes = array_merge(
+            $this->config->getAllowedDomesticProducts(),
+            $this->config->getAllowedInternationalProducts()
+        );
+        $result = array();
+        foreach ($allowedCodes as $code) {
+            $result[$code] = $this->productNames->getProductNameForCode($code);
+        }
+
+        return $result;
     }
 
     /**

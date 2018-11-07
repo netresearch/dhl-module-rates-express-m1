@@ -63,4 +63,20 @@ class ShippingProductNames
     {
         return $this->productNamesDomestic;
     }
+
+    /**
+     * @param string $code
+     * @return string
+     */
+    public function getProductNameForCode($code)
+    {
+        $allNames = array_merge($this->getProductNamesInternational(), $this->getProductNamesDomestic());
+        foreach ($allNames as $name => $codes) {
+            if (in_array($code, $codes, true)) {
+                return $name;
+            }
+        }
+
+        return '';
+    }
 }
