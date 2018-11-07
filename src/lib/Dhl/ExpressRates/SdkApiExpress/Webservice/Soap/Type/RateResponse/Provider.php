@@ -18,6 +18,8 @@ use Dhl\Express\Webservice\Soap\Type\RateResponse\Provider\Service;
  */
 class Provider
 {
+    const CLASSNAME = __CLASS__;
+
     /**
      * Provider Code, always contains DHL.
      *

@@ -16,6 +16,8 @@ namespace Dhl\Express\Webservice\Soap\Type\Tracking;
  */
 class ShipmentEventCollection implements \ArrayAccess, \Iterator, \Countable
 {
+    const CLASSNAME = __CLASS__;
+
     /**
      * @var ShipmentEvent[]
      */

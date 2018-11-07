@@ -16,6 +16,8 @@ namespace Dhl\Express\Webservice\Soap\Type\Tracking;
  */
 class Status
 {
+    const CLASSNAME = __CLASS__;
+    
     /**
      * @var string
      */

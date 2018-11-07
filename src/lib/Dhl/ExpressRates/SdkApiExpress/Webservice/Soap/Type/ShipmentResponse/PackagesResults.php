@@ -20,6 +20,8 @@ use Dhl\Express\Webservice\Soap\Type\ShipmentResponse\PackagesResults\PackageRes
 */
 class PackagesResults
 {
+    const CLASSNAME = __CLASS__;
+
     /**
      * The package result list.
      *

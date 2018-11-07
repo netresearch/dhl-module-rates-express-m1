@@ -16,6 +16,8 @@ namespace Dhl\Express\Webservice\Soap\Type\Tracking;
  */
 class PieceInfo
 {
+    const CLASSNAME = __CLASS__;
+
     /**
      * @var PieceDetails
      */

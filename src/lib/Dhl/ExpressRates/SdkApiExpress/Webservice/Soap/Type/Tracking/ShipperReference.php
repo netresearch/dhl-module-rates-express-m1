@@ -16,6 +16,8 @@ namespace Dhl\Express\Webservice\Soap\Type\Tracking;
  */
 class ShipperReference
 {
+    const CLASSNAME = __CLASS__;
+
     /**
      * @var string
      */

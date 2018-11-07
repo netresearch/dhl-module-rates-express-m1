@@ -16,6 +16,8 @@ namespace Dhl\Express\Webservice\Soap\Type\Tracking;
  */
 class ConditionCollection implements \ArrayAccess, \Iterator, \Countable
 {
+    const CLASSNAME = __CLASS__;
+
     /**
      * @var Condition[]
      */

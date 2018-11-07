@@ -16,6 +16,8 @@ namespace Dhl\Express\Webservice\Soap\Type\Tracking;
  */
 class DestinationServiceArea
 {
+    const CLASSNAME = __CLASS__;
+
     /**
      * @var string
      */

@@ -29,6 +29,11 @@ class Dhl_ExpressRates_Model_Rate_CheckoutProvider
     protected $rateAdapter;
 
     /**
+     * @var Dhl_ExpressRates_Model_Rate_RateProcessorInterface[]
+     */
+    protected $rateProcessors = array();
+
+    /**
      * Dhl_ExpressRates_Model_Rate_CheckoutProvider constructor.
      */
     public function __construct()
@@ -38,6 +43,12 @@ class Dhl_ExpressRates_Model_Rate_CheckoutProvider
         $this->logger = new Dhl_ExpressRates_Model_Logger_Mage($logWriter);
         $this->moduleConfig = Mage::getSingleton('dhl_expressrates/config');
         $this->rateAdapter = Mage::getSingleton('dhl_expressrates/webservice_rateAdapter');
+        $this->rateProcessors = array(
+            Mage::getSingleton('dhl_expressrates/rate_processor_allowedProducts'),
+            Mage::getSingleton('dhl_expressrates/rate_processor_handlingFee'),
+            Mage::getSingleton('dhl_expressrates/rate_processor_roundedPrices'),
+            Mage::getSingleton('dhl_expressrates/rate_processor_freeShipping'),
+        );
     }
 
     /**
@@ -53,6 +64,10 @@ class Dhl_ExpressRates_Model_Rate_CheckoutProvider
             $methods = $this->rateAdapter->getRates($request);
             if (empty($methods)) {
                 Mage::throwException('No rates returned from API.');
+            }
+
+            foreach ($this->rateProcessors as $rateProcessor) {
+                $methods = $rateProcessor->processMethods($methods, $request);
             }
 
             foreach ($methods as $method) {

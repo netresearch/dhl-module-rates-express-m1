@@ -15,6 +15,8 @@ namespace Dhl\Express\Webservice\Soap\Type\ShipmentResponse\PackagesResults;
  */
 class PackageResult
 {
+    const CLASSNAME = __CLASS__;
+
     /**
      * The tracking number field is the identifier for that specific piece of the shipment,
      * of which there can be many.

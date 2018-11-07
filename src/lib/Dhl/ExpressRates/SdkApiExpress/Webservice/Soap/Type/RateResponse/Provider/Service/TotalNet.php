@@ -15,6 +15,8 @@ namespace Dhl\Express\Webservice\Soap\Type\RateResponse\Provider\Service;
  */
 class TotalNet
 {
+    const CLASSNAME = __CLASS__;
+
     /**
      * This the currency of the rated shipment for the product listed.
      *

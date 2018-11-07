@@ -18,6 +18,8 @@ use Dhl\Express\Webservice\Soap\Type\RateResponse\Provider;
  */
 class SoapRateResponse
 {
+    const CLASSNAME = __CLASS__;
+
     /**
      * Providers list.
      *

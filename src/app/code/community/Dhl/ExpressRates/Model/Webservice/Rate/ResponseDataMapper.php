@@ -51,6 +51,10 @@ class Dhl_ExpressRates_Model_Webservice_Rate_ResponseDataMapper
         /** @var Mage_Shipping_Model_Rate_Result_Method[] $result */
         $result = array();
 
+        $isCheckoutDeliveryTimeEnabled = $this->moduleConfig->isCheckoutDeliveryTimeEnabled(
+            Mage::app()->getStore()->getWebsiteId()
+        );
+
         /** @var Rate $rate */
         foreach ($rateResponse->getRates() as $rate) {
             $priceInBaseCurrency = $this->convertPriceToCurrency($rate->getAmount(), $rate->getCurrencyCode());
@@ -62,7 +66,9 @@ class Dhl_ExpressRates_Model_Webservice_Rate_ResponseDataMapper
                     'carrier_title'      => $this->moduleConfig->getTitle(),
                     'method'             => $rate->getServiceCode(),
                     'method_title'       => $rate->getLabel(),
-                    'method_description' => $this->getFormattedDeliveryDate($rate->getDeliveryTime()),
+                    'method_description' => $isCheckoutDeliveryTimeEnabled
+                        ? $this->getFormattedDeliveryDate($rate->getDeliveryTime())
+                        : null,
                     'price'              => $priceInBaseCurrency,
                     'cost'               => $priceInBaseCurrency,
                 )

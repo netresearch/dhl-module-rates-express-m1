@@ -15,6 +15,8 @@ namespace Dhl\Express\Webservice\Soap\Type\RateResponse\Provider\Service\Charges
  */
 class Charge
 {
+    const CLASSNAME = __CLASS__;
+
     /**
      * Special service or extra charge code – this is the code you would have to use in the SoapShipmentRequest
      * message if you wish to add an optional Service such as Insurance.

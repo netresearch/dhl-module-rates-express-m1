@@ -19,6 +19,8 @@ use Dhl\Express\Webservice\Soap\Type\ShipmentResponse\PackagesResults;
  */
 class SoapShipmentResponse
 {
+    const CLASSNAME = __CLASS__;
+
     /**
      * The response notifications.
      *

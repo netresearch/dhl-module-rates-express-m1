@@ -16,6 +16,8 @@ namespace Dhl\Express\Webservice\Soap\Type\ShipmentResponse;
  */
 class LabelImage
 {
+    const CLASSNAME = __CLASS__;
+
     /**
      * The label image format. Mapped from Request Document. Currently always “PDF”.
      *

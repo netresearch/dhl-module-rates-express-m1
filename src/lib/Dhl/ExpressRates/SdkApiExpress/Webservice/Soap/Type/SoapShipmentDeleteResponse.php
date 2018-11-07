@@ -17,6 +17,8 @@ use Dhl\Express\Webservice\Soap\Type\Common\Notification;
  */
 class SoapShipmentDeleteResponse
 {
+    const CLASSNAME = __CLASS__;
+
     /**
      * The response notifications.
      *

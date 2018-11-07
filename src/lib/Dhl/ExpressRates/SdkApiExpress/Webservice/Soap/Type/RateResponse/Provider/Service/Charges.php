@@ -17,6 +17,8 @@ use Dhl\Express\Webservice\Soap\Type\RateResponse\Provider\Service\Charges\Charg
  */
 class Charges
 {
+    const CLASSNAME = __CLASS__;
+
     /**
      * This the currency for all line item charges listed in the Charge section
      *

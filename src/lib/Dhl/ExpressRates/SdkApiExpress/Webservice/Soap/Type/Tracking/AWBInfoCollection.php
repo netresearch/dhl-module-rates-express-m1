@@ -16,6 +16,8 @@ namespace Dhl\Express\Webservice\Soap\Type\Tracking;
  */
 class AWBInfoCollection implements \ArrayAccess, \Iterator, \Countable
 {
+    const CLASSNAME = __CLASS__;
+
     /**
      * @var AWBInfo[]
      */

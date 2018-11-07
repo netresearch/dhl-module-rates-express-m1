@@ -18,6 +18,8 @@ use Dhl\Express\Webservice\Soap\Type\Tracking\TrackingResponseBase;
  */
 class SoapTrackingResponse
 {
+    const CLASSNAME = __CLASS__;
+
     /**
      * @var TrackingResponseBase
      */

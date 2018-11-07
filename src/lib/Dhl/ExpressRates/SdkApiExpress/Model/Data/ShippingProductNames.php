@@ -32,7 +32,7 @@ class ShippingProductNames
         ),
         'ECONOMY SELECT' => array(
             ShippingProducts::CODE_INTERNATIONAL_ECONOMY_SELECT_H,
-            ShippingProducts::CODE_INTERNATIONAL_ECONOMY_SELECT_W
+            ShippingProducts::CODE_INTERNATIONAL_ECONOMY_SELECT_W,
         )
     );
 
@@ -40,8 +40,12 @@ class ShippingProductNames
      * Domestic Express product names
      */
     protected $productNamesDomestic = array(
-        'EXPRESS DOMESTIC' => array(ShippingProducts::CODE_DOMESTIC),
-        'EXPRESS DOMESTIC 12:00' => array(ShippingProducts::CODE_DOMESTIC_12_00)
+        'EXPRESS DOMESTIC' => array(
+            ShippingProducts::CODE_DOMESTIC
+        ),
+        'EXPRESS DOMESTIC 12:00' => array(
+            ShippingProducts::CODE_DOMESTIC_12_00
+        ),
     );
 
     /**

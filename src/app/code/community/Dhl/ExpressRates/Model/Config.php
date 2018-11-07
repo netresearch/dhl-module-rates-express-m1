@@ -3,6 +3,9 @@
  * See LICENSE.md for license details.
  */
 
+use Dhl_ExpressRates_Model_Adminhtml_System_Config_Source_Roundedpricesformat as Roundedpricesformat;
+use Dhl_ExpressRates_Model_Adminhtml_System_Config_Source_Roundedpricesmode as Roundedpricesmode;
+
 /**
  * Dhl_ExpressRates_Model_Config
  *
@@ -754,5 +757,31 @@ class Dhl_ExpressRates_Model_Config
             \in_array($receiverCountry, $euCountries, true);
 
         return $receiverCountry !== $originCountry && !$bothEU;
+    }
+
+    /**
+     * Returns true when price should be rounded up.
+     *
+     * @param string|null $store
+     * @return bool
+     */
+    public function roundUp($store = null)
+    {
+        return $this->getRoundedPricesFormat($store) === Roundedpricesformat::DO_NOT_ROUND
+            ? false
+            : $this->getRoundedPricesMode($store) === Roundedpricesmode::ROUND_UP;
+    }
+
+    /**
+     * Returns true when price should be rounded off.
+     *
+     * @param string|null $store
+     * @return bool
+     */
+    public function roundOff($store = null)
+    {
+        return $this->getRoundedPricesFormat($store) === Roundedpricesformat::DO_NOT_ROUND
+            ? false
+            : $this->getRoundedPricesMode($store) === Roundedpricesmode::ROUND_OFF;
     }
 }

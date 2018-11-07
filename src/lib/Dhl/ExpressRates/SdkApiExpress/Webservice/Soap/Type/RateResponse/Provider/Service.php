@@ -18,6 +18,8 @@ use Dhl\Express\Webservice\Soap\Type\RateResponse\Provider\Service\TotalNet;
  */
 class Service
 {
+    const CLASSNAME = __CLASS__;
+
     /**
      * Total net section.
      *

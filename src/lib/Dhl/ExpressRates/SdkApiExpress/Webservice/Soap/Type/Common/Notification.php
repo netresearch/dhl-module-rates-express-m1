@@ -15,6 +15,8 @@ namespace Dhl\Express\Webservice\Soap\Type\Common;
  */
 class Notification
 {
+    const CLASSNAME = __CLASS__;
+
     /**
      * Response message, see Error codes for more details.
      *

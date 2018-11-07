@@ -16,6 +16,8 @@ namespace Dhl\Express\Webservice\Soap\Type\Tracking;
  */
 class PieceFaultCollection implements \ArrayAccess, \Iterator, \Countable
 {
+    const CLASSNAME = __CLASS__;
+
     /**
      * @var PieceFault[]
      */
