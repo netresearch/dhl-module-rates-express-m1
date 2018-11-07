@@ -7,8 +7,10 @@
 <config>
     <sections>
         <carriers>
+            <frontend_model>dhl_expressrates/adminhtml_system_config_form</frontend_model>
             <groups>
                 <dhlexpress translate="label" module="dhl_expressrates">
+
                     <label>DHL Express</label>
                     <sort_order>1000</sort_order>
                     <show_in_default>1</show_in_default>
@@ -33,20 +35,20 @@
                             <show_in_store>1</show_in_store>
                         </header_general_settings>
                         <active translate="label" module="dhl_expressrates">
-                            <label>Display DHL Express live rates at checkout</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <label><![CDATA[Enabled]]></label>
+                            <button_label><![CDATA[Display DHL Express live rates at checkout]]></button_label>
+                            <frontend_type>dhl_checkbox</frontend_type>
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
                         </active>
                         <sallowspecific translate="label">
-                            <label>Ship to Applicable Countries</label>
-                            <frontend_type>select</frontend_type>
+                            <label><![CDATA[Applicable Countries]]></label>
+                            <frontend_type>dhl_radioset</frontend_type>
                             <sort_order>30</sort_order>
                             <frontend_class>shipping-applicable-country</frontend_class>
-                            <source_model>adminhtml/system_config_source_shipping_allspecificcountries</source_model>
+                            <source_model>dhl_expressrates/adminhtml_system_config_source_customizeapplicablecountries</source_model>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
@@ -60,31 +62,27 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
                             <can_be_empty>1</can_be_empty>
+                            <depends>
+                                <sallowspecific>1</sallowspecific>
+                            </depends>
                         </specificcountry>
-                        <showmethod translate="label">
-                            <label>Show Method if Not Applicable</label>
-                            <frontend_type>select</frontend_type>
-                            <sort_order>50</sort_order>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>0</show_in_store>
-                        </showmethod>
+
                         <logging translate="label">
-                            <label>Logging</label>
-                            <frontend_type>select</frontend_type>
+                            <label><![CDATA[Logging]]></label>
+                            <button_label>Record messages in Magento Global Logging</button_label>
+                            <frontend_type>dhl_checkbox</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>60</sort_order>
+                            <sort_order>50</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
                         </logging>
                         <loglevel translate="label comment">
-                            <label>Logging Level</label>
-                            <frontend_type>select</frontend_type>
+                            <label><![CDATA[Logging Level]]></label>
+                            <frontend_type>dhl_radioset</frontend_type>
                             <source_model>dhl_expressrates/adminhtml_system_config_source_loglevel</source_model>
                             <comment><![CDATA[The log level Debug should only be set while resolving problems. It may result in very large log files]]></comment>
-                            <sort_order>70</sort_order>
+                            <sort_order>60</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
@@ -142,7 +140,7 @@
                         </shipmentsettings_heading>
                         <allowedinternationalproducts translate="label">
                             <label><![CDATA[Allowed International Products]]></label>
-                            <frontend_type>multiselect</frontend_type>
+                            <frontend_type>dhl_checkboxset</frontend_type>
                             <source_model>dhl_expressrates/adminhtml_system_config_source_internationalproducts</source_model>
                             <sort_order>310</sort_order>
                             <show_in_default>1</show_in_default>
@@ -151,7 +149,7 @@
                         </allowedinternationalproducts>
                         <alloweddomesticproducts translate="label">
                             <label><![CDATA[Allowed Domestic Products]]></label>
-                            <frontend_type>multiselect</frontend_type>
+                            <frontend_type>dhl_checkboxset</frontend_type>
                             <source_model>dhl_expressrates/adminhtml_system_config_source_domesticproducts</source_model>
                             <sort_order>320</sort_order>
                             <show_in_default>1</show_in_default>
@@ -172,7 +170,7 @@
                         <packaging_weight_unit>
                             <label><![CDATA[Packaging Weight Unit]]></label>
                             <tooltip><![CDATA[Select the weight unit that is used in your Product Catalog.]]></tooltip>
-                            <frontend_type>select</frontend_type>
+                            <frontend_type>dhl_radioset</frontend_type>
                             <source_model>dhl_expressrates/adminhtml_system_config_source_packagingWeightUnit</source_model>
                             <sort_order>335</sort_order>
                             <show_in_default>1</show_in_default>
@@ -202,7 +200,7 @@
                         </pickup_time>
                         <regular_pickup translate="label">
                             <label><![CDATA[Pickup Type]]></label>
-                            <frontend_type>select</frontend_type>
+                            <frontend_type>dhl_radioset</frontend_type>
                             <source_model>dhl_expressrates/adminhtml_system_config_source_pickuptype</source_model>
                             <sort_order>360</sort_order>
                             <show_in_default>1</show_in_default>
@@ -211,7 +209,7 @@
                         </regular_pickup>
                         <terms_of_trade translate="label comment">
                             <label><![CDATA[Duties & Taxes]]></label>
-                            <frontend_type>select</frontend_type>
+                            <frontend_type>dhl_radioset</frontend_type>
                             <source_model>dhl_expressrates/adminhtml_system_config_source_termsoftrade</source_model>
                             <comment>In some cases, additional fees may apply. Consult your account representative for more details</comment>
                             <sort_order>370</sort_order>
@@ -221,8 +219,8 @@
                         </terms_of_trade>
                         <package_insurance translate="label">
                             <label><![CDATA[Package Insurance]]></label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <button_label>Add insurance charge to shipping price</button_label>
+                            <frontend_type>dhl_checkbox</frontend_type>
                             <sort_order>380</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -271,7 +269,7 @@
                         </sort_order>
                         <checkout_show_delivery_time translate="label comment">
                             <label><![CDATA[Shipping Options Display]]></label>
-                            <frontend_type>select</frontend_type>
+                            <frontend_type>dhl_radioset</frontend_type>
                             <source_model>dhl_expressrates/adminhtml_system_config_source_shippingoptiondisplay</source_model>
                             <comment>Delivery date is based on your expected shipment date</comment>
                             <sort_order>430</sort_order>
@@ -281,7 +279,7 @@
                         </checkout_show_delivery_time>
                         <show_method_if_not_applicable translate="label">
                             <label><![CDATA[If No DHL Shipping Option Available]]></label>
-                            <frontend_type>select</frontend_type>
+                            <frontend_type>dhl_radioset</frontend_type>
                             <source_model>dhl_expressrates/adminhtml_system_config_source_showifnotapplicable</source_model>
                             <sort_order>440</sort_order>
                             <show_in_default>1</show_in_default>
@@ -302,7 +300,7 @@
                         <!-- Round prices -->
                         <round_prices_format translate="label">
                             <label><![CDATA[Round Prices]]></label>
-                            <frontend_type>select</frontend_type>
+                            <frontend_type>dhl_radioset</frontend_type>
                             <source_model>dhl_expressrates/adminhtml_system_config_source_roundedpricesformat</source_model>
                             <sort_order>460</sort_order>
                             <show_in_default>1</show_in_default>
@@ -311,7 +309,7 @@
                         </round_prices_format>
                         <round_prices_mode translate="label">
                             <label><![CDATA[Rounding Direction]]></label>
-                            <frontend_type>select</frontend_type>
+                            <frontend_type>dhl_radioset</frontend_type>
                             <source_model>dhl_expressrates/adminhtml_system_config_source_roundedpricesmode</source_model>
                             <sort_order>470</sort_order>
                             <show_in_default>1</show_in_default>
@@ -349,9 +347,8 @@
                         <!-- International rates calculation config fields -->
                         <international_affect_rates translate="label">
                             <label><![CDATA[International Shipping]]></label>
-                            <comment><![CDATA[Add markup to shipping price]]></comment>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <button_label><![CDATA[Add markup to shipping price]]></button_label>
+                            <frontend_type>dhl_checkbox</frontend_type>
                             <sort_order>510</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -359,7 +356,7 @@
                         </international_affect_rates>
                         <international_handling_type translate="label">
                             <label><![CDATA[Calculate Markup]]></label>
-                            <frontend_type>select</frontend_type>
+                            <frontend_type>dhl_radioset</frontend_type>
                             <source_model>shipping/source_handlingType</source_model>
                             <sort_order>520</sort_order>
                             <show_in_default>1</show_in_default>
@@ -400,9 +397,8 @@
                         <!-- Domestic rates calculation config fields -->
                         <domestic_affect_rates translate="label comment">
                             <label><![CDATA[Domestic Shipping]]></label>
-                            <comment><![CDATA[Add markup to shipping price]]></comment>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <button_label><![CDATA[Add markup to shipping price]]></button_label>
+                            <frontend_type>dhl_checkbox</frontend_type>
                             <sort_order>550</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -410,7 +406,7 @@
                         </domestic_affect_rates>
                         <domestic_handling_type translate="label">
                             <label><![CDATA[Calculate Markup]]></label>
-                            <frontend_type>select</frontend_type>
+                            <frontend_type>dhl_radioset</frontend_type>
                             <source_model>shipping/source_handlingType</source_model>
                             <sort_order>560</sort_order>
                             <show_in_default>1</show_in_default>
@@ -460,9 +456,8 @@
                         </free_shipping_enable_heading>
                         <free_shipping_virtual_products_enable translate="label comment">
                             <label><![CDATA[Free Shipping Calculation]]></label>
-                            <comment>Include virtual products in totals</comment>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <button_label>Include virtual products in totals</button_label>
+                            <frontend_type>dhl_checkbox</frontend_type>
                             <sort_order>610</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -471,9 +466,8 @@
                         <!-- International free shipping config fields -->
                         <international_free_shipping_enable translate="label comment">
                             <label><![CDATA[International Orders]]></label>
-                            <comment>Configure free shipping for international orders</comment>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <button_label>Configure free shipping for international orders</button_label>
+                            <frontend_type>dhl_checkbox</frontend_type>
                             <sort_order>620</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -482,7 +476,7 @@
                         <international_free_shipping_products translate="label comment">
                             <label><![CDATA[Free Shipping Available For]]></label>
                             <comment><![CDATA[Choose allowed shipping products for Free Shipping]]></comment>
-                            <frontend_type>multiselect</frontend_type>
+                            <frontend_type>dhl_checkboxset</frontend_type>
                             <source_model>dhl_expressrates/adminhtml_system_config_source_internationalproducts</source_model>
                             <sort_order>630</sort_order>
                             <show_in_default>1</show_in_default>
@@ -507,9 +501,8 @@
                         <!-- Domestic free shipping config fields -->
                         <domestic_free_shipping_enable translate="label comment">
                             <label><![CDATA[Domestic Orders]]></label>
-                            <comment>Configure free shipping for domestic orders</comment>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <button_label>Configure free shipping for domestic orders</button_label>
+                            <frontend_type>dhl_checkbox</frontend_type>
                             <sort_order>650</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -518,7 +511,7 @@
                         <domestic_free_shipping_products translate="label comment">
                             <label><![CDATA[Free Shipping Available For]]></label>
                             <comment><![CDATA[Choose allowed shipping products for Free Shipping]]></comment>
-                            <frontend_type>multiselect</frontend_type>
+                            <frontend_type>dhl_checkboxset</frontend_type>
                             <source_model>dhl_expressrates/adminhtml_system_config_source_domesticproducts</source_model>
                             <sort_order>660</sort_order>
                             <show_in_default>1</show_in_default>

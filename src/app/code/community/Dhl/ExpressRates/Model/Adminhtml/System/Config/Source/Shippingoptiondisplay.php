@@ -23,7 +23,7 @@ class Dhl_ExpressRates_Model_Adminhtml_System_Config_Source_Shippingoptiondispla
             array(
                 'value' => '1',
                 'label' => Mage::helper('dhl_expressrates/data')
-                    ->__('Cost and estimated delivery dates (Only available on v2.2+)')
+                    ->__('Cost and estimated delivery dates')
             ),
         );
     }
