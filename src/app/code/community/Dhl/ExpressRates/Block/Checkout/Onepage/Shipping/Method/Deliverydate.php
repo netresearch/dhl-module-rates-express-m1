@@ -14,26 +14,21 @@
 class Dhl_ExpressRates_Block_Checkout_Onepage_Shipping_Method_Deliverydate extends Mage_Checkout_Block_Onepage_Abstract
 {
     /**
-     * @return string
+     * @return string   Json-encoded array of rate code and delivery date string pairs
      */
     public function getEstimatedDeliveryDates()
     {
         $quote           = $this->getQuote();
         $shippingAddress = $quote->getShippingAddress();
+        $groupRates      = $shippingAddress->getGroupedAllShippingRates();
+        $jsonData        = array();
 
-        $jsonData = [];
-
-        /** @var Dhl_ExpressRates_Model_Quote_Address_Rate $rate */
-        foreach ($shippingAddress->getGroupedAllShippingRates() as $groupRates) {
-            foreach ($groupRates as $rate) {
-                if ($rate->getCarrier() !== 'dhlexpress') {
-                    continue;
-                }
-
-                $jsonData[] = [
+        if (isset($groupRates[Dhl_ExpressRates_Model_Carrier_Express::CODE])) {
+            foreach ($groupRates[Dhl_ExpressRates_Model_Carrier_Express::CODE] as $rate) {
+                $jsonData[] = array(
                     'code'          => $rate->getCode(),
-                    'delivery_date' => $rate->getDeliveryDate(),
-                ];
+                    'delivery_date' => $rate->getMethodDescription(),
+                );
             }
         }
 

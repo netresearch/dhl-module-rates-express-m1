@@ -58,13 +58,13 @@ class Dhl_ExpressRates_Model_Webservice_Rate_ResponseDataMapper
             $result[] = Mage::getModel(
                 'shipping/rate_result_method',
                 array(
-                    'carrier'       => Dhl_ExpressRates_Model_Carrier_Express::CODE,
-                    'carrier_title' => $this->moduleConfig->getTitle(),
-                    'method'        => $rate->getServiceCode(),
-                    'method_title'  => $rate->getLabel(),
-                    'price'         => $priceInBaseCurrency,
-                    'cost'          => $priceInBaseCurrency,
-                    'delivery_date' => $this->getFormattedDeliveryDate($rate->getDeliveryTime()),
+                    'carrier'            => Dhl_ExpressRates_Model_Carrier_Express::CODE,
+                    'carrier_title'      => $this->moduleConfig->getTitle(),
+                    'method'             => $rate->getServiceCode(),
+                    'method_title'       => $rate->getLabel(),
+                    'method_description' => $this->getFormattedDeliveryDate($rate->getDeliveryTime()),
+                    'price'              => $priceInBaseCurrency,
+                    'cost'               => $priceInBaseCurrency,
                 )
             );
         }

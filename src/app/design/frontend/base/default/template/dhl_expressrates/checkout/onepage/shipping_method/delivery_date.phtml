@@ -1,13 +1,13 @@
+<?php /** @var Dhl_ExpressRates_Block_Checkout_Onepage_Shipping_Method_Deliverydate $this */ ?>
 <script type="text/javascript">
-//<![CDATA[
+    //<![CDATA[
+    /** @type {{code: string, delivery_date: string}[]} deliveryDates */
+    var deliveryDates = <?php /* @noEscape */ echo $this->getEstimatedDeliveryDates() ?>;
 
-var deliveryDates = <?php echo $this->getEstimatedDeliveryDates() ?>;
-
-for (var i = 0; i < deliveryDates.length; ++i) {
-    $('s_method_' + deliveryDates[i].code).next('label').insert(
-        '<p><small>Estimated delivery: ' + deliveryDates[i].delivery_date + '</small></p>'
-    );
-}
-
-//]]>
+    for (var i = 0; i < deliveryDates.length; ++i) {
+        $('s_method_' + deliveryDates[i].code).next('label').insert(
+            '<p><small>Estimated delivery: ' + deliveryDates[i].delivery_date + '</small></p>'
+        );
+    }
+    //]]>
 </script>
