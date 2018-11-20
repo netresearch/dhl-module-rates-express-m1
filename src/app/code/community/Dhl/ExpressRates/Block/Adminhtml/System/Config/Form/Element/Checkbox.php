@@ -19,7 +19,9 @@ class Dhl_ExpressRates_Block_Adminhtml_System_Config_Form_Element_Checkbox exten
      */
     public function getElementHtml()
     {
-        $this->setIsChecked((bool)$this->getData('value'));
+        /** @var string|Mage_Core_Model_Config_Element $value */
+        $value = $this->getData('value');
+        $this->setIsChecked((bool)(string)$value);
         $this->setData('after_element_html', $this->getSecondaryLabelHtml() . $this->getJsHtml());
 
         return parent::getElementHtml();
