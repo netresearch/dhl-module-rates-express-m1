@@ -59,7 +59,7 @@ class Dhl_ExpressRates_Block_Adminhtml_System_Config_Form_Element_Checkboxset ex
                         }
                         hidden.value = values.filter(Boolean).join();
                     });
-                };
+                }
             })();
         </script>';
 

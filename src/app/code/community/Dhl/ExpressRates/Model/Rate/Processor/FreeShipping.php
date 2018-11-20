@@ -70,8 +70,8 @@ class Dhl_ExpressRates_Model_Rate_Processor_FreeShipping
             ) {
                 $configuredSubTotal = $domesticBaseSubTotal;
             } elseif (!$this->isDomesticShipping($method)
-                      && $this->moduleConfig->isInternationalFreeShippingEnabled($request->getStoreId())
-                      && $this->isEnabledInternationalProduct($method)
+                && $this->moduleConfig->isInternationalFreeShippingEnabled($request->getStoreId())
+                && $this->isEnabledInternationalProduct($method)
             ) {
                 $configuredSubTotal = $intlBaseSubTotal;
             } else {
@@ -80,7 +80,7 @@ class Dhl_ExpressRates_Model_Rate_Processor_FreeShipping
 
             if ($productsSubTotal >= $configuredSubTotal) {
                 $method->setPrice(0.0);
-                $method->setCost(0.0);
+                $method->setData('cost', 0.0);
             }
         }
 
@@ -124,7 +124,7 @@ class Dhl_ExpressRates_Model_Rate_Processor_FreeShipping
     protected function isDomesticShipping(Mage_Shipping_Model_Rate_Result_Method $method)
     {
         return \in_array(
-            $method->getMethod(),
+            $method->getData('method'),
             $this->shippingProducts->getProductsDomestic(),
             true
         );

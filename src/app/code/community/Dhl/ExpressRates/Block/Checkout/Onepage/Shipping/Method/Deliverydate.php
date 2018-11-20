@@ -24,6 +24,7 @@ class Dhl_ExpressRates_Block_Checkout_Onepage_Shipping_Method_Deliverydate exten
         $jsonData        = array();
 
         if (isset($groupRates[Dhl_ExpressRates_Model_Carrier_Express::CODE])) {
+            /** @var \Mage_Sales_Model_Quote_Address_Rate $rate */
             foreach ($groupRates[Dhl_ExpressRates_Model_Carrier_Express::CODE] as $rate) {
                 $jsonData[] = array(
                     'code'          => $rate->getCode(),

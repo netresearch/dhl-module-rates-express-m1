@@ -4,7 +4,7 @@
  */
 
 /**
- * Dhl_Versenden_Model_Logger_Mage
+ * Dhl_ExpressRates_Model_Logger_Mage
  *
  * @package   Dhl\ExpressRates\Model
  * @author    Benjamin Heuer <benjamin.heuer@netresearch.de>
@@ -14,31 +14,37 @@
  */
 class Dhl_ExpressRates_Model_Logger_Mage extends \Psr\Log\AbstractLogger
 {
-    /** @var Dhl_Versenden_Model_Logger_Writer */
+    /**
+     * @var \Mage_Core_Model_Logger
+     */
     protected $_writer;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $_file = 'dhl_express_rates.log';
 
-    /** @var int[] */
+    /**
+     * @var int[]
+     */
     protected $_levelMapping = array(
-        \Psr\Log\LogLevel::EMERGENCY => Zend_Log::EMERG,
-        \Psr\Log\LogLevel::ALERT     => Zend_Log::ALERT,
-        \Psr\Log\LogLevel::CRITICAL  => Zend_Log::CRIT,
-        \Psr\Log\LogLevel::ERROR     => Zend_Log::ERR,
-        \Psr\Log\LogLevel::WARNING   => Zend_Log::WARN,
-        \Psr\Log\LogLevel::NOTICE    => Zend_Log::NOTICE,
-        \Psr\Log\LogLevel::INFO      => Zend_Log::INFO,
-        \Psr\Log\LogLevel::DEBUG     => Zend_Log::DEBUG,
+        \Psr\Log\LogLevel::EMERGENCY => \Zend_Log::EMERG,
+        \Psr\Log\LogLevel::ALERT     => \Zend_Log::ALERT,
+        \Psr\Log\LogLevel::CRITICAL  => \Zend_Log::CRIT,
+        \Psr\Log\LogLevel::ERROR     => \Zend_Log::ERR,
+        \Psr\Log\LogLevel::WARNING   => \Zend_Log::WARN,
+        \Psr\Log\LogLevel::NOTICE    => \Zend_Log::NOTICE,
+        \Psr\Log\LogLevel::INFO      => \Zend_Log::INFO,
+        \Psr\Log\LogLevel::DEBUG     => \Zend_Log::DEBUG,
     );
 
     /**
      * Dhl_ExpressRates_Model_Logger_Mage constructor.
      *
-     * @param Mage_Core_Model_Logger $writer
+     * @param \Mage_Core_Model_Logger $writer
      * @param string $file
      */
-    public function __construct(Mage_Core_Model_Logger $writer, $file = '')
+    public function __construct(\Mage_Core_Model_Logger $writer, $file = '')
     {
         $this->_writer = $writer;
         if ($file) {

@@ -42,8 +42,8 @@ class Dhl_ExpressRates_Model_Adminhtml_System_Config_Source_Termsoftrade
     public function toArray()
     {
         return array(
-            self::TOD_DDU => __('Customer pays duties and taxes (DDU)'),
-            self::TOD_DDP => __('I will pay duties and taxes (DTP)'),
+            self::TOD_DDU => Mage::helper('dhl_expressrates/data')->__('Customer pays duties and taxes (DDU)'),
+            self::TOD_DDP => Mage::helper('dhl_expressrates/data')->__('I will pay duties and taxes (DTP)'),
         );
     }
 }

@@ -52,13 +52,13 @@ class Dhl_ExpressRates_Model_Rate_Processor_HandlingFee implements Dhl_ExpressRa
         foreach ($methods as $method) {
             // Calculate fee depending on shipping type
             $price = $this->calculatePrice(
-                $method->getPrice(),
+                $method->getData('price'),
                 $this->getHandlingType($method),
                 $this->getHandlingFee($method)
             );
 
             $method->setPrice($price);
-            $method->setCost($price);
+            $method->setData('cost', $price);
         }
 
         return $methods;
@@ -108,7 +108,7 @@ class Dhl_ExpressRates_Model_Rate_Processor_HandlingFee implements Dhl_ExpressRa
     protected function isDomesticShipping(Mage_Shipping_Model_Rate_Result_Method $method)
     {
         return \in_array(
-            $method->getMethod(),
+            $method->getData('method'),
             $this->shippingProducts->getProductsDomestic(),
             true
         );

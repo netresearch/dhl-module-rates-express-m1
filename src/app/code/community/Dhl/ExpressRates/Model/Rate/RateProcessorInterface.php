@@ -3,9 +3,6 @@
  * See LICENSE.md for license details.
  */
 
-use Mage_Shipping_Model_Rate_Request;
-use Mage_Shipping_Model_Rate_Result_Method;
-
 /**
  * Dhl_ExpressRates_Model_Rate_RateProcessorInterface
  *

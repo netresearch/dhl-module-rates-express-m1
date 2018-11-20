@@ -78,9 +78,9 @@ class Dhl_ExpressRates_Model_Rate_CheckoutProvider
 
             /** @var Mage_Shipping_Model_Rate_Result_Error $error */
             $error = Mage::getModel('shipping/rate_result_error');
-            $error->setCarrier(Dhl_ExpressRates_Model_Carrier_Express::CODE);
-            $error->setCarrierTitle($this->moduleConfig->getTitle($request->getStoreId()));
-            $error->setErrorMessage($this->moduleConfig->getSpecificErrorMessage($request->getStoreId()));
+            $error->setData('carrier', Dhl_ExpressRates_Model_Carrier_Express::CODE);
+            $error->setData('carrier_title', $this->moduleConfig->getTitle($request->getStoreId()));
+            $error->setData('error_message', $this->moduleConfig->getSpecificErrorMessage($request->getStoreId()));
             $rateResult->append($error);
         }
 

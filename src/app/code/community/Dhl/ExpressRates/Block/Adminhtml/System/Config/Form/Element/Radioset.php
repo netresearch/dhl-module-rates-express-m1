@@ -18,7 +18,7 @@ class Dhl_ExpressRates_Block_Adminhtml_System_Config_Form_Element_Radioset exten
     public function getElementHtml()
     {
         $this->setDefaultValue();
-        $this->setData('after_element_html', $this->getSecondaryLabelHtml() . $this->getJsHtml());
+        $this->setData('after_element_html', $this->getJsHtml());
         $this->setData('separator', '<br/>');
 
         return parent::getElementHtml();
@@ -36,7 +36,7 @@ class Dhl_ExpressRates_Block_Adminhtml_System_Config_Form_Element_Radioset exten
        id="{$this->getHtmlId()}"
        class="{$this->getData('class')}"
        name="{$this->getName()}"
-       value="{$this->getValue()}"/>
+       value="{$this->getData('value')}"/>
 <script>
     (function() {
         var radios = document.querySelectorAll("input[type='radio'][name='{$this->getName()}']");
