@@ -78,25 +78,35 @@
 
         <carriers>
             <dhlexpress>
-                <active>0</active>
                 <model>dhl_expressrates/carrier_express</model>
-                <title>DHL Express</title>
-                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
-                <sallowspecific>0</sallowspecific>
                 <is_online>1</is_online>
                 <showmethod>1</showmethod>
-                <package_insurance_from_value>0</package_insurance_from_value>
-                <packaging_weight>0.0</packaging_weight>
-                <packaging_weight_unit>kgs</packaging_weight_unit>
-                <allowedinternationalproducts>P;D;U</allowedinternationalproducts>
-                <alloweddomesticproducts>N</alloweddomesticproducts>
-                <cut_off_time>13,00,00</cut_off_time>
-                <pickup_time>16,00,00</pickup_time>
 
+                <active>0</active>
+                <sallowspecific>0</sallowspecific>
                 <logging>0</logging>
                 <loglevel>3</loglevel>
 
                 <password backend_model="adminhtml/system_config_backend_encrypted"/>
+
+                <allowedinternationalproducts>P;D;U</allowedinternationalproducts>
+                <alloweddomesticproducts>N</alloweddomesticproducts>
+                <packaging_weight>0.0</packaging_weight>
+                <packaging_weight_unit>kgs</packaging_weight_unit>
+                <cut_off_time>13,00,00</cut_off_time>
+                <pickup_time>16,00,00</pickup_time>
+                <regular_pickup>0</regular_pickup>
+                <terms_of_trade>DDU</terms_of_trade>
+                <package_insurance_from_value>0</package_insurance_from_value>
+
+                <title>DHL Express</title>
+                <checkout_show_delivery_time>0</checkout_show_delivery_time>
+                <show_method_if_not_applicable>0</show_method_if_not_applicable>
+                <round_prices_format>no_rounding</round_prices_format>
+                <round_prices_mode>round_up</round_prices_mode>
+                <international_handling_type>F</international_handling_type>
+                <domestic_handling_type>F</domestic_handling_type>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
             </dhlexpress>
         </carriers>
     </default>
