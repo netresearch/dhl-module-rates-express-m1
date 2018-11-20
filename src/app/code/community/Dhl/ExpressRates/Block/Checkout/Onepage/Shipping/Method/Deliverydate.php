@@ -14,6 +14,24 @@
 class Dhl_ExpressRates_Block_Checkout_Onepage_Shipping_Method_Deliverydate extends Mage_Checkout_Block_Onepage_Abstract
 {
     /**
+     * @var Dhl_ExpressRates_Model_Config
+     */
+    public $moduleConfig;
+
+    /**
+     * Dhl_ExpressRates_Block_Checkout_Onepage_Shipping_Method_Deliverydate constructor.
+     *
+     * @param array $args
+     */
+    public function __construct(array $args = array())
+    {
+        $this->moduleConfig = $this->moduleConfig = Mage::getSingleton('dhl_expressrates/config');
+
+        parent::__construct($args);
+    }
+
+
+    /**
      * @return string   Json-encoded array of rate code and delivery date string pairs
      */
     public function getEstimatedDeliveryDates()
@@ -23,7 +41,9 @@ class Dhl_ExpressRates_Block_Checkout_Onepage_Shipping_Method_Deliverydate exten
         $groupRates      = $shippingAddress->getGroupedAllShippingRates();
         $jsonData        = array();
 
-        if (isset($groupRates[Dhl_ExpressRates_Model_Carrier_Express::CODE])) {
+        if ($this->moduleConfig->isCheckoutDeliveryTimeEnabled($quote->getStoreId())
+            && isset($groupRates[Dhl_ExpressRates_Model_Carrier_Express::CODE])
+        ) {
             /** @var \Mage_Sales_Model_Quote_Address_Rate $rate */
             foreach ($groupRates[Dhl_ExpressRates_Model_Carrier_Express::CODE] as $rate) {
                 $jsonData[] = array(
