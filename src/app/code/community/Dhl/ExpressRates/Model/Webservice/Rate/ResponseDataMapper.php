@@ -9,10 +9,10 @@ use Dhl\Express\Model\Response\Rate\Rate;
 /**
  * Class Dhl_ExpressRates_Model_Webservice_Rate_ResponseDataMapper
  *
- * @package Dhl\ExpressRates\Model|Webservice\Rate
- * @author Paul Siedler <paul.siedler@netresearch.de>
+ * @package   Dhl\ExpressRates\Model|Webservice\Rate
+ * @author    Paul Siedler <paul.siedler@netresearch.de>
  * @copyright 2018 Netresearch GmbH & Co. KG
- * @link http://www.netresearch.de/
+ * @link      http://www.netresearch.de/
  */
 class Dhl_ExpressRates_Model_Webservice_Rate_ResponseDataMapper
 {
@@ -36,8 +36,8 @@ class Dhl_ExpressRates_Model_Webservice_Rate_ResponseDataMapper
      */
     public function __construct()
     {
-        $this->moduleConfig = Mage::getSingleton('dhl_expressrates/config');
-        $this->helper = Mage::helper('core/data');
+        $this->moduleConfig  = Mage::getSingleton('dhl_expressrates/config');
+        $this->helper        = Mage::helper('core/data');
         $this->currencyModel = Mage::getSingleton('directory/currency');
     }
 
@@ -96,24 +96,28 @@ class Dhl_ExpressRates_Model_Webservice_Rate_ResponseDataMapper
     }
 
     /**
-     * @param float $value
+     * @param float  $value
      * @param string $inputCurrencyCode
+     *
      * @return float
+     *
      * @throws Mage_Core_Model_Store_Exception
+     * @throws InvalidArgumentException
      */
     protected function convertPriceToCurrency($value, $inputCurrencyCode)
     {
-        /** @var string $baseCurrencyCode */
-        $baseCurrencyCode = Mage::app()->getStore()->getBaseCurrencyCode();
+        $baseCurrency = Mage::app()->getStore()->getBaseCurrency();
 
-        if ($inputCurrencyCode === $baseCurrencyCode || $inputCurrencyCode === '') {
+        if (($inputCurrencyCode === '') || ($inputCurrencyCode === $baseCurrency->getCode())) {
             return $value;
         }
 
         try {
-            return $this->currencyModel->convert($value, $baseCurrencyCode);
-        } catch (\Exception $e) {
-            throw new \InvalidArgumentException("The given currency code $inputCurrencyCode is not valid.");
+            $this->currencyModel->setData('currency_code', $inputCurrencyCode);
+
+            return $this->currencyModel->convert($value, $baseCurrency);
+        } catch (Exception $e) {
+            throw new InvalidArgumentException("The given currency code $inputCurrencyCode is not valid.");
         }
     }
 }

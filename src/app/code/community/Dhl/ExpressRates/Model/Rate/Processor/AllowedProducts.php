@@ -38,7 +38,7 @@ class Dhl_ExpressRates_Model_Rate_Processor_AllowedProducts
     /**
      * @inheritdoc
      */
-    public function processMethods(array $methods, $request = null)
+    public function processMethods(array $methods, Mage_Shipping_Model_Rate_Request $request = null)
     {
         $result = array();
         foreach ($methods as $method) {

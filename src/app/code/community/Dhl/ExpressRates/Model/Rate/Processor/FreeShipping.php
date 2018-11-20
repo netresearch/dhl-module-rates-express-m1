@@ -51,7 +51,7 @@ class Dhl_ExpressRates_Model_Rate_Processor_FreeShipping
      *
      * @throws Mage_Core_Model_Store_Exception
      */
-    public function processMethods(array $methods, $request = null)
+    public function processMethods(array $methods, Mage_Shipping_Model_Rate_Request $request = null)
     {
         if ($request === null) {
             return $methods;

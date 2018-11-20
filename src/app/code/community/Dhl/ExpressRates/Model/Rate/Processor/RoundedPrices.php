@@ -37,7 +37,7 @@ class Dhl_ExpressRates_Model_Rate_Processor_RoundedPrices implements Dhl_Express
     /**
      * @inheritdoc
      */
-    public function processMethods(array $methods, $request = null)
+    public function processMethods(array $methods, Mage_Shipping_Model_Rate_Request $request = null)
     {
         foreach ($methods as $method) {
             $method->setPrice(

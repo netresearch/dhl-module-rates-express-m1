@@ -15,8 +15,9 @@ interface Dhl_ExpressRates_Model_Rate_RateProcessorInterface
 {
     /**
      * @param Mage_Shipping_Model_Rate_Result_Method[] $methods
-     * @param Mage_Shipping_Model_Rate_Request|null $request
+     * @param Mage_Shipping_Model_Rate_Request|null    $request
+     *
      * @return Mage_Shipping_Model_Rate_Result_Method[]
      */
-    public function processMethods(array $methods, $request = null);
+    public function processMethods(array $methods, Mage_Shipping_Model_Rate_Request $request = null);
 }

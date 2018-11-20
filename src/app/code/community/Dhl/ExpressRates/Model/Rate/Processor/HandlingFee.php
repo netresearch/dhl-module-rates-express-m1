@@ -46,7 +46,7 @@ class Dhl_ExpressRates_Model_Rate_Processor_HandlingFee implements Dhl_ExpressRa
     /**
      * @inheritdoc
      */
-    public function processMethods(array $methods, $request = null)
+    public function processMethods(array $methods, Mage_Shipping_Model_Rate_Request $request = null)
     {
         /** @var Mage_Shipping_Model_Rate_Result_Method $method */
         foreach ($methods as $method) {
