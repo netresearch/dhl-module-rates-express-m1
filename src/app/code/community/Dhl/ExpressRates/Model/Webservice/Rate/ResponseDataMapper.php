@@ -102,7 +102,7 @@ class Dhl_ExpressRates_Model_Webservice_Rate_ResponseDataMapper
      * @return float
      *
      * @throws Mage_Core_Model_Store_Exception
-     * @throws InvalidArgumentException
+     * @throws Mage_Core_Exception
      */
     protected function convertPriceToCurrency($value, $inputCurrencyCode)
     {
@@ -117,7 +117,7 @@ class Dhl_ExpressRates_Model_Webservice_Rate_ResponseDataMapper
 
             return $this->currencyModel->convert($value, $baseCurrency);
         } catch (Exception $e) {
-            throw new InvalidArgumentException("The given currency code $inputCurrencyCode is not valid.");
+            throw new Mage_Core_Exception("The given currency code $inputCurrencyCode is not valid.");
         }
     }
 }
