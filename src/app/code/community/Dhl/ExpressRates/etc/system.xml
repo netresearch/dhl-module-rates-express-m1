@@ -47,11 +47,11 @@
                             <label><![CDATA[Applicable Countries]]></label>
                             <frontend_type>dhl_radioset</frontend_type>
                             <sort_order>30</sort_order>
-                            <frontend_class>shipping-applicable-country</frontend_class>
                             <source_model>dhl_expressrates/adminhtml_system_config_source_customizeapplicablecountries</source_model>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
+                            <!-- frontend_class "shipping-applicable-country" intentionally omitted. -->
                         </sallowspecific>
                         <specificcountry translate="label">
                             <label>Ship to Specific Countries</label>
@@ -277,7 +277,7 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
                         </checkout_show_delivery_time>
-                        <show_method_if_not_applicable translate="label">
+                        <showmethod translate="label">
                             <label><![CDATA[If No DHL Shipping Option Available]]></label>
                             <frontend_type>dhl_radioset</frontend_type>
                             <source_model>dhl_expressrates/adminhtml_system_config_source_showifnotapplicable</source_model>
@@ -285,7 +285,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
-                        </show_method_if_not_applicable>
+                        </showmethod>
                         <specificerrmsg translate="label">
                             <label><![CDATA[Custom Message]]></label>
                             <frontend_type>textarea</frontend_type>
@@ -294,7 +294,7 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
                             <depends>
-                                <show_method_if_not_applicable>1</show_method_if_not_applicable>
+                                <showmethod>1</showmethod>
                             </depends>
                         </specificerrmsg>
                         <!-- Round prices -->

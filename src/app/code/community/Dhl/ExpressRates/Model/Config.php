@@ -39,7 +39,7 @@ class Dhl_ExpressRates_Model_Config
     const CONFIG_FIELD_TITLE = 'title';
     const CONFIG_FIELD_SORT_ORDER = 'sort_order';
     const CONFIG_FIELD_CHECKOUT_SHOW_DELIVERY_TIME = 'checkout_show_delivery_time';
-    const CONFIG_FIELD_SHOW_IF_NOT_APPLICABLE = 'show_method_if_not_applicable';
+    const CONFIG_FIELD_SHOW_IF_NOT_APPLICABLE = 'showmethod';
     const CONFIG_FIELD_ERROR_MESSAGE = 'specificerrmsg';
     const CONFIG_FIELD_ROUNDED_PRICES_FORMAT = 'round_prices_format';
     const CONFIG_FIELD_ROUNDED_PRICES_MODE = 'round_prices_mode';
@@ -365,28 +365,6 @@ class Dhl_ExpressRates_Model_Config
         $value = $this->getStoreConfig(self::CONFIG_FIELD_CHECKOUT_SHOW_DELIVERY_TIME, $store);
 
         return $value === '1';
-    }
-
-    /**
-     * Show DHL Express in checkout if there are no products available.
-     *
-     * @param mixed $store
-     * @return bool
-     */
-    public function showIfNotApplicable($store = null)
-    {
-        return (bool) $this->getStoreConfig(self::CONFIG_FIELD_SHOW_IF_NOT_APPLICABLE, $store);
-    }
-
-    /**
-     * Get the error message.
-     *
-     * @param mixed $store
-     * @return string
-     */
-    public function getNotApplicableErrorMessage($store = null)
-    {
-        return (string) $this->getStoreConfig(self::CONFIG_FIELD_ERROR_MESSAGE, $store);
     }
 
     /**

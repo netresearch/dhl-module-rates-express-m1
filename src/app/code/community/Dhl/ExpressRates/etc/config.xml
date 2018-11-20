@@ -80,7 +80,7 @@
             <dhlexpress>
                 <model>dhl_expressrates/carrier_express</model>
                 <is_online>1</is_online>
-                <showmethod>1</showmethod>
+                <showmethod>0</showmethod>
 
                 <active>0</active>
                 <sallowspecific>0</sallowspecific>
@@ -101,7 +101,6 @@
 
                 <title>DHL Express</title>
                 <checkout_show_delivery_time>0</checkout_show_delivery_time>
-                <show_method_if_not_applicable>0</show_method_if_not_applicable>
                 <round_prices_format>no_rounding</round_prices_format>
                 <round_prices_mode>round_up</round_prices_mode>
                 <international_handling_type>F</international_handling_type>
