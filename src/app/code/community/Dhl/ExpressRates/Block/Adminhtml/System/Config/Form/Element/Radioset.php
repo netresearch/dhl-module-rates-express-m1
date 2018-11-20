@@ -17,6 +17,7 @@ class Dhl_ExpressRates_Block_Adminhtml_System_Config_Form_Element_Radioset exten
      */
     public function getElementHtml()
     {
+        $this->setDefaultValue();
         $this->setData('after_element_html', $this->getSecondaryLabelHtml() . $this->getJsHtml());
         $this->setData('separator', '<br/>');
 
@@ -64,5 +65,18 @@ class Dhl_ExpressRates_Block_Adminhtml_System_Config_Form_Element_Radioset exten
     })();
 </script>
 HTML;
+    }
+
+    /**
+     * If no value is set in the database or config.xml, select the first option.
+     */
+    protected function setDefaultValue()
+    {
+        if ($this->getData('value') === false) {
+            $options = $this->getData('values');
+            if (isset($options[0]['value'])) {
+                $this->setData('value', $options[0]['value']);
+            }
+        }
     }
 }
