@@ -16,7 +16,7 @@ class Dhl_ExpressRates_Block_Checkout_Onepage_Shipping_Method_Deliverydate exten
     /**
      * @var Dhl_ExpressRates_Model_Config
      */
-    public $moduleConfig;
+    private $moduleConfig;
 
     /**
      * Dhl_ExpressRates_Block_Checkout_Onepage_Shipping_Method_Deliverydate constructor.
@@ -29,7 +29,6 @@ class Dhl_ExpressRates_Block_Checkout_Onepage_Shipping_Method_Deliverydate exten
 
         parent::__construct($args);
     }
-
 
     /**
      * @return string   Json-encoded array of rate code and delivery date string pairs
