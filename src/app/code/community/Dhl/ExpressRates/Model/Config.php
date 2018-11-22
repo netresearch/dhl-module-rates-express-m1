@@ -139,6 +139,10 @@ class Dhl_ExpressRates_Model_Config
      */
     public function getLogLevel($store = null)
     {
+        if (!$this->isLoggingEnabled($store)) {
+            return \Zend_Log::EMERG;
+        }
+
         // NOTE: (int) null eq. 0 eq. \Zend_Log::EMERG
         return (int) $this->getStoreConfig(self::CONFIG_FIELD_LOGLEVEL, $store);
     }

@@ -39,6 +39,9 @@ class Dhl_ExpressRates_Model_Rate_CheckoutProvider
     public function __construct()
     {
         $this->moduleConfig = Mage::getSingleton('dhl_expressrates/config');
+        /** @var Mage_Core_Model_Logger $logWriter */
+        $logWriter = Mage::getSingleton('core/logger');
+        $this->logger = new Dhl_ExpressRates_Model_Logger_Mage($logWriter);
         $this->rateAdapter = Mage::getSingleton('dhl_expressrates/webservice_rateAdapter');
         $this->rateProcessors = array(
             Mage::getSingleton('dhl_expressrates/rate_processor_allowedProducts'),
@@ -46,8 +49,6 @@ class Dhl_ExpressRates_Model_Rate_CheckoutProvider
             Mage::getSingleton('dhl_expressrates/rate_processor_roundedPrices'),
             Mage::getSingleton('dhl_expressrates/rate_processor_freeShipping'),
         );
-
-        $this->setLogger();
     }
 
     /**
@@ -84,19 +85,5 @@ class Dhl_ExpressRates_Model_Rate_CheckoutProvider
         }
 
         return $rateResult;
-    }
-
-    /**
-     * Sets a logger instance.
-     *
-     * @return void
-     */
-    private function setLogger()
-    {
-        /** @var Mage_Core_Model_Logger $logWriter */
-        $logWriter = Mage::getSingleton('core/logger');
-
-        $this->logger = new Dhl_ExpressRates_Model_Logger_Mage($logWriter);
-        $this->logger->setModuleConfig($this->moduleConfig);
     }
 }

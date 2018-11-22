@@ -15,6 +15,11 @@
 class Dhl_ExpressRates_Model_Logger_Mage extends \Psr\Log\AbstractLogger
 {
     /**
+     * @var Dhl_ExpressRates_Model_Config
+     */
+    protected $_moduleConfig;
+
+    /**
      * @var \Mage_Core_Model_Logger
      */
     protected $_writer;
@@ -39,11 +44,6 @@ class Dhl_ExpressRates_Model_Logger_Mage extends \Psr\Log\AbstractLogger
     );
 
     /**
-     * @var Dhl_ExpressRates_Model_Config
-     */
-    protected $moduleConfig;
-
-    /**
      * Dhl_ExpressRates_Model_Logger_Mage constructor.
      *
      * @param \Mage_Core_Model_Logger $writer
@@ -51,6 +51,7 @@ class Dhl_ExpressRates_Model_Logger_Mage extends \Psr\Log\AbstractLogger
      */
     public function __construct(\Mage_Core_Model_Logger $writer, $file = '')
     {
+        $this->_moduleConfig = Mage::getSingleton('dhl_expressrates/config');
         $this->_writer = $writer;
         if ($file) {
             $this->_file = $file;
@@ -92,7 +93,10 @@ class Dhl_ExpressRates_Model_Logger_Mage extends \Psr\Log\AbstractLogger
      */
     public function log($level, $message, array $context = array())
     {
-        if (!$this->isHandling($level)) {
+        $storeId = Mage::app()->getStore()->getId();
+        $configLevel = $this->_moduleConfig->getLogLevel($storeId);
+
+        if ($this->_levelMapping[$level] > $configLevel) {
             return;
         }
 
@@ -102,33 +106,5 @@ class Dhl_ExpressRates_Model_Logger_Mage extends \Psr\Log\AbstractLogger
 
         $message = $this->interpolate($message, $context);
         $this->_writer->log($message, $this->_levelMapping[$level], $this->_file);
-    }
-
-    /**
-     * Sets the module configuration.
-     *
-     * @param Dhl_ExpressRates_Model_Config $moduleConfig The module configuration
-     *
-     * @return self
-     */
-    public function setModuleConfig(Dhl_ExpressRates_Model_Config $moduleConfig)
-    {
-        $this->moduleConfig = $moduleConfig;
-        return $this;
-    }
-
-    /**
-     * Returns TRUE whether the logger handles the logging for the configured logging level or not.
-     *
-     * @param string $level Log level to handle
-     *
-     * @return bool
-     */
-    private function isHandling($level)
-    {
-        $logEnabled = $this->moduleConfig->isLoggingEnabled();
-        $logLevel   = $this->moduleConfig->getLogLevel();
-
-        return $logEnabled && ($this->_levelMapping[$level] <= $logLevel);
     }
 }

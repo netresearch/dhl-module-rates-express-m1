@@ -22,7 +22,7 @@ config:
   default/carriers/dhlexpress/accountnumber: "123456789"
   default/carriers/dhlexpress/username: "foo"
   default/carriers/dhlexpress/logging: "0"
-  default/carriers/dhlexpress/loglevel: "3"
+  default/carriers/dhlexpress/loglevel: "7"
 
   stores/store_two/carriers/dhlexpress/active: "1"
   stores/store_two/carriers/dhlexpress/title: "Fast"
@@ -30,4 +30,4 @@ config:
   stores/store_two/carriers/dhlexpress/accountnumber: "123456"
   stores/store_two/carriers/dhlexpress/username: "bar"
   stores/store_two/carriers/dhlexpress/logging: "1"
-  stores/store_two/carriers/dhlexpress/loglevel: "6"
+  stores/store_two/carriers/dhlexpress/loglevel: "3"
