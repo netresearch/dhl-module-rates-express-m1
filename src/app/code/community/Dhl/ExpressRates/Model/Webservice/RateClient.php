@@ -31,10 +31,9 @@ class Dhl_ExpressRates_Model_Webservice_RateClient
      */
     public function __construct()
     {
-        /** @var Mage_Core_Model_Logger $logWriter */
-        $logWriter = Mage::getSingleton('core/logger');
-        $this->logger = new Dhl_ExpressRates_Model_Logger_Mage($logWriter);
         $this->moduleConfig = Mage::getSingleton('dhl_expressrates/config');
+
+        $this->setLogger();
     }
 
     /**
@@ -55,5 +54,19 @@ class Dhl_ExpressRates_Model_Webservice_RateClient
         );
 
         return $rateService->collectRates($request);
+    }
+
+    /**
+     * Sets a logger instance.
+     *
+     * @return void
+     */
+    private function setLogger()
+    {
+        /** @var Mage_Core_Model_Logger $logWriter */
+        $logWriter = Mage::getSingleton('core/logger');
+
+        $this->logger = new Dhl_ExpressRates_Model_Logger_Mage($logWriter);
+        $this->logger->setModuleConfig($this->moduleConfig);
     }
 }

@@ -39,6 +39,11 @@ class Dhl_ExpressRates_Model_Logger_Mage extends \Psr\Log\AbstractLogger
     );
 
     /**
+     * @var Dhl_ExpressRates_Model_Config
+     */
+    protected $moduleConfig;
+
+    /**
      * Dhl_ExpressRates_Model_Logger_Mage constructor.
      *
      * @param \Mage_Core_Model_Logger $writer
@@ -87,11 +92,43 @@ class Dhl_ExpressRates_Model_Logger_Mage extends \Psr\Log\AbstractLogger
      */
     public function log($level, $message, array $context = array())
     {
+        if (!$this->isHandling($level)) {
+            return;
+        }
+
         if (isset($context['exception'])) {
             $this->_writer->logException($context['exception']);
         }
 
         $message = $this->interpolate($message, $context);
         $this->_writer->log($message, $this->_levelMapping[$level], $this->_file);
+    }
+
+    /**
+     * Sets the module configuration.
+     *
+     * @param Dhl_ExpressRates_Model_Config $moduleConfig The module configuration
+     *
+     * @return self
+     */
+    public function setModuleConfig(Dhl_ExpressRates_Model_Config $moduleConfig)
+    {
+        $this->moduleConfig = $moduleConfig;
+        return $this;
+    }
+
+    /**
+     * Returns TRUE whether the logger handles the logging for the configured logging level or not.
+     *
+     * @param string $level Log level to handle
+     *
+     * @return bool
+     */
+    private function isHandling($level)
+    {
+        $logEnabled = $this->moduleConfig->isLoggingEnabled();
+        $logLevel   = $this->moduleConfig->getLogLevel();
+
+        return $logEnabled && ($this->_levelMapping[$level] <= $logLevel);
     }
 }

@@ -38,9 +38,8 @@ class Dhl_ExpressRates_Model_Adminhtml_System_Config_Source_Loglevel
     public function toArray()
     {
         return array(
-            \Zend_Log::ERR   => Mage::helper('dhl_expressrates/data')->__('Error'),
-            \Zend_Log::INFO  => Mage::helper('dhl_expressrates/data')->__('Info (Errors and Warnings)'),
-            \Zend_Log::DEBUG => Mage::helper('dhl_expressrates/data')->__('Debug (All API Activities)'),
+            \Zend_Log::ERR   => Mage::helper('dhl_expressrates/data')->__('Error (Log only errors)'),
+            \Zend_Log::DEBUG => Mage::helper('dhl_expressrates/data')->__('Debug (Log all API activities)'),
         );
     }
 }
