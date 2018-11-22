@@ -15,10 +15,12 @@ class Dhl_ExpressRates_Test_Model_Carrier_ExpressTest extends \EcomDev_PHPUnit_T
 {
     /**
      * @test
+     * @loadFixture express
      */
     public function collectRates()
     {
         $carrier = Mage::getSingleton('dhl_expressrates/carrier_express');
+        $carrier->setData('store', 'store_one');
         $rateRequest = Mage::getModel('shipping/rate_request');
         $this->assertFalse($carrier->collectRates($rateRequest));
     }
