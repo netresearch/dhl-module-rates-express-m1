@@ -14,6 +14,12 @@
 class Dhl_ExpressRates_Test_Model_Logger_MageTest extends \EcomDev_PHPUnit_Test_Case
 {
 
+    public function tearDown()
+    {
+        $this->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
+        parent::tearDown();
+    }
+
     /**
      * Tests if module configuration log level is set ERROR.
      *

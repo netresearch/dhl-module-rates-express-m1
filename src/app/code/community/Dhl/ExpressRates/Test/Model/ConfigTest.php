@@ -96,15 +96,14 @@ class Dhl_ExpressRates_Test_Model_ConfigTest extends \EcomDev_PHPUnit_Test_Case
     public function getLogSettings()
     {
         $config = Mage::getModel('dhl_expressrates/config');
-
         $loggingEnabled = $config->isLoggingEnabled('store_one');
         $this->assertFalse($loggingEnabled);
         $loggingEnabled = $config->isLoggingEnabled('store_two');
         $this->assertTrue($loggingEnabled);
 
         $logLevel = $config->getLogLevel('store_one');
-        $this->assertSame(\Zend_Log::ERR, $logLevel);
+        $this->assertSame(\Zend_Log::EMERG, $logLevel);
         $logLevel = $config->getLogLevel('store_two');
-        $this->assertSame(\Zend_Log::INFO, $logLevel);
+        $this->assertSame(\Zend_Log::ERR, $logLevel);
     }
 }

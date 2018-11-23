@@ -26,7 +26,6 @@ class Dhl_ExpressRates_Test_Model_AutoloaderTest extends \EcomDev_PHPUnit_Test_C
 
             if ($autoloadFunction[0] instanceof \Dhl_ExpressRates_Helper_Autoloader) {
                 spl_autoload_unregister($autoloadFunction);
-                break;
             }
         }
 
