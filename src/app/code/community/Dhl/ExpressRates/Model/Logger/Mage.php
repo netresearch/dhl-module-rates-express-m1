@@ -93,7 +93,12 @@ class Dhl_ExpressRates_Model_Logger_Mage extends \Psr\Log\AbstractLogger
      */
     public function log($level, $message, array $context = array())
     {
-        $storeId = Mage::app()->getStore()->getId();
+        try {
+            $storeId = Mage::app()->getStore()->getId();
+        } catch (Mage_Core_Model_Store_Exception $e) {
+            return;
+        }
+
         $configLevel = $this->_moduleConfig->getLogLevel($storeId);
 
         if ($this->_levelMapping[$level] > $configLevel) {
