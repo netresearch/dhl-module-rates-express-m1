@@ -8,7 +8,7 @@
         "magento-hackathon/magento-composer-installer": "^3.0.6"
     },
     "require": {
-        "php": "^5.4 || ^7.0",
+        "php": "^5.4 || ^7.0 || ^7.1 || ^7.2",
         "ext-soap": "*"
     },
     "authors": [

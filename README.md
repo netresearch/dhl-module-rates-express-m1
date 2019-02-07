@@ -1,52 +1,35 @@
-DHL Express - Rates Express Module
-==================================
+# DHL Express - Rates Express Module
 
-TBD
+The DHL Express Rates at Checkout extension for Magento® 1 integrates the DHL Express Rates API into the Magento® 1 checkout process.
 
-Facts
------
+## Facts
+
 - version: 1.0.0
 - extension key: Dhl_ExpressRates
-- [extension on GitLab](https://git.netresearch.de/dhl/express/module-rates-express-m1)
-- [direct download link](https://git.netresearch.de/dhl/express/module-rates-express-m1/repository/1.0.0/archive.tar.gz)
 
-Description
------------
-TBD
+## Requirements and Compatibility
 
-Requirements
-------------
 - PHP >= 5.4.0
-
-Compatibility
--------------
 - Magento CE >= 1.9
 
-Installation Instructions
--------------------------
+## Installation Instructions
+
 1. Install the extension via Magento Connect with the key shown above or install
    via composer / modman.
 2. Clear the cache, logout from the admin panel and then login again.
 
-More information on configuration and integration into custom themes can be found
-in the documentation.
+## Uninstallation
 
-Uninstallation
---------------
 1. Remove all extension files from your Magento installation
-2. Clean up the database.
 
-Support
--------
-TBD
+## Setup and Usage
 
-Developer
----------
-[Netresearch GmbH & Co. KG](https://www.netresearch.de/)
+Please refer to the Setup and User documentation in PDF format in the "doc" directory of this package for detailed installation and usage instructions.
 
-Licence
--------
-[OSL - Open Software Licence 3.0](https://opensource.org/licenses/osl-3.0.php)
+## Developer
 
-Copyright
----------
+[Netresearch DTT GmbH](https://www.netresearch.de/)
+
+## Licence
+
+See file LICENSE.md for licensing details.
