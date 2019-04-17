@@ -17,7 +17,8 @@ namespace Dhl\Express\Webservice\Soap;
  */
 class SoapClientFactory
 {
-    const WSDL = 'https://wsbexpress.dhl.com/sndpt/expressRateBook?WSDL';
+    const SANDPIT_WSDL = 'https://wsbexpress.dhl.com/sndpt/expressRateBook?WSDL';
+    const WSDL = 'https://wsbexpress.dhl.com/gbl/expressRateBook?WSDL';
 
     /**
      * @param string $username

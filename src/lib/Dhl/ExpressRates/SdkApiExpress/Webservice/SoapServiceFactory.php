@@ -36,19 +36,26 @@ use Psr\Log\LoggerInterface;
 class SoapServiceFactory implements ServiceFactoryInterface
 {
     /**
-     * @param string          $username
-     * @param string          $password
+     * @param string $username
+     * @param string $password
      * @param LoggerInterface $logger
      *
+     * @param bool $sandpit
      * @return RateServiceInterface
      */
     public function createRateService(
         $username,
         $password,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        $sandpit = false
     ) {
         $clientFactory = new SoapClientFactory();
-        $client = $clientFactory->create($username, $password);
+        $wsdl = $sandpit ? SoapClientFactory::SANDPIT_WSDL : SoapClientFactory::WSDL;
+        $client = $clientFactory->create(
+            $username,
+            $password,
+            $wsdl
+        );
 
         $requestMapper = new RateRequestMapper();
         $responseMapper = new RateResponseMapper();
@@ -59,8 +66,8 @@ class SoapServiceFactory implements ServiceFactoryInterface
     }
 
     /**
-     * @param string          $username
-     * @param string          $password
+     * @param string $username
+     * @param string $password
      * @param LoggerInterface $logger
      * @return ShipmentServiceInterface
      */
@@ -94,8 +101,8 @@ class SoapServiceFactory implements ServiceFactoryInterface
     }
 
     /**
-     * @param string          $username
-     * @param string          $password
+     * @param string $username
+     * @param string $password
      * @param LoggerInterface $logger
      * @return TrackingService
      */
