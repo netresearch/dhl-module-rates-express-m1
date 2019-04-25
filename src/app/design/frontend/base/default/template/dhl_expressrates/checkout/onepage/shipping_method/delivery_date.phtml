@@ -5,9 +5,12 @@
     var deliveryDates = <?php /* @noEscape */ echo $this->getEstimatedDeliveryDates() ?>;
 
     for (var i = 0; i < deliveryDates.length; ++i) {
-        $('s_method_' + deliveryDates[i].code).next('label').insert(
-            '<p><small>Estimated delivery: ' + deliveryDates[i].delivery_date + '</small></p>'
-        );
+        var labelElement = document.querySelector('label[for="s_method_' + deliveryDates[i].code + '"]');
+        if (labelElement) {
+            labelElement.insert(
+                '<p><small>Estimated delivery: ' + deliveryDates[i].delivery_date + '</small></p>'
+            );
+        }
     }
     //]]>
 </script>
