@@ -58,9 +58,11 @@ class RateService implements RateServiceInterface
         try {
             $response = $this->adapter->collectRates($request);
         } catch (SoapException $e) {
+            $this->logger->debug($this->adapter->getLastRequest());
             $this->logger->error($e->getMessage());
             throw $e;
         } catch (RateRequestException $e) {
+            $this->logger->debug($this->adapter->getLastRequest());
             $this->logger->error($e->getMessage());
             throw $e;
         }
