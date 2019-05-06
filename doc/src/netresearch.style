@@ -1,0 +1,53 @@
+{
+	"pageSetup": {
+		"size":"A4",
+		"margin-top": "1cm",
+		"margin-bottom": "2cm",
+		"margin-left":"2cm",
+		"margin-right":"2cm"
+    },
+	"styles": [
+        ["base" , {
+        }],
+        ["bodytext" , {
+          "fontSize": 10
+        }],
+        ["heading" , {
+          "textColor": #202020
+        }],
+        ["heading1" , {
+          "textColor": #202020
+        }],
+        ["heading2" , {
+          "textColor": #202020
+        }],
+        ["heading3" , {
+          "textColor": #202020
+        }],
+		["footertable" , {
+          "borderWidth": 0,
+          "borderPadding": 0
+		}],
+        ["footertop" , {
+          "fontSize": 10
+        }],
+        ["footerbottom" , {
+          "fontSize": 8
+        }],
+        ["titlepage" , {
+          "fontSize": 28,
+          "textColor": #202020
+        }],
+		["rightalign" , {
+			"parent": "bodytext",
+			"alignment": "TA_RIGHT"
+		}],
+		["bullet-list", {
+            "spaceAfter": 10
+        }],
+        ["tables" , {
+          "borderWidth": 0,
+          "borderPadding": 0
+        }]
+	]
+}
