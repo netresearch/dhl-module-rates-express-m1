@@ -15,6 +15,26 @@
         {
             "name": "Rico Sonntag",
             "email": "rico.sonntag@netresearch.de"
+        },
+        {
+            "name": "Andreas Müller",
+            "email": "andreas.mueller@netresearch.de"
+        },
+        {
+            "name": "Max Melzer",
+            "email": "max.melzer@netresearch.de"
+        },
+        {
+            "name": "Christoph Aßmann",
+            "email": "christoph.assmann@netresearch.de"
+        },
+        {
+            "name": "Sebastian Ertner",
+            "email": "sebastian.ertner@netresearch.de"
+        },
+        {
+            "name": "Paul Siedler",
+            "email": "paul.siedler@netresearch.de"
         }
     ]
 }
