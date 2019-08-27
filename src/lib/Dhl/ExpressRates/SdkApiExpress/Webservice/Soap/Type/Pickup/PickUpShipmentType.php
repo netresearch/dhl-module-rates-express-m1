@@ -1,59 +1,74 @@
 <?php
+/**
+ * See LICENSE.md for license details.
+ */
 
 namespace Dhl\Express\Webservice\Soap\Type\Pickup;
 
-class docTypeRef_PickUpShipmentType
+/**
+ * PickUpShipmentType class.
+ *
+ * @api
+ * @package  Dhl\Express\Api
+ * @author   Ronny Gertler <ronny.gertler@netresearch.de>
+ * @link     https://www.netresearch.de/
+ */
+class PickUpShipmentType
 {
-
     /**
-     * @var docTypeRef_ShipmentInfoType $ShipmentInfo
+     * @var ShipmentInfoType
      */
     protected $ShipmentInfo;
 
     /**
-     * @var PickupTimestamp $PickupTimestamp
+     * @var string
      */
     protected $PickupTimestamp;
 
     /**
-     * @var PickupLocationCloseTime $PickupLocationCloseTime
+     * @var string
      */
     protected $PickupLocationCloseTime;
 
     /**
-     * @var SpecialPickupInstruction $SpecialPickupInstruction
+     * @var string
      */
     protected $SpecialPickupInstruction;
 
     /**
-     * @var PickupLocation $PickupLocation
+     * @var string
      */
     protected $PickupLocation;
 
     /**
-     * @var docTypeRef_InternationDetailType $InternationalDetail
+     * @var InternationDetailType
      */
     protected $InternationalDetail;
 
     /**
-     * @var docTypeRef_ShipType $Ship
+     * @var ShipType
      */
     protected $Ship;
 
     /**
-     * @var docTypeRef_PackagesType $Packages
+     * @var PackagesType
      */
     protected $Packages;
 
     /**
-     * @param docTypeRef_ShipmentInfoType $ShipmentInfo
-     * @param PickupTimestamp $PickupTimestamp
-     * @param docTypeRef_InternationDetailType $InternationalDetail
-     * @param docTypeRef_ShipType $Ship
-     * @param docTypeRef_PackagesType $Packages
+     * @param ShipmentInfoType      $ShipmentInfo
+     * @param string                $PickupTimestamp
+     * @param InternationDetailType $InternationalDetail
+     * @param ShipType              $Ship
+     * @param PackagesType          $Packages
      */
-    public function __construct($ShipmentInfo, $PickupTimestamp, $InternationalDetail, $Ship, $Packages)
-    {
+    public function __construct(
+        ShipmentInfoType $ShipmentInfo,
+        $PickupTimestamp,
+        InternationDetailType $InternationalDetail,
+        ShipType $Ship,
+        PackagesType $Packages
+    ) {
         $this->ShipmentInfo = $ShipmentInfo;
         $this->PickupTimestamp = $PickupTimestamp;
         $this->InternationalDetail = $InternationalDetail;
@@ -62,7 +77,7 @@ class docTypeRef_PickUpShipmentType
     }
 
     /**
-     * @return docTypeRef_ShipmentInfoType
+     * @return ShipmentInfoType
      */
     public function getShipmentInfo()
     {
@@ -70,17 +85,17 @@ class docTypeRef_PickUpShipmentType
     }
 
     /**
-     * @param docTypeRef_ShipmentInfoType $ShipmentInfo
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_PickUpShipmentType
+     * @param ShipmentInfoType $ShipmentInfo
+     * @return self
      */
-    public function setShipmentInfo($ShipmentInfo)
+    public function setShipmentInfo(ShipmentInfoType $ShipmentInfo)
     {
         $this->ShipmentInfo = $ShipmentInfo;
         return $this;
     }
 
     /**
-     * @return PickupTimestamp
+     * @return string
      */
     public function getPickupTimestamp()
     {
@@ -88,8 +103,8 @@ class docTypeRef_PickUpShipmentType
     }
 
     /**
-     * @param PickupTimestamp $PickupTimestamp
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_PickUpShipmentType
+     * @param string $PickupTimestamp
+     * @return self
      */
     public function setPickupTimestamp($PickupTimestamp)
     {
@@ -98,7 +113,7 @@ class docTypeRef_PickUpShipmentType
     }
 
     /**
-     * @return PickupLocationCloseTime
+     * @return string
      */
     public function getPickupLocationCloseTime()
     {
@@ -106,8 +121,8 @@ class docTypeRef_PickUpShipmentType
     }
 
     /**
-     * @param PickupLocationCloseTime $PickupLocationCloseTime
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_PickUpShipmentType
+     * @param string $PickupLocationCloseTime
+     * @return self
      */
     public function setPickupLocationCloseTime($PickupLocationCloseTime)
     {
@@ -116,7 +131,7 @@ class docTypeRef_PickUpShipmentType
     }
 
     /**
-     * @return SpecialPickupInstruction
+     * @return string
      */
     public function getSpecialPickupInstruction()
     {
@@ -124,8 +139,8 @@ class docTypeRef_PickUpShipmentType
     }
 
     /**
-     * @param SpecialPickupInstruction $SpecialPickupInstruction
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_PickUpShipmentType
+     * @param string $SpecialPickupInstruction
+     * @return self
      */
     public function setSpecialPickupInstruction($SpecialPickupInstruction)
     {
@@ -134,7 +149,7 @@ class docTypeRef_PickUpShipmentType
     }
 
     /**
-     * @return PickupLocation
+     * @return string
      */
     public function getPickupLocation()
     {
@@ -142,8 +157,8 @@ class docTypeRef_PickUpShipmentType
     }
 
     /**
-     * @param PickupLocation $PickupLocation
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_PickUpShipmentType
+     * @param string $PickupLocation
+     * @return self
      */
     public function setPickupLocation($PickupLocation)
     {
@@ -152,7 +167,7 @@ class docTypeRef_PickUpShipmentType
     }
 
     /**
-     * @return docTypeRef_InternationDetailType
+     * @return InternationDetailType
      */
     public function getInternationalDetail()
     {
@@ -160,17 +175,17 @@ class docTypeRef_PickUpShipmentType
     }
 
     /**
-     * @param docTypeRef_InternationDetailType $InternationalDetail
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_PickUpShipmentType
+     * @param InternationDetailType $InternationalDetail
+     * @return self
      */
-    public function setInternationalDetail($InternationalDetail)
+    public function setInternationalDetail(InternationDetailType $InternationalDetail)
     {
         $this->InternationalDetail = $InternationalDetail;
         return $this;
     }
 
     /**
-     * @return docTypeRef_ShipType
+     * @return ShipType
      */
     public function getShip()
     {
@@ -178,17 +193,17 @@ class docTypeRef_PickUpShipmentType
     }
 
     /**
-     * @param docTypeRef_ShipType $Ship
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_PickUpShipmentType
+     * @param ShipType $Ship
+     * @return self
      */
-    public function setShip($Ship)
+    public function setShip(ShipType $Ship)
     {
         $this->Ship = $Ship;
         return $this;
     }
 
     /**
-     * @return docTypeRef_PackagesType
+     * @return PackagesType
      */
     public function getPackages()
     {
@@ -196,10 +211,10 @@ class docTypeRef_PickUpShipmentType
     }
 
     /**
-     * @param docTypeRef_PackagesType $Packages
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_PickUpShipmentType
+     * @param PackagesType $Packages
+     * @return self
      */
-    public function setPackages($Packages)
+    public function setPackages(PackagesType $Packages)
     {
         $this->Packages = $Packages;
         return $this;

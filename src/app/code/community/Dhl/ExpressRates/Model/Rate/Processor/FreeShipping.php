@@ -3,8 +3,6 @@
  * See LICENSE.md for license details.
  */
 
-use Dhl\Express\Model\Data\ShippingProducts;
-
 /**
  * Dhl_ExpressRates_Model_Rate_Processor_FreeShipping
  *
@@ -29,7 +27,7 @@ class Dhl_ExpressRates_Model_Rate_Processor_FreeShipping
     protected $store;
 
     /**
-     * @var ShippingProducts
+     * @var Dhl_ExpressRates_Model_Data_ShippingProducts
      */
     protected $shippingProducts;
 
@@ -41,7 +39,7 @@ class Dhl_ExpressRates_Model_Rate_Processor_FreeShipping
     {
         $this->moduleConfig = Mage::getSingleton('dhl_expressrates/config');
         $this->store = Mage::app()->getStore();
-        $this->shippingProducts = new ShippingProducts();
+        $this->shippingProducts = Mage::getSingleton('dhl_expressrates/data_shippingProducts');
     }
 
     /**

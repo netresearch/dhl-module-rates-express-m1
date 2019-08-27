@@ -22,13 +22,12 @@ use Psr\Log\LoggerInterface;
  *
  * @package  Dhl\Express\Webservice
  * @author   Ronny Gertler <ronny.gertler@netresearch.de>
- * @license  https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link     https://www.netresearch.de/
  */
 class TrackingService implements TrackingServiceInterface
 {
     /**
-     * @var TrackingServiceAdapterInterface
+     * @var TrackingServiceAdapterInterface|TraceableInterface
      */
     private $adapter;
 
@@ -62,9 +61,11 @@ class TrackingService implements TrackingServiceInterface
         try {
             $response = $this->adapter->getTrackingInformation($request);
         } catch (SoapException $e) {
+            $this->logger->debug($this->adapter->getLastRequest());
             $this->logger->error($e->getMessage());
             throw $e;
         } catch (TrackingRequestException $e) {
+            $this->logger->debug($this->adapter->getLastRequest());
             $this->logger->error($e->getMessage());
             throw $e;
         }

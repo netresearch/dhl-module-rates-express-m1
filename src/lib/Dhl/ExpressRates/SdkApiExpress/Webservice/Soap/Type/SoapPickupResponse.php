@@ -1,22 +1,35 @@
 <?php
+/**
+ * See LICENSE.md for license details.
+ */
+namespace Dhl\Express\Webservice\Soap\Type;
 
-namespace Dhl\Express\Webservice\Soap\Type\Pickup;
+use Dhl\Express\Webservice\Soap\Type\Pickup\NotificationType;
 
-class docTypeRef_ShipmentDetailType
+/**
+ * Soap Pickup Response
+ *
+ * @api
+ * @package  Dhl\Express\Api
+ * @author   Ronny Gertler <ronny.gertler@netresearch.de>
+ * @link     https://www.netresearch.de/
+ */
+class SoapPickupResponse
 {
+    const CLASSNAME = __CLASS__;
 
     /**
-     * @var docTypeRef_NotificationType2[] $Notification
+     * @var NotificationType[]
      */
     protected $Notification;
 
     /**
-     * @var string $DispatchConfirmationNumber
+     * @var string
      */
     protected $DispatchConfirmationNumber;
 
     /**
-     * @param docTypeRef_NotificationType2[] $Notification
+     * @param NotificationType[] $Notification
      */
     public function __construct(array $Notification)
     {
@@ -24,7 +37,7 @@ class docTypeRef_ShipmentDetailType
     }
 
     /**
-     * @return docTypeRef_NotificationType2[]
+     * @return NotificationType[]
      */
     public function getNotification()
     {
@@ -32,8 +45,8 @@ class docTypeRef_ShipmentDetailType
     }
 
     /**
-     * @param docTypeRef_NotificationType2[] $Notification
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_ShipmentDetailType
+     * @param NotificationType[] $Notification
+     * @return self
      */
     public function setNotification(array $Notification)
     {
@@ -51,7 +64,7 @@ class docTypeRef_ShipmentDetailType
 
     /**
      * @param string $DispatchConfirmationNumber
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_ShipmentDetailType
+     * @return self
      */
     public function setDispatchConfirmationNumber($DispatchConfirmationNumber)
     {

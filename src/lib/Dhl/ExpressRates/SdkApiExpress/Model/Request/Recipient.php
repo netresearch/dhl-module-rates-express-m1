@@ -12,7 +12,6 @@ use Dhl\Express\Api\Data\Request\RecipientInterface;
  *
  * @package  Dhl\Express\Model
  * @author   Ronny Gertler <ronny.gertler@netresearch.de>
- * @license  https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link     https://www.netresearch.de/
  */
 class Recipient implements RecipientInterface
@@ -67,6 +66,13 @@ class Recipient implements RecipientInterface
     private $phone;
 
     /**
+     * The email.
+     *
+     * @var string
+     */
+    private $email;
+
+    /**
      * Recipient constructor.
      *
      * @param string $countryCode
@@ -76,6 +82,7 @@ class Recipient implements RecipientInterface
      * @param string $name
      * @param string $company
      * @param string $phone
+     * @param string|null $email
      */
     public function __construct(
         $countryCode,
@@ -84,7 +91,8 @@ class Recipient implements RecipientInterface
         array $streetLines,
         $name,
         $company,
-        $phone
+        $phone,
+        $email = null
     ) {
         $this->streetLines = $streetLines;
         $this->city = $city;
@@ -93,6 +101,7 @@ class Recipient implements RecipientInterface
         $this->name = $name;
         $this->company = $company;
         $this->phone = $phone;
+        $this->email = $email;
     }
 
     /**
@@ -149,5 +158,13 @@ class Recipient implements RecipientInterface
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 }

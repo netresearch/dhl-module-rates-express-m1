@@ -5,10 +5,10 @@
 
 namespace Dhl\Express\Webservice;
 
-use Dhl\Express\Api\PickupServiceInterface;
 use Dhl\Express\Api\RateServiceInterface;
 use Dhl\Express\Api\ServiceFactoryInterface;
 use Dhl\Express\Api\ShipmentServiceInterface;
+use Dhl\Express\Api\TrackingServiceInterface;
 use Dhl\Express\Webservice\Soap\RateServiceAdapter;
 use Dhl\Express\Webservice\Soap\ShipmentServiceAdapter;
 use Dhl\Express\Webservice\Soap\SoapClientFactory;
@@ -30,18 +30,40 @@ use Psr\Log\LoggerInterface;
  *
  * @package  Dhl\Express\Webservice
  * @author   Christoph Aßmann <christoph.assmann@netresearch.de>
- * @license  https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link     https://www.netresearch.de/
  */
 class SoapServiceFactory implements ServiceFactoryInterface
 {
     /**
+     * Messages fail to generate with the original DHL Express WSDL, use a modified local copy instead.
+     *
+     * This local copy is shipped primarily to properly process multi piece shipments. Once the original WSDL is in a
+     * state where the validation through the SOAP extension no longer fails, this has to be removed.
+     *
+     * @param bool $sandpit
+     * @return string
+     *
+     * @link https://bugs.nr/DHLEX-60
+     */
+    private function getWsdlFilename(bool $sandpit)
+    {
+        if ($sandpit) {
+            $wsdl = __DIR__ . '/Soap/wsdl/sndpt-expressRateBook.wsdl';
+        } else {
+            $wsdl = __DIR__ . '/Soap/wsdl/prod-expressRateBook.wsdl';
+        }
+
+        return $wsdl;
+    }
+
+    /**
      * @param string $username
      * @param string $password
      * @param LoggerInterface $logger
-     *
      * @param bool $sandpit
-     * @return RateServiceInterface
+     *
+     * @return RateServiceInterface|RateService
+     * @throws \SoapFault
      */
     public function createRateService(
         $username,
@@ -50,12 +72,9 @@ class SoapServiceFactory implements ServiceFactoryInterface
         $sandpit = false
     ) {
         $clientFactory = new SoapClientFactory();
-        $wsdl = $sandpit ? SoapClientFactory::SANDPIT_WSDL : SoapClientFactory::WSDL;
-        $client = $clientFactory->create(
-            $username,
-            $password,
-            $wsdl
-        );
+        $wsdl = $this->getWsdlFilename($sandpit);
+
+        $client = $clientFactory->create($username, $password, $wsdl);
 
         $requestMapper = new RateRequestMapper();
         $responseMapper = new RateResponseMapper();
@@ -69,25 +88,21 @@ class SoapServiceFactory implements ServiceFactoryInterface
      * @param string $username
      * @param string $password
      * @param LoggerInterface $logger
-     * @return ShipmentServiceInterface
+     * @param bool $sandpit
+     *
+     * @return ShipmentServiceInterface|ShipmentService
+     * @throws \SoapFault
      */
     public function createShipmentService(
         $username,
         $password,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        $sandpit = false
     ) {
         $clientFactory = new SoapClientFactory();
+        $wsdl = $this->getWsdlFilename($sandpit);
 
-        /** @TODO(nr)
-         * this WSDL is currently hardcoded (because it was edited) to properly process multi piece shipments
-         * Once the WSDL is in a state where the validation through the SOAP extension no longer fails,
-         * this has to be removed
-         */
-        $client = $clientFactory->create(
-            $username,
-            $password,
-            __DIR__ . DIRECTORY_SEPARATOR . 'Soap' . DIRECTORY_SEPARATOR . 'rateBook.wsdl'
-        );
+        $client = $clientFactory->create($username, $password, $wsdl);
 
         $adapter = new ShipmentServiceAdapter(
             $client,
@@ -104,19 +119,21 @@ class SoapServiceFactory implements ServiceFactoryInterface
      * @param string $username
      * @param string $password
      * @param LoggerInterface $logger
-     * @return TrackingService
+     * @param bool $sandpit
+     *
+     * @return TrackingServiceInterface|TrackingService
+     * @throws \SoapFault
      */
     public function createTrackingService(
         $username,
         $password,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        $sandpit = false
     ) {
         $clientFactory = new SoapClientFactory();
-        $client = $clientFactory->create(
-            $username,
-            $password,
-            'https://wsbexpress.dhl.com/sndpt/glDHLExpressTrack?WSDL'
-        );
+        $wsdl = $sandpit ? SoapClientFactory::TRACK_TEST_WSDL : SoapClientFactory::TRACK_PROD_WSDL;
+
+        $client = $clientFactory->create($username, $password, $wsdl);
 
         $requestMapper = new TrackingRequestMapper();
         $responseMapper = new TrackingResponseMapper();
@@ -124,13 +141,5 @@ class SoapServiceFactory implements ServiceFactoryInterface
         $adapter = new TrackingServiceAdapter($client, $requestMapper, $responseMapper);
 
         return new TrackingService($adapter, $logger);
-    }
-
-    /**
-     * @throws \Exception
-     */
-    public function createPickupService()
-    {
-        throw new \RuntimeException('Not yet implemented.');
     }
 }

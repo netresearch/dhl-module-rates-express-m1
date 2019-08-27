@@ -1,39 +1,49 @@
 <?php
+/**
+ * See LICENSE.md for license details.
+ */
 
 namespace Dhl\Express\Webservice\Soap\Type\Pickup;
 
-class docTypeRef_ContactType
+/**
+ * ContactType class.
+ *
+ * @api
+ * @package  Dhl\Express\Api
+ * @author   Ronny Gertler <ronny.gertler@netresearch.de>
+ * @link     https://www.netresearch.de/
+ */
+class ContactType
 {
-
     /**
-     * @var PersonName $PersonName
+     * @var string
      */
     protected $PersonName;
 
     /**
-     * @var CompanyName $CompanyName
+     * @var string
      */
     protected $CompanyName;
 
     /**
-     * @var PhoneNumber $PhoneNumber
+     * @var string
      */
     protected $PhoneNumber;
 
     /**
-     * @var EmailAddress $EmailAddress
+     * @var string
      */
     protected $EmailAddress;
 
     /**
-     * @var MobilePhoneNumber $MobilePhoneNumber
+     * @var string
      */
     protected $MobilePhoneNumber;
 
     /**
-     * @param PersonName $PersonName
-     * @param CompanyName $CompanyName
-     * @param PhoneNumber $PhoneNumber
+     * @param string $PersonName
+     * @param string $CompanyName
+     * @param string $PhoneNumber
      */
     public function __construct($PersonName, $CompanyName, $PhoneNumber)
     {
@@ -43,7 +53,7 @@ class docTypeRef_ContactType
     }
 
     /**
-     * @return PersonName
+     * @return string
      */
     public function getPersonName()
     {
@@ -51,8 +61,8 @@ class docTypeRef_ContactType
     }
 
     /**
-     * @param PersonName $PersonName
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_ContactType
+     * @param string $PersonName
+     * @return self
      */
     public function setPersonName($PersonName)
     {
@@ -61,7 +71,7 @@ class docTypeRef_ContactType
     }
 
     /**
-     * @return CompanyName
+     * @return string
      */
     public function getCompanyName()
     {
@@ -69,8 +79,8 @@ class docTypeRef_ContactType
     }
 
     /**
-     * @param CompanyName $CompanyName
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_ContactType
+     * @param string $CompanyName
+     * @return self
      */
     public function setCompanyName($CompanyName)
     {
@@ -79,7 +89,7 @@ class docTypeRef_ContactType
     }
 
     /**
-     * @return PhoneNumber
+     * @return string
      */
     public function getPhoneNumber()
     {
@@ -87,8 +97,8 @@ class docTypeRef_ContactType
     }
 
     /**
-     * @param PhoneNumber $PhoneNumber
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_ContactType
+     * @param string $PhoneNumber
+     * @return self
      */
     public function setPhoneNumber($PhoneNumber)
     {
@@ -97,7 +107,7 @@ class docTypeRef_ContactType
     }
 
     /**
-     * @return EmailAddress
+     * @return string
      */
     public function getEmailAddress()
     {
@@ -105,8 +115,8 @@ class docTypeRef_ContactType
     }
 
     /**
-     * @param EmailAddress $EmailAddress
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_ContactType
+     * @param string $EmailAddress
+     * @return self
      */
     public function setEmailAddress($EmailAddress)
     {
@@ -115,7 +125,7 @@ class docTypeRef_ContactType
     }
 
     /**
-     * @return MobilePhoneNumber
+     * @return string
      */
     public function getMobilePhoneNumber()
     {
@@ -123,8 +133,8 @@ class docTypeRef_ContactType
     }
 
     /**
-     * @param MobilePhoneNumber $MobilePhoneNumber
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_ContactType
+     * @param string $MobilePhoneNumber
+     * @return self
      */
     public function setMobilePhoneNumber($MobilePhoneNumber)
     {

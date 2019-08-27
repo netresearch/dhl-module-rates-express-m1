@@ -23,7 +23,7 @@ class Dhl_ExpressRates_Model_Carrier_Express
     protected $_code = self::CODE;
 
     /**
-     * @var \Dhl\Express\Model\Data\ShippingProductNames
+     * @var Dhl_ExpressRates_Model_Data_ShippingProductNames
      */
     protected $productNames;
 
@@ -38,13 +38,13 @@ class Dhl_ExpressRates_Model_Carrier_Express
     protected $config;
 
     /**
-     * Dhl_ExpressRates_Model_Carrier_Express constructor.
+     * Init dependencies.
      */
-    public function __construct()
+    protected function _construct()
     {
-        parent::__construct();
+        parent::_construct();
 
-        $this->productNames = new \Dhl\Express\Model\Data\ShippingProductNames();
+        $this->productNames = Mage::getSingleton('dhl_expressrates/data_shippingProductNames');
         $this->rateProvider = Mage::getSingleton('dhl_expressrates/rate_checkoutProvider');
         $this->config = Mage::getSingleton('dhl_expressrates/config');
     }

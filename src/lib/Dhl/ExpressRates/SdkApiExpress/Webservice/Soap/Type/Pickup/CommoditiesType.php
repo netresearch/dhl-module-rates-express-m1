@@ -1,22 +1,32 @@
 <?php
+/**
+ * See LICENSE.md for license details.
+ */
 
 namespace Dhl\Express\Webservice\Soap\Type\Pickup;
 
-class docTypeRef_CommoditiesType
+/**
+ * CommoditiesType class.
+ *
+ * @api
+ * @package  Dhl\Express\Api
+ * @author   Ronny Gertler <ronny.gertler@netresearch.de>
+ * @link     https://www.netresearch.de/
+ */
+class CommoditiesType
 {
-
     /**
-     * @var NumberOfPieces $NumberOfPieces
+     * @var int
      */
     protected $NumberOfPieces;
 
     /**
-     * @var Description $Description
+     * @var string
      */
     protected $Description;
 
     /**
-     * @param Description $Description
+     * @param string $Description
      */
     public function __construct($Description)
     {
@@ -24,7 +34,7 @@ class docTypeRef_CommoditiesType
     }
 
     /**
-     * @return NumberOfPieces
+     * @return int
      */
     public function getNumberOfPieces()
     {
@@ -32,8 +42,8 @@ class docTypeRef_CommoditiesType
     }
 
     /**
-     * @param NumberOfPieces $NumberOfPieces
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_CommoditiesType
+     * @param int $NumberOfPieces
+     * @return self
      */
     public function setNumberOfPieces($NumberOfPieces)
     {
@@ -42,7 +52,7 @@ class docTypeRef_CommoditiesType
     }
 
     /**
-     * @return Description
+     * @return string
      */
     public function getDescription()
     {
@@ -50,8 +60,8 @@ class docTypeRef_CommoditiesType
     }
 
     /**
-     * @param Description $Description
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_CommoditiesType
+     * @param string $Description
+     * @return self
      */
     public function setDescription($Description)
     {

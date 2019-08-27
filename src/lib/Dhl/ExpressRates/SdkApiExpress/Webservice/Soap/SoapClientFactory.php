@@ -12,34 +12,38 @@ namespace Dhl\Express\Webservice\Soap;
  *
  * @package  Dhl\Express\Webservice
  * @author   Christoph Aßmann <christoph.assmann@netresearch.de>
- * @license  https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link     https://www.netresearch.de/
  */
 class SoapClientFactory
 {
-    const SANDPIT_WSDL = 'https://wsbexpress.dhl.com/sndpt/expressRateBook?WSDL';
-    const WSDL = 'https://wsbexpress.dhl.com/gbl/expressRateBook?WSDL';
+    const RATEBOOK_TEST_WSDL = 'https://wsbexpress.dhl.com/sndpt/expressRateBook?WSDL';
+    const RATEBOOK_PROD_WSDL = 'https://wsbexpress.dhl.com/gbl/expressRateBook?WSDL';
+
+    const TRACK_TEST_WSDL = 'https://wsbexpress.dhl.com/sndpt/glDHLExpressTrack?WSDL';
+    const TRACK_PROD_WSDL = 'https://wsbexpress.dhl.com/gbl/glDHLExpressTrack?WSDL';
 
     /**
      * @param string $username
      * @param string $password
      * @param string $wsdl
+     * @param string $request
      *
      * @return Client
+     * @throws \SoapFault
      */
-    public function create($username, $password, $wsdl = '')
+    public function create($username, $password, $wsdl = '', $request = '')
     {
-        $wsdl = $wsdl ?: self::WSDL;
+        $wsdl = $wsdl ?: self::RATEBOOK_PROD_WSDL;
 
         $options = [
-            'features' => SOAP_SINGLE_ELEMENT_ARRAYS,
-            'trace' => true, // Enable to log requests
-            'exceptions' => true,
-            'soap_version' => SOAP_1_1,
+            'features'           => SOAP_SINGLE_ELEMENT_ARRAYS,
+            'trace'              => true, // Enable to log requests
+            'exceptions'         => true,
+            'soap_version'       => SOAP_1_1,
             'connection_timeout' => 10,
-            'encoding' => 'UTF-8',
-            'cache_wsdl' => WSDL_CACHE_DISK,
-            'classmap' => ClassMap::get(),
+            'encoding'           => 'UTF-8',
+            'cache_wsdl'         => WSDL_CACHE_DISK,
+            'classmap'           => ClassMap::get($request),
         ];
 
         $authFactory = new AuthHeaderFactory();

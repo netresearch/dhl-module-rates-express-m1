@@ -13,7 +13,6 @@ use Dhl\Express\Webservice\Soap\Type;
  *
  * @package  Dhl\Express\Webservice
  * @author   Christoph Aßmann <christoph.assmann@netresearch.de>
- * @license  https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link     https://www.netresearch.de/
  */
 class ClassMap
@@ -21,11 +20,13 @@ class ClassMap
     /**
      * Obtain SOAP types to PHP classes mapping for SOAP responses.
      *
+     * @param string $request
+     *
      * @return array|string[]
      */
-    public static function get()
+    public static function get($request = '')
     {
-        return [
+        $classMap =  [
             // getRateRequest response
             'docTypeRef_NotificationType3' => Type\Common\Notification::CLASSNAME,
             'docTypeRef_RateResponseType'  => Type\SoapRateResponse::CLASSNAME,
@@ -76,5 +77,12 @@ class ClassMap
             'docTypeRef_DeleteResponseType' => Type\SoapShipmentDeleteResponse::CLASSNAME,
             'docTypeRef_NotificationType'   => Type\Common\Notification::CLASSNAME,
         ];
+
+        if ($request === 'PickUpRequest') {
+            $classMap['docTypeRef_ShipmentDetailType'] = Type\SoapPickupResponse::CLASSNAME;
+            $classMap['docTypeRef_NotificationType2'] = Type\Pickup\NotificationType::CLASSNAME;
+        }
+
+        return $classMap;
     }
 }

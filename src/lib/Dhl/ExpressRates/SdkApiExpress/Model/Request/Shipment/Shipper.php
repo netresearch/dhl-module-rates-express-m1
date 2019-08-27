@@ -3,16 +3,15 @@
  * See LICENSE.md for license details.
  */
 
-namespace Dhl\Express\Model\Request;
+namespace Dhl\Express\Model\Request\Shipment;
 
-use Dhl\Express\Api\Data\Request\ShipperInterface;
+use Dhl\Express\Api\Data\Request\Shipment\ShipperInterface;
 
 /**
  * Shipper.
  *
  * @package  Dhl\Express\Model
  * @author   Ronny Gertler <ronny.gertler@netresearch.de>
- * @license  https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link     https://www.netresearch.de/
  */
 class Shipper implements ShipperInterface
@@ -67,6 +66,13 @@ class Shipper implements ShipperInterface
     private $phone;
 
     /**
+     * The email.
+     *
+     * @var string
+     */
+    private $email;
+
+    /**
      * Shipper constructor.
      *
      * @param string $countryCode
@@ -76,6 +82,7 @@ class Shipper implements ShipperInterface
      * @param string $name
      * @param string $company
      * @param string $phone
+     * @param string|null $email
      */
     public function __construct(
         $countryCode,
@@ -84,7 +91,8 @@ class Shipper implements ShipperInterface
         array $streetLines,
         $name,
         $company,
-        $phone
+        $phone,
+        $email = null
     ) {
         $this->countryCode = $countryCode;
         $this->postalCode = $postalCode;
@@ -93,6 +101,7 @@ class Shipper implements ShipperInterface
         $this->name = $name;
         $this->company = $company;
         $this->phone = $phone;
+        $this->email = $email;
     }
 
     /**
@@ -149,5 +158,13 @@ class Shipper implements ShipperInterface
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 }

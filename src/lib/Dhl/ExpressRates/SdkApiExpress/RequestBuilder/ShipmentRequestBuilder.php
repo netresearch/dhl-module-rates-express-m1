@@ -12,7 +12,7 @@ use Dhl\Express\Model\Request\Package;
 use Dhl\Express\Model\Request\Recipient;
 use Dhl\Express\Model\Request\Shipment\DangerousGoods\DryIce;
 use Dhl\Express\Model\Request\Shipment\ShipmentDetails;
-use Dhl\Express\Model\Request\Shipper;
+use Dhl\Express\Model\Request\Shipment\Shipper;
 use Dhl\Express\Model\ShipmentRequest;
 
 /**
@@ -20,7 +20,6 @@ use Dhl\Express\Model\ShipmentRequest;
  *
  * @package  Dhl\Express\RequestBuilder
  * @author   Ronny Gertler <ronny.gertler@netresearch.de>
- * @license  https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link     https://www.netresearch.de/
  */
 class ShipmentRequestBuilder implements ShipmentRequestBuilderInterface
@@ -176,6 +175,7 @@ class ShipmentRequestBuilder implements ShipmentRequestBuilderInterface
      * @param string $name
      * @param string $company
      * @param string $phone
+     * @param string|null $email
      * @return self
      */
     public function setShipper(
@@ -185,7 +185,8 @@ class ShipmentRequestBuilder implements ShipmentRequestBuilderInterface
         array $streetLines,
         $name,
         $company,
-        $phone
+        $phone,
+        $email = null
     ) {
         $this->data['shipper'] = [
             'countryCode' => $countryCode,
@@ -195,6 +196,7 @@ class ShipmentRequestBuilder implements ShipmentRequestBuilderInterface
             'name' => $name,
             'company' => $company,
             'phone' => $phone,
+            'email' => $email
         ];
 
         return $this;
@@ -208,6 +210,7 @@ class ShipmentRequestBuilder implements ShipmentRequestBuilderInterface
      * @param string $name
      * @param string $company
      * @param string $phone
+     * @param string|null $email
      * @return self
      */
     public function setRecipient(
@@ -217,7 +220,8 @@ class ShipmentRequestBuilder implements ShipmentRequestBuilderInterface
         array $streetLines,
         $name,
         $company,
-        $phone
+        $phone,
+        $email = null
     ) {
         $this->data['recipient'] = [
             'countryCode' => $countryCode,
@@ -227,6 +231,7 @@ class ShipmentRequestBuilder implements ShipmentRequestBuilderInterface
             'name' => $name,
             'company' => $company,
             'phone' => $phone,
+            'email' => $email,
         ];
 
         return $this;
@@ -311,7 +316,8 @@ class ShipmentRequestBuilder implements ShipmentRequestBuilderInterface
             $this->data['shipper']['streetLines'],
             $this->data['shipper']['name'],
             $this->data['shipper']['company'],
-            $this->data['shipper']['phone']
+            $this->data['shipper']['phone'],
+            $this->data['shipper']['email']
         );
 
         // Build recipient
@@ -322,7 +328,8 @@ class ShipmentRequestBuilder implements ShipmentRequestBuilderInterface
             $this->data['recipient']['streetLines'],
             $this->data['recipient']['name'],
             $this->data['recipient']['company'],
-            $this->data['recipient']['phone']
+            $this->data['recipient']['phone'],
+            $this->data['recipient']['email']
         );
 
         // build packages

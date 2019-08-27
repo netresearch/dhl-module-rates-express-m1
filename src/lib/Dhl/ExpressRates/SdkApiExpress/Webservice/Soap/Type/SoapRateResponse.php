@@ -13,7 +13,6 @@ use Dhl\Express\Webservice\Soap\Type\RateResponse\Provider;
  * @api
  * @package  Dhl\Express\Api
  * @author   Rico Sonntag <rico.sonntag@netresearch.de>
- * @license  https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link     https://www.netresearch.de/
  */
 class SoapRateResponse
@@ -23,14 +22,14 @@ class SoapRateResponse
     /**
      * Providers list.
      *
-     * @var array|Provider[]
+     * @var Provider|null
      */
     private $Provider;
 
     /**
-     * Returns the list of providers.
+     * Returns provider.
      *
-     * @return array|Provider[] Array of Provider
+     * @return Provider|null
      */
     public function getProvider()
     {

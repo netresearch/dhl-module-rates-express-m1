@@ -12,7 +12,6 @@ use Dhl\Express\Api\Data\ShipmentRequestInterface;
  *
  * @package  Dhl\Express\Api
  * @author   Ronny Gertler <ronny.gertler@netresearch.de>
- * @license  https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link     https://www.netresearch.de/
  */
 interface ShipmentRequestBuilderInterface
@@ -136,6 +135,7 @@ interface ShipmentRequestBuilderInterface
      * @param string $name
      * @param string $company
      * @param string $phone
+     * @param string|null $email
      *
      * @return self
      */
@@ -146,7 +146,8 @@ interface ShipmentRequestBuilderInterface
         array $streetLines,
         $name,
         $company,
-        $phone
+        $phone,
+        $email = null
     );
 
     /**
@@ -159,6 +160,7 @@ interface ShipmentRequestBuilderInterface
      * @param string $name
      * @param string $company
      * @param string $phone
+     * @param string|null $email
      *
      * @return self
      */
@@ -169,7 +171,8 @@ interface ShipmentRequestBuilderInterface
         array $streetLines,
         $name,
         $company,
-        $phone
+        $phone,
+        $email = null
     );
 
     /**

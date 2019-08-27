@@ -13,7 +13,6 @@ use Dhl\Express\Webservice\Soap\Type\RateResponse\Provider\Service\TotalNet;
  * @api
  * @package  Dhl\Express\Api
  * @author   Rico Sonntag <rico.sonntag@netresearch.de>
- * @license  https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link     https://www.netresearch.de/
  */
 class Service
@@ -23,16 +22,16 @@ class Service
     /**
      * Total net section.
      *
-     * @var TotalNet
+     * @var array|TotalNet[]
      */
-    private $TotalNet;
+    private $TotalNet = [];
 
     /**
-     * Charges section. Could be null!
+     * Charges section.
      *
-     * @var null|Charges
+     * @var array|Charges[]
      */
-    private $Charges;
+    private $Charges = [];
 
     /**
      * This is the estimated date/time the shipment will be delivered by for the rated shipment and product listed.
@@ -86,7 +85,7 @@ class Service
     /**
      * Returns the total net section.
      *
-     * @return TotalNet
+     * @return array|TotalNet[]
      */
     public function getTotalNet()
     {
@@ -96,7 +95,7 @@ class Service
     /**
      * Returns the charges section.
      *
-     * @return null|Charges
+     * @return array|Charges[]
      */
     public function getCharges()
     {

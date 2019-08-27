@@ -1,60 +1,70 @@
 <?php
+/**
+ * See LICENSE.md for license details.
+ */
 
 namespace Dhl\Express\Webservice\Soap\Type\Pickup;
 
-class docTypeRef_AddressType
+/**
+ * AddressType class.
+ *
+ * @api
+ * @package  Dhl\Express\Api
+ * @author   Ronny Gertler <ronny.gertler@netresearch.de>
+ * @link     https://www.netresearch.de/
+ */
+class AddressType
 {
-
     /**
-     * @var StreetLines $StreetLines
+     * @var string
      */
     protected $StreetLines;
 
     /**
-     * @var StreetName $StreetName
+     * @var string
      */
     protected $StreetName;
 
     /**
-     * @var StreetNumber $StreetNumber
+     * @var string
      */
     protected $StreetNumber;
 
     /**
-     * @var StreetLines2 $StreetLines2
+     * @var string
      */
     protected $StreetLines2;
 
     /**
-     * @var StreetLines3 $StreetLines3
+     * @var string
      */
     protected $StreetLines3;
 
     /**
-     * @var City $City
+     * @var string
      */
     protected $City;
 
     /**
-     * @var StateOrProvinceCode $StateOrProvinceCode
+     * @var string
      */
     protected $StateOrProvinceCode;
 
     /**
-     * @var PostalCode $PostalCode
+     * @var string
      */
     protected $PostalCode;
 
     /**
-     * @var CountryCode $CountryCode
+     * @var string
      */
     protected $CountryCode;
 
     /**
-     * @param StreetLines $StreetLines
-     * @param City $City
-     * @param PostalCode $PostalCode
-     * @param CountryCode $CountryCode
+     * @param string $StreetLines
+     * @param string $City
+     * @param string $PostalCode
+     * @param string $CountryCode
      */
     public function __construct($StreetLines, $City, $PostalCode, $CountryCode)
     {
@@ -65,7 +75,7 @@ class docTypeRef_AddressType
     }
 
     /**
-     * @return StreetLines
+     * @return string
      */
     public function getStreetLines()
     {
@@ -73,8 +83,8 @@ class docTypeRef_AddressType
     }
 
     /**
-     * @param StreetLines $StreetLines
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_AddressType
+     * @param string $StreetLines
+     * @return self
      */
     public function setStreetLines($StreetLines)
     {
@@ -83,7 +93,7 @@ class docTypeRef_AddressType
     }
 
     /**
-     * @return StreetName
+     * @return string
      */
     public function getStreetName()
     {
@@ -91,8 +101,8 @@ class docTypeRef_AddressType
     }
 
     /**
-     * @param StreetName $StreetName
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_AddressType
+     * @param string $StreetName
+     * @return self
      */
     public function setStreetName($StreetName)
     {
@@ -101,7 +111,7 @@ class docTypeRef_AddressType
     }
 
     /**
-     * @return StreetNumber
+     * @return string
      */
     public function getStreetNumber()
     {
@@ -109,8 +119,8 @@ class docTypeRef_AddressType
     }
 
     /**
-     * @param StreetNumber $StreetNumber
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_AddressType
+     * @param string $StreetNumber
+     * @return self
      */
     public function setStreetNumber($StreetNumber)
     {
@@ -119,7 +129,7 @@ class docTypeRef_AddressType
     }
 
     /**
-     * @return StreetLines2
+     * @return string
      */
     public function getStreetLines2()
     {
@@ -127,8 +137,8 @@ class docTypeRef_AddressType
     }
 
     /**
-     * @param StreetLines2 $StreetLines2
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_AddressType
+     * @param string $StreetLines2
+     * @return self
      */
     public function setStreetLines2($StreetLines2)
     {
@@ -137,7 +147,7 @@ class docTypeRef_AddressType
     }
 
     /**
-     * @return StreetLines3
+     * @return string
      */
     public function getStreetLines3()
     {
@@ -145,8 +155,8 @@ class docTypeRef_AddressType
     }
 
     /**
-     * @param StreetLines3 $StreetLines3
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_AddressType
+     * @param string $StreetLines3
+     * @return self
      */
     public function setStreetLines3($StreetLines3)
     {
@@ -155,7 +165,7 @@ class docTypeRef_AddressType
     }
 
     /**
-     * @return City
+     * @return string
      */
     public function getCity()
     {
@@ -163,8 +173,8 @@ class docTypeRef_AddressType
     }
 
     /**
-     * @param City $City
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_AddressType
+     * @param string $City
+     * @return self
      */
     public function setCity($City)
     {
@@ -173,7 +183,7 @@ class docTypeRef_AddressType
     }
 
     /**
-     * @return StateOrProvinceCode
+     * @return string
      */
     public function getStateOrProvinceCode()
     {
@@ -181,8 +191,8 @@ class docTypeRef_AddressType
     }
 
     /**
-     * @param StateOrProvinceCode $StateOrProvinceCode
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_AddressType
+     * @param string $StateOrProvinceCode
+     * @return self
      */
     public function setStateOrProvinceCode($StateOrProvinceCode)
     {
@@ -191,7 +201,7 @@ class docTypeRef_AddressType
     }
 
     /**
-     * @return PostalCode
+     * @return string
      */
     public function getPostalCode()
     {
@@ -199,8 +209,8 @@ class docTypeRef_AddressType
     }
 
     /**
-     * @param PostalCode $PostalCode
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_AddressType
+     * @param string $PostalCode
+     * @return self
      */
     public function setPostalCode($PostalCode)
     {
@@ -209,7 +219,7 @@ class docTypeRef_AddressType
     }
 
     /**
-     * @return CountryCode
+     * @return string
      */
     public function getCountryCode()
     {
@@ -217,8 +227,8 @@ class docTypeRef_AddressType
     }
 
     /**
-     * @param CountryCode $CountryCode
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_AddressType
+     * @param string $CountryCode
+     * @return self
      */
     public function setCountryCode($CountryCode)
     {

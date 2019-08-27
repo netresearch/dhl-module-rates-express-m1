@@ -3,7 +3,6 @@
  * See LICENSE.md for license details.
  */
 
-use Dhl\Express\Model\Data\ShippingProducts;
 use Mage_Shipping_Model_Carrier_Abstract as AbstractCarrier;
 
 /**
@@ -27,7 +26,7 @@ class Dhl_ExpressRates_Model_Rate_Processor_HandlingFee implements Dhl_ExpressRa
     protected $store;
 
     /**
-     * @var ShippingProducts
+     * @var Dhl_ExpressRates_Model_Data_ShippingProducts
      */
     protected $shippingProducts;
 
@@ -40,7 +39,7 @@ class Dhl_ExpressRates_Model_Rate_Processor_HandlingFee implements Dhl_ExpressRa
     {
         $this->moduleConfig = Mage::getSingleton('dhl_expressrates/config');
         $this->store = Mage::app()->getStore();
-        $this->shippingProducts = new ShippingProducts();
+        $this->shippingProducts = Mage::getSingleton('dhl_expressrates/data_shippingProducts');
     }
 
     /**

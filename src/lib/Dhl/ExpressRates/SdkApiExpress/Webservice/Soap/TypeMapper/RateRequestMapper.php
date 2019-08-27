@@ -19,6 +19,7 @@ use Dhl\Express\Webservice\Soap\Type\RateRequest\Packages\RequestedPackages;
 use Dhl\Express\Webservice\Soap\Type\RateRequest\RequestedShipment;
 use Dhl\Express\Webservice\Soap\Type\RateRequest\Ship;
 use Dhl\Express\Webservice\Soap\Type\SoapRateRequest;
+use InvalidArgumentException;
 
 /**
  * Rate Request Mapper.
@@ -28,7 +29,6 @@ use Dhl\Express\Webservice\Soap\Type\SoapRateRequest;
  * @package  Dhl\Express\Webservice
  * @author   Christoph Aßmann <christoph.assmann@netresearch.de>
  * @author   Ronny Gertler <ronny.gertler@netresearch.de>
- * @license  https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link     https://www.netresearch.de/
  */
 class RateRequestMapper
@@ -37,7 +37,7 @@ class RateRequestMapper
      * @param RateRequestInterface $rateRequest
      *
      * @return SoapRateRequest
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function map(RateRequestInterface $rateRequest)
     {
@@ -72,7 +72,11 @@ class RateRequestMapper
 
         // TODO If using Billing, the "account" should be left out
         $requestedShipment->setAccount($rateRequest->getShipperAccountNumber());
-        $requestedShipment->setPaymentInfo($rateRequest->getShipmentDetails()->getTermsOfTrade());
+
+        if ($rateRequest->getShipmentDetails()->getTermsOfTrade()) {
+            $requestedShipment->setPaymentInfo($rateRequest->getShipmentDetails()->getTermsOfTrade());
+        }
+
         $requestedShipment->setContent($rateRequest->getShipmentDetails()->getContentType());
         $requestedShipment->setRequestValueAddedServices(
             $rateRequest->getShipmentDetails()->isValueAddedServicesRequested()
@@ -152,7 +156,7 @@ class RateRequestMapper
      * @param array $packages The list of packages
      *
      * @return void
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     private function checkConsistentUOM(array $packages)
     {
@@ -170,13 +174,13 @@ class RateRequestMapper
             }
 
             if ($weightUom !== $package->getWeightUOM()) {
-                throw new \InvalidArgumentException(
+                throw new InvalidArgumentException(
                     'All packages weights must have a consistent unit of measurement.'
                 );
             }
 
             if ($dimensionsUOM !== $package->getDimensionsUOM()) {
-                throw new \InvalidArgumentException(
+                throw new InvalidArgumentException(
                     'All packages dimensions must have a consistent unit of measurement.'
                 );
             }
@@ -201,7 +205,7 @@ class RateRequestMapper
             return UnitOfMeasurement::SU;
         }
 
-        throw new \InvalidArgumentException(
+        throw new InvalidArgumentException(
             'All units of measurement have to be consistent (either metric system or US system).'
         );
     }

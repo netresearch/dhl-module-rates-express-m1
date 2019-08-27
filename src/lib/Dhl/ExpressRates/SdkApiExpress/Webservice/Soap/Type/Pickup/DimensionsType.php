@@ -1,29 +1,39 @@
 <?php
+/**
+ * See LICENSE.md for license details.
+ */
 
 namespace Dhl\Express\Webservice\Soap\Type\Pickup;
 
-class docTypeRef_DimensionsType
+/**
+ * DimensionsType class.
+ *
+ * @api
+ * @package  Dhl\Express\Api
+ * @author   Ronny Gertler <ronny.gertler@netresearch.de>
+ * @link     https://www.netresearch.de/
+ */
+class DimensionsType
 {
-
     /**
-     * @var Length $Length
+     * @var int
      */
     protected $Length;
 
     /**
-     * @var Width $Width
+     * @var int
      */
     protected $Width;
 
     /**
-     * @var Height $Height
+     * @var int
      */
     protected $Height;
 
     /**
-     * @param Length $Length
-     * @param Width $Width
-     * @param Height $Height
+     * @param int $Length
+     * @param int $Width
+     * @param int $Height
      */
     public function __construct($Length, $Width, $Height)
     {
@@ -33,7 +43,7 @@ class docTypeRef_DimensionsType
     }
 
     /**
-     * @return Length
+     * @return int
      */
     public function getLength()
     {
@@ -41,8 +51,8 @@ class docTypeRef_DimensionsType
     }
 
     /**
-     * @param Length $Length
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_DimensionsType
+     * @param int $Length
+     * @return self
      */
     public function setLength($Length)
     {
@@ -51,7 +61,7 @@ class docTypeRef_DimensionsType
     }
 
     /**
-     * @return Width
+     * @return int
      */
     public function getWidth()
     {
@@ -59,8 +69,8 @@ class docTypeRef_DimensionsType
     }
 
     /**
-     * @param Width $Width
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_DimensionsType
+     * @param int $Width
+     * @return self
      */
     public function setWidth($Width)
     {
@@ -69,7 +79,7 @@ class docTypeRef_DimensionsType
     }
 
     /**
-     * @return Height
+     * @return int
      */
     public function getHeight()
     {
@@ -77,8 +87,8 @@ class docTypeRef_DimensionsType
     }
 
     /**
-     * @param Height $Height
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_DimensionsType
+     * @param int $Height
+     * @return self
      */
     public function setHeight($Height)
     {

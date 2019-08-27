@@ -1,23 +1,35 @@
 <?php
+/**
+ * See LICENSE.md for license details.
+ */
 
 namespace Dhl\Express\Webservice\Soap\Type\Pickup;
 
-class docTypeRef_NotificationType2
+/**
+ * NotificationType class.
+ *
+ * @api
+ * @package  Dhl\Express\Api
+ * @author   Ronny Gertler <ronny.gertler@netresearch.de>
+ * @link     https://www.netresearch.de/
+ */
+class NotificationType
 {
+    const CLASSNAME = __CLASS__;
 
     /**
-     * @var Message $Message
+     * @var string
      */
     protected $Message;
 
     /**
-     * @var _x0040_code2 $code
+     * @var int
      */
     protected $code;
 
     /**
-     * @param Message $Message
-     * @param _x0040_code2 $code
+     * @param string $Message
+     * @param int $code
      */
     public function __construct($Message, $code)
     {
@@ -26,7 +38,7 @@ class docTypeRef_NotificationType2
     }
 
     /**
-     * @return Message
+     * @return string
      */
     public function getMessage()
     {
@@ -34,8 +46,8 @@ class docTypeRef_NotificationType2
     }
 
     /**
-     * @param Message $Message
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_NotificationType2
+     * @param string $Message
+     * @return self
      */
     public function setMessage($Message)
     {
@@ -44,7 +56,7 @@ class docTypeRef_NotificationType2
     }
 
     /**
-     * @return _x0040_code2
+     * @return int
      */
     public function getCode()
     {
@@ -52,8 +64,8 @@ class docTypeRef_NotificationType2
     }
 
     /**
-     * @param _x0040_code2 $code
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_NotificationType2
+     * @param int $code
+     * @return self
      */
     public function setCode($code)
     {

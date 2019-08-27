@@ -49,11 +49,13 @@ class Dhl_ExpressRates_Model_Webservice_RateAdapter
 
         try {
             $response = $this->client->performRatesRequest($requestModel);
-            return $this->responseDataMapper->mapResult($response);
+            $result = $this->responseDataMapper->mapResult($response);
         } catch (\Dhl\Express\Exception\RateRequestException $exception) {
             Mage::throwException('Error during rate request.');
         } catch (\Dhl\Express\Exception\SoapException $exception) {
             Mage::throwException('Error during rate request SOAP call.');
         }
+
+        return $result;
     }
 }

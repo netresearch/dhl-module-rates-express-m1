@@ -10,7 +10,7 @@ use Dhl\Express\Api\Data\Request\PackageInterface;
 use Dhl\Express\Api\Data\Request\RecipientInterface;
 use Dhl\Express\Api\Data\Request\Shipment\DangerousGoods\DryIceInterface;
 use Dhl\Express\Api\Data\Request\Shipment\ShipmentDetailsInterface;
-use Dhl\Express\Api\Data\Request\ShipperInterface;
+use Dhl\Express\Api\Data\Request\Shipment\ShipperInterface;
 
 /**
  * Shipment Request Interface.
@@ -21,7 +21,6 @@ use Dhl\Express\Api\Data\Request\ShipperInterface;
  * @package  Dhl\Express\Api
  * @author   Christoph Aßmann <christoph.assmann@netresearch.de>
  * @author   Ronny Gertler <ronny.gertler@netresearch.de>
- * @license  https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link     https://www.netresearch.de/
  */
 interface ShipmentRequestInterface

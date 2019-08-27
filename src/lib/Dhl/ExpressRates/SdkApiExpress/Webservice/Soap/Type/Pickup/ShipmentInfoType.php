@@ -1,31 +1,41 @@
 <?php
+/**
+ * See LICENSE.md for license details.
+ */
 
 namespace Dhl\Express\Webservice\Soap\Type\Pickup;
 
-class docTypeRef_ShipmentInfoType
+/**
+ * ShipmentInfoType class.
+ *
+ * @api
+ * @package  Dhl\Express\Api
+ * @author   Ronny Gertler <ronny.gertler@netresearch.de>
+ * @link     https://www.netresearch.de/
+ */
+class ShipmentInfoType
 {
-
     /**
-     * @var ServiceType $ServiceType
+     * @var string
      */
     protected $ServiceType;
 
     /**
-     * @var Billing $Billing
+     * @var Billing
      */
     protected $Billing;
 
     /**
-     * @var UnitOfMeasurement $UnitOfMeasurement
+     * @var string
      */
     protected $UnitOfMeasurement;
 
     /**
-     * @param ServiceType $ServiceType
+     * @param string $ServiceType
      * @param Billing $Billing
-     * @param UnitOfMeasurement $UnitOfMeasurement
+     * @param string $UnitOfMeasurement
      */
-    public function __construct($ServiceType, $Billing, $UnitOfMeasurement)
+    public function __construct($ServiceType, Billing $Billing, $UnitOfMeasurement)
     {
         $this->ServiceType = $ServiceType;
         $this->Billing = $Billing;
@@ -33,7 +43,7 @@ class docTypeRef_ShipmentInfoType
     }
 
     /**
-     * @return ServiceType
+     * @return string
      */
     public function getServiceType()
     {
@@ -41,8 +51,8 @@ class docTypeRef_ShipmentInfoType
     }
 
     /**
-     * @param ServiceType $ServiceType
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_ShipmentInfoType
+     * @param string $ServiceType
+     * @return self
      */
     public function setServiceType($ServiceType)
     {
@@ -60,16 +70,16 @@ class docTypeRef_ShipmentInfoType
 
     /**
      * @param Billing $Billing
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_ShipmentInfoType
+     * @return self
      */
-    public function setBilling($Billing)
+    public function setBilling(Billing $Billing)
     {
         $this->Billing = $Billing;
         return $this;
     }
 
     /**
-     * @return UnitOfMeasurement
+     * @return string
      */
     public function getUnitOfMeasurement()
     {
@@ -77,8 +87,8 @@ class docTypeRef_ShipmentInfoType
     }
 
     /**
-     * @param UnitOfMeasurement $UnitOfMeasurement
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_ShipmentInfoType
+     * @param string $UnitOfMeasurement
+     * @return self
      */
     public function setUnitOfMeasurement($UnitOfMeasurement)
     {

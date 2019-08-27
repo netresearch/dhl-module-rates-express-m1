@@ -2,7 +2,6 @@
 /**
  * See LICENSE.md for license details.
  */
-use Dhl\Express\Model\Data\ShippingProductNames;
 
 /**
  * Class Dhl_ExpressRates_Model_Adminhtml_System_Config_Source_Internationalproducts
@@ -17,7 +16,7 @@ class Dhl_ExpressRates_Model_Adminhtml_System_Config_Source_Internationalproduct
     const DELIMITER = ';';
 
     /**
-     * @var ShippingProductNames
+     * @var Dhl_ExpressRates_Model_Data_ShippingProductNames
      */
     protected $shippingProductNames;
 
@@ -26,7 +25,7 @@ class Dhl_ExpressRates_Model_Adminhtml_System_Config_Source_Internationalproduct
      */
     public function __construct()
     {
-        $this->shippingProductNames = new ShippingProductNames();
+        $this->shippingProductNames = Mage::getSingleton('dhl_expressrates/data_shippingProductNames');
     }
 
     /**

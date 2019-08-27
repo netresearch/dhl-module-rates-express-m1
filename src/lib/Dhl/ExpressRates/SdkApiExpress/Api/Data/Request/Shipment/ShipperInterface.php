@@ -3,7 +3,7 @@
  * See LICENSE.md for license details.
  */
 
-namespace Dhl\Express\Api\Data\Request;
+namespace Dhl\Express\Api\Data\Request\Shipment;
 
 /**
  * Shipper Interface.
@@ -11,7 +11,6 @@ namespace Dhl\Express\Api\Data\Request;
  * @api
  * @package  Dhl\Express\Api
  * @author   Ronny Gertler <ronny.gertler@netresearch.de>
- * @license  https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link     https://www.netresearch.de/
  */
 interface ShipperInterface
@@ -64,4 +63,11 @@ interface ShipperInterface
      * @return string
      */
     public function getCountryCode();
+
+    /**
+     * Returns the shippers email.
+     *
+     * @return string
+     */
+    public function getEmail();
 }

@@ -21,13 +21,12 @@ use Psr\Log\LoggerInterface;
  *
  * @package  Dhl\Express\Webservice
  * @author   Ronny Gertler <ronny.gertler@netresearch.de>
- * @license  https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link     https://www.netresearch.de/
  */
 class RateService implements RateServiceInterface
 {
     /**
-     * @var RateServiceAdapterInterface
+     * @var RateServiceAdapterInterface|TraceableInterface
      */
     private $adapter;
 

@@ -3,24 +3,22 @@
  * See LICENSE.md for license details.
  */
 
-namespace Dhl\Express\Model\Data;
-
 use Dhl\Express\Api\Data\ShippingProductsInterface as ShippingProducts;
 
 /**
- * ShippingProductNames.
+ * Dhl_ExpressRates_Model_Data_ShippingProductNames
  *
- * @package  Dhl\Express\Model\Data
+ * @package  Dhl\Express\Model
  * @author   Andreas Müller <andreas.mueller@netresearch.de>
  * @license  https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link     https://www.netresearch.de/
  */
-class ShippingProductNames
+class Dhl_ExpressRates_Model_Data_ShippingProductNames
 {
     /**
      * International Express product names
      */
-    protected  $productNamesInternational = array(
+    protected $productNamesInternational = array(
         'EXPRESS WORLDWIDE' => array(
             ShippingProducts::CODE_INTERNATIONAL_WORLDWIDE_DUTIABLE,
             ShippingProducts::CODE_INTERNATIONAL_WORLDWIDE_DUTYFREE_OUTSIDE_EU,
@@ -49,7 +47,7 @@ class ShippingProductNames
     );
 
     /**
-     * @return array
+     * @return string[][]
      */
     public function getProductNamesInternational()
     {
@@ -57,7 +55,7 @@ class ShippingProductNames
     }
 
     /**
-     * @return array
+     * @return string[][]
      */
     public function getProductNamesDomestic()
     {

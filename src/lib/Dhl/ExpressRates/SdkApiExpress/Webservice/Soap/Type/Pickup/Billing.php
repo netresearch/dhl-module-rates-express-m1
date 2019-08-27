@@ -1,28 +1,38 @@
 <?php
+/**
+ * See LICENSE.md for license details.
+ */
 
 namespace Dhl\Express\Webservice\Soap\Type\Pickup;
 
+/**
+ * Billing class.
+ *
+ * @api
+ * @package  Dhl\Express\Api
+ * @author   Ronny Gertler <ronny.gertler@netresearch.de>
+ * @link     https://www.netresearch.de/
+ */
 class Billing
 {
-
     /**
-     * @var Account $ShipperAccountNumber
+     * @var string
      */
     protected $ShipperAccountNumber;
 
     /**
-     * @var ShipmentPaymentType $ShippingPaymentType
+     * @var string
      */
     protected $ShippingPaymentType;
 
     /**
-     * @var Account $BillingAccountNumber
+     * @var string
      */
     protected $BillingAccountNumber;
 
     /**
-     * @param Account $ShipperAccountNumber
-     * @param ShipmentPaymentType $ShippingPaymentType
+     * @param string $ShipperAccountNumber
+     * @param string $ShippingPaymentType
      */
     public function __construct($ShipperAccountNumber, $ShippingPaymentType)
     {
@@ -31,7 +41,7 @@ class Billing
     }
 
     /**
-     * @return Account
+     * @return string
      */
     public function getShipperAccountNumber()
     {
@@ -39,8 +49,8 @@ class Billing
     }
 
     /**
-     * @param Account $ShipperAccountNumber
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\Billing
+     * @param string $ShipperAccountNumber
+     * @return self
      */
     public function setShipperAccountNumber($ShipperAccountNumber)
     {
@@ -49,7 +59,7 @@ class Billing
     }
 
     /**
-     * @return ShipmentPaymentType
+     * @return string
      */
     public function getShippingPaymentType()
     {
@@ -57,8 +67,8 @@ class Billing
     }
 
     /**
-     * @param ShipmentPaymentType $ShippingPaymentType
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\Billing
+     * @param string $ShippingPaymentType
+     * @return self
      */
     public function setShippingPaymentType($ShippingPaymentType)
     {
@@ -67,7 +77,7 @@ class Billing
     }
 
     /**
-     * @return Account
+     * @return string
      */
     public function getBillingAccountNumber()
     {
@@ -75,8 +85,8 @@ class Billing
     }
 
     /**
-     * @param Account $BillingAccountNumber
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\Billing
+     * @param string $BillingAccountNumber
+     * @return self
      */
     public function setBillingAccountNumber($BillingAccountNumber)
     {

@@ -10,7 +10,6 @@ namespace Dhl\Express\Webservice\Soap\Type\RateResponse\Provider\Service;
  * @api
  * @package  Dhl\Express\Api
  * @author   Rico Sonntag <rico.sonntag@netresearch.de>
- * @license  https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link     https://www.netresearch.de/
  */
 class TotalNet
@@ -32,6 +31,18 @@ class TotalNet
     private $Amount;
 
     /**
+     * The currency type the total is expressed in.
+     *
+     * Possible values:
+     * - ‘BILLC’, billing currency
+     * - ‘PULCL’, country public rates currency
+     * - ‘BASEC’, base currency
+     *
+     * @var string $type
+     */
+    protected $type = '';
+
+    /**
      * Returns the currency.
      *
      * @return string
@@ -49,5 +60,15 @@ class TotalNet
     public function getAmount()
     {
         return (float) $this->Amount;
+    }
+
+    /**
+     * Returns the currency type.
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

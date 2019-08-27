@@ -23,6 +23,6 @@ class SoapClientFactoryTest extends \PHPUnit\Framework\TestCase
      */
     public function defaultWsdlIsAvailable()
     {
-        self::assertInternalType('string', SoapClientFactory::WSDL);
+        self::assertInternalType('string', SoapClientFactory::RATEBOOK_PROD_WSDL);
     }
 }

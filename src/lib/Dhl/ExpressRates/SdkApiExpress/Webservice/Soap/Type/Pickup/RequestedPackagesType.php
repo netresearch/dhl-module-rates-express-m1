@@ -1,37 +1,47 @@
 <?php
+/**
+ * See LICENSE.md for license details.
+ */
 
 namespace Dhl\Express\Webservice\Soap\Type\Pickup;
 
-class docTypeRef_RequestedPackagesType
+/**
+ * RequestedPackagesType class.
+ *
+ * @api
+ * @package  Dhl\Express\Api
+ * @author   Ronny Gertler <ronny.gertler@netresearch.de>
+ * @link     https://www.netresearch.de/
+ */
+class RequestedPackagesType
 {
-
     /**
-     * @var Weight $Weight
+     * @var float
      */
     protected $Weight;
 
     /**
-     * @var docTypeRef_DimensionsType $Dimensions
+     * @var DimensionsType
      */
     protected $Dimensions;
 
     /**
-     * @var CustomerReferences $CustomerReferences
+     * @var string
      */
     protected $CustomerReferences;
 
     /**
-     * @var _x0040_number $number
+     * @var int
      */
     protected $number;
 
     /**
-     * @param Weight $Weight
-     * @param docTypeRef_DimensionsType $Dimensions
-     * @param CustomerReferences $CustomerReferences
-     * @param _x0040_number $number
+     * @param float $Weight
+     * @param DimensionsType $Dimensions
+     * @param string $CustomerReferences
+     * @param int $number
      */
-    public function __construct($Weight, $Dimensions, $CustomerReferences, $number)
+    public function __construct($Weight, DimensionsType $Dimensions, $CustomerReferences, $number)
     {
         $this->Weight = $Weight;
         $this->Dimensions = $Dimensions;
@@ -40,7 +50,7 @@ class docTypeRef_RequestedPackagesType
     }
 
     /**
-     * @return Weight
+     * @return float
      */
     public function getWeight()
     {
@@ -48,8 +58,8 @@ class docTypeRef_RequestedPackagesType
     }
 
     /**
-     * @param Weight $Weight
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_RequestedPackagesType
+     * @param float $Weight
+     * @return self
      */
     public function setWeight($Weight)
     {
@@ -58,7 +68,7 @@ class docTypeRef_RequestedPackagesType
     }
 
     /**
-     * @return docTypeRef_DimensionsType
+     * @return DimensionsType
      */
     public function getDimensions()
     {
@@ -66,17 +76,17 @@ class docTypeRef_RequestedPackagesType
     }
 
     /**
-     * @param docTypeRef_DimensionsType $Dimensions
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_RequestedPackagesType
+     * @param DimensionsType $Dimensions
+     * @return self
      */
-    public function setDimensions($Dimensions)
+    public function setDimensions(DimensionsType $Dimensions)
     {
         $this->Dimensions = $Dimensions;
         return $this;
     }
 
     /**
-     * @return CustomerReferences
+     * @return string
      */
     public function getCustomerReferences()
     {
@@ -84,8 +94,8 @@ class docTypeRef_RequestedPackagesType
     }
 
     /**
-     * @param CustomerReferences $CustomerReferences
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_RequestedPackagesType
+     * @param string $CustomerReferences
+     * @return self
      */
     public function setCustomerReferences($CustomerReferences)
     {
@@ -94,7 +104,7 @@ class docTypeRef_RequestedPackagesType
     }
 
     /**
-     * @return _x0040_number
+     * @return int
      */
     public function getNumber()
     {
@@ -102,8 +112,8 @@ class docTypeRef_RequestedPackagesType
     }
 
     /**
-     * @param _x0040_number $number
-     * @return \Dhl\Express\Webservice\Soap\Type\Pickup\docTypeRef_RequestedPackagesType
+     * @param int $number
+     * @return self
      */
     public function setNumber($number)
     {

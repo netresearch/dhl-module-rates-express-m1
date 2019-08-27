@@ -2,6 +2,7 @@
 /**
  * See LICENSE.md for license details.
  */
+
 namespace Dhl\Express\Api;
 
 use Psr\Log\LoggerInterface;
@@ -14,50 +15,52 @@ use Psr\Log\LoggerInterface;
  * @api
  * @package  Dhl\Express\Api
  * @author   Christoph Aßmann <christoph.assmann@netresearch.de>
- * @license  https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link     https://www.netresearch.de/
  */
 interface ServiceFactoryInterface
 {
     /**
-     * @param string          $username
-     * @param string          $password
+     * @param string $username
+     * @param string $password
      * @param LoggerInterface $logger
+     * @param $sandpit
      *
      * @return RateServiceInterface
      */
     public function createRateService(
         $username,
         $password,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        $sandpit = false
     );
 
     /**
-     * @param string          $username
-     * @param string          $password
+     * @param string $username
+     * @param string $password
      * @param LoggerInterface $logger
+     * @param $sandpit
+     *
      * @return ShipmentServiceInterface
      */
     public function createShipmentService(
         $username,
         $password,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        $sandpit = false
     );
 
     /**
-     * @param string          $username
-     * @param string          $password
+     * @param string $username
+     * @param string $password
      * @param LoggerInterface $logger
+     * @param $sandpit
+     *
      * @return TrackingServiceInterface
      */
     public function createTrackingService(
         $username,
         $password,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        $sandpit = false
     );
-
-    /**
-     * @return PickupServiceInterface
-     */
-    public function createPickupService();
 }
