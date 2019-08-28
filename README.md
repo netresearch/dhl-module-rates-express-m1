@@ -4,7 +4,7 @@ The DHL Express Rates at Checkout extension for Magento® 1 integrates the DHL E
 
 ## Facts
 
-- version: 1.0.0
+- version: 1.0.1
 - extension key: Dhl_ExpressRates
 
 ## Requirements and Compatibility
