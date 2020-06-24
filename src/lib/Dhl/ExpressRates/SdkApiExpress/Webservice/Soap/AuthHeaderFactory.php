@@ -32,6 +32,7 @@ class AuthHeaderFactory
     public function create($username, $password)
     {
         $created = gmdate('Y-m-d\TH:i:s\Z');
+        // phpcs:ignore
         $nonce = mt_rand();
         $passdigest = base64_encode(
             pack('H*', sha1(pack('H*', $nonce) . pack('a*', $created) . pack('a*', $password)))
