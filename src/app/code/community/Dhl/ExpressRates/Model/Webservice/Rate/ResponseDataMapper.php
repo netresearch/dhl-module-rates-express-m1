@@ -10,7 +10,7 @@ use Dhl\Express\Model\Response\Rate\Rate;
  * Class Dhl_ExpressRates_Model_Webservice_Rate_ResponseDataMapper
  *
  * @package   Dhl\ExpressRates\Model|Webservice\Rate
- * @link      http://www.netresearch.de/
+ * @link      https://www.netresearch.de/
  */
 class Dhl_ExpressRates_Model_Webservice_Rate_ResponseDataMapper
 {

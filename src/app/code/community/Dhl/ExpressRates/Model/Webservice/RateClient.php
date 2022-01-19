@@ -10,7 +10,7 @@ use Dhl\Express\Api\Data\RateResponseInterface;
  * Class Dhl_ExpressRates_Model_Webservice_RateClient
  *
  * @package Dhl\ExpressRates\Model|Webservice
- * @link http://www.netresearch.de/
+ * @link https://www.netresearch.de/
  */
 class Dhl_ExpressRates_Model_Webservice_RateClient
 {

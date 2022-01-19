@@ -8,7 +8,7 @@
  *
  * @package   Dhl\ExpressRates\Model
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link      http://www.netresearch.de/
+ * @link      https://www.netresearch.de/
  */
 class Dhl_ExpressRates_Model_Logger_Mage extends \Psr\Log\AbstractLogger
 {

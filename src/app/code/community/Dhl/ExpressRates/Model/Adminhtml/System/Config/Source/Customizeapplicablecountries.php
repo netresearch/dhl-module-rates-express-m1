@@ -7,8 +7,7 @@
  * Class Dhl_ExpressRates_Model_Adminhtml_System_Config_Source_Customizeapplicablecountries
  *
  * @package Dhl\ExpressRates\Model\Backend\Config\Source
- * @copyright 2018 Netresearch GmbH & Co. KG
- * @link http://www.netresearch.de/
+ * @link https://www.netresearch.de/
  */
 class Dhl_ExpressRates_Model_Adminhtml_System_Config_Source_Customizeapplicablecountries
 {
