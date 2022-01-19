@@ -11,7 +11,6 @@ use Dhl\Express\Api\Data\Request\Shipment\DangerousGoods\DryIceInterface;
  * Dry Ice.
  *
  * @package  Dhl\Express\Model
- * @author   Ronny Gertler <ronny.gertler@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 class DryIce implements DryIceInterface

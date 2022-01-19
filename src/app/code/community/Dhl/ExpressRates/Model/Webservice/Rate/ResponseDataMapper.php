@@ -10,8 +10,6 @@ use Dhl\Express\Model\Response\Rate\Rate;
  * Class Dhl_ExpressRates_Model_Webservice_Rate_ResponseDataMapper
  *
  * @package   Dhl\ExpressRates\Model|Webservice\Rate
- * @author    Paul Siedler <paul.siedler@netresearch.de>
- * @copyright 2018 Netresearch GmbH & Co. KG
  * @link      http://www.netresearch.de/
  */
 class Dhl_ExpressRates_Model_Webservice_Rate_ResponseDataMapper
@@ -51,9 +49,7 @@ class Dhl_ExpressRates_Model_Webservice_Rate_ResponseDataMapper
         /** @var Mage_Shipping_Model_Rate_Result_Method[] $result */
         $result = array();
 
-        $isCheckoutDeliveryTimeEnabled = $this->moduleConfig->isCheckoutDeliveryTimeEnabled(
-            Mage::app()->getStore()->getWebsiteId()
-        );
+        $isCheckoutDeliveryTimeEnabled = $this->moduleConfig->isCheckoutDeliveryTimeEnabled(Mage::app()->getStore());
 
         /** @var Rate $rate */
         foreach ($rateResponse->getRates() as $rate) {
@@ -63,7 +59,7 @@ class Dhl_ExpressRates_Model_Webservice_Rate_ResponseDataMapper
                 'shipping/rate_result_method',
                 array(
                     'carrier'            => Dhl_ExpressRates_Model_Carrier_Express::CODE,
-                    'carrier_title'      => $this->moduleConfig->getTitle(),
+                    'carrier_title'      => $this->moduleConfig->getTitle(Mage::app()->getStore()),
                     'method'             => $rate->getServiceCode(),
                     'method_title'       => $rate->getLabel(),
                     'method_description' => $isCheckoutDeliveryTimeEnabled

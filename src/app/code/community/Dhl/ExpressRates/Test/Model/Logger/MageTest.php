@@ -7,7 +7,6 @@
  * Class Dhl_ExpressRates_Test_Model_Loger_MageTest
  *
  * @package Dhl\ExpressRates\Test
- * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link    https://www.netresearch.de/
  */

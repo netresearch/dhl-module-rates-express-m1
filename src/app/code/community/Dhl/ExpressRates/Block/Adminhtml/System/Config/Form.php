@@ -7,7 +7,6 @@
  * Dhl_ExpressRates_Block_Adminhtml_System_Config_Form
  *
  * @package Dhl\ExpressRates\Block
- * @author  Andreas Müller <andreas.mueller@netresearch.de>
  * @license https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link    https://www.netresearch.de/
  */

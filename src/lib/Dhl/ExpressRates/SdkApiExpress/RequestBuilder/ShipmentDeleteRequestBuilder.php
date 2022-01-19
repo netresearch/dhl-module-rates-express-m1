@@ -11,7 +11,6 @@ use Dhl\Express\Model\ShipmentDeleteRequest;
  * The shipment delete request builder.
  *
  * @package  Dhl\Express\RequestBuilder
- * @author   Rico Sonntag <rico.sonntag@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 class ShipmentDeleteRequestBuilder implements ShipmentDeleteRequestBuilderInterface

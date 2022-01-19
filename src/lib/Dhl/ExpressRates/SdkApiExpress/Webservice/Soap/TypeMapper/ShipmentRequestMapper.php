@@ -31,7 +31,6 @@ use Dhl\Express\Webservice\Soap\Type\SoapShipmentRequest;
  * Transform the shipment request object into SOAP types suitable for API communication.
  *
  * @package  Dhl\Express\Webservice
- * @author   Ronny Gertler <ronny.gertler@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 class ShipmentRequestMapper

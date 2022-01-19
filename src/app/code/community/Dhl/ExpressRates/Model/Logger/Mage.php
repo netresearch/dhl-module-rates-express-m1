@@ -7,8 +7,6 @@
  * Dhl_ExpressRates_Model_Logger_Mage
  *
  * @package   Dhl\ExpressRates\Model
- * @author    Benjamin Heuer <benjamin.heuer@netresearch.de>
- * @author    Christoph Aßmann <christoph.assmann@netresearch.de>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      http://www.netresearch.de/
  */

@@ -23,8 +23,6 @@ use Dhl\Express\Webservice\Soap\Type\SoapPickupRequest;
  * Transform the pickup request object into SOAP types suitable for API communication.
  *
  * @package  Dhl\Express\Webservice
- * @author   Ronny Gertler <ronny.gertler@netresearch.de>
- * @author   Ronny Gertler <ronny.gertler@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 class PickupRequestMapper

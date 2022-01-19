@@ -11,7 +11,6 @@ use Dhl\Express\Api\Data\Response\Rate\RateInterface;
  *
  * @api
  * @package  Dhl\Express\Api
- * @author   Rico Sonntag <rico.sonntag@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 class Rate implements RateInterface

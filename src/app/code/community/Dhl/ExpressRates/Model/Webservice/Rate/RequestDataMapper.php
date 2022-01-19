@@ -9,8 +9,6 @@ use Dhl\Express\Model\Request\Rate\ShipmentDetails;
  * Class Dhl_ExpressRates_Model_Webservice_Rate_RequestDataMapper
  *
  * @package Dhl\ExpressRates\Webservice\Rate
- * @author Paul Siedler <paul.siedler@netresearch.de>
- * @copyright 2018 Netresearch GmbH & Co. KG
  * @link http://www.netresearch.de/
  */
 class Dhl_ExpressRates_Model_Webservice_Rate_RequestDataMapper
@@ -95,11 +93,11 @@ class Dhl_ExpressRates_Model_Webservice_Rate_RequestDataMapper
             ->setTermsOfTrade($this->moduleConfig->getTermsOfTrade($request->getStoreId()))
             ->setIsValueAddedServicesRequested(true)
             ->setNextBusinessDayIndicator(true)
-            ->setReadyAtTimestamp($this->pickupTime->getReadyAtTimestamp())
+            ->setReadyAtTimestamp($this->pickupTime->getReadyAtTimestamp($request->getStoreId()))
             ->setShipperAccountNumber($this->moduleConfig->getAccountNumber($request->getStoreId()));
 
-        if ($this->moduleConfig->isInsured() &&
-            $request->getPackagePhysicalValue() >= $this->moduleConfig->insuranceFromValue()
+        if ($this->moduleConfig->isInsured($request->getStoreId()) &&
+            $request->getPackagePhysicalValue() >= $this->moduleConfig->insuranceFromValue($request->getStoreId())
         ) {
             /** @var Mage_Directory_Model_Currency $baseCurrency*/
             $baseCurrency = $request->getBaseCurrency();
@@ -124,7 +122,7 @@ class Dhl_ExpressRates_Model_Webservice_Rate_RequestDataMapper
     protected function calculatePackageWeight(Mage_Shipping_Model_Rate_Request $request)
     {
         $itemWeight      = (float) $request->getPackageWeight();
-        $packagingWeight = $this->moduleConfig->getPackagingWeight($request->getWebsiteId());
+        $packagingWeight = $this->moduleConfig->getPackagingWeight($request->getStoreId());
 
         return $itemWeight + $packagingWeight;
     }

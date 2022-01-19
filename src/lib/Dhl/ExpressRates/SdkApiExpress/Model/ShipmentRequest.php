@@ -19,7 +19,6 @@ use Dhl\Express\Model\Request\Shipment\Shipper;
  * Shipment Request.
  *
  * @package  Dhl\Express\Model
- * @author   Ronny Gertler <ronny.gertler@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 class ShipmentRequest implements ShipmentRequestInterface

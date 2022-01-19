@@ -14,7 +14,6 @@ use Dhl\Express\Model\TrackingRequest;
  * Tracking Request Builder.
  *
  * @package  Dhl\Express\RequestBuilder
- * @author   Ronny Gertler <ronny.gertler@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 class TrackingRequestBuilder implements TrackingRequestBuilderInterface

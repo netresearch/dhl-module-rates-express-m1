@@ -11,7 +11,6 @@ namespace Dhl\Express\Webservice\Soap;
  * Prepare the SOAP client for web service access.
  *
  * @package  Dhl\Express\Webservice
- * @author   Christoph Aßmann <christoph.assmann@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 class AuthHeaderFactory
@@ -32,8 +31,7 @@ class AuthHeaderFactory
     public function create($username, $password)
     {
         $created = gmdate('Y-m-d\TH:i:s\Z');
-        // phpcs:ignore
-        $nonce = mt_rand();
+        $nonce = random_int(0, mt_getrandmax());
         $passdigest = base64_encode(
             pack('H*', sha1(pack('H*', $nonce) . pack('a*', $created) . pack('a*', $password)))
         );

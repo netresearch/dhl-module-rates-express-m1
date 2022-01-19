@@ -21,7 +21,6 @@ use Psr\Log\LoggerInterface;
  * "trackShipmentRequest"
  *
  * @package  Dhl\Express\Webservice
- * @author   Ronny Gertler <ronny.gertler@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 class TrackingService implements TrackingServiceInterface

@@ -9,7 +9,6 @@ namespace Dhl\Express\Webservice\Soap\Type\RateResponse\Provider\Service\Charges
  *
  * @api
  * @package  Dhl\Express\Api
- * @author   Rico Sonntag <rico.sonntag@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 class Charge

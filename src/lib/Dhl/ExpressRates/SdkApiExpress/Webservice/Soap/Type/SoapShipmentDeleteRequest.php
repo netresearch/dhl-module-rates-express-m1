@@ -13,7 +13,6 @@ use Dhl\Express\Webservice\Soap\Type\ShipmentRequest\Ship\Contact\PersonName;
  *
  * @api
  * @package  Dhl\Express\Api
- * @author   Rico Sonntag <rico.sonntag@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 class SoapShipmentDeleteRequest

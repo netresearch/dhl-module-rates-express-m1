@@ -20,7 +20,6 @@ use Psr\Log\LoggerInterface;
  * "RateRequest" and "RateDeleteRequest".
  *
  * @package  Dhl\Express\Webservice
- * @author   Ronny Gertler <ronny.gertler@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 class RateService implements RateServiceInterface

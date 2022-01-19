@@ -14,7 +14,6 @@ use Psr\Log\LoggerInterface;
  *
  * @api
  * @package  Dhl\Express\Api
- * @author   Christoph Aßmann <christoph.assmann@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 interface ServiceFactoryInterface

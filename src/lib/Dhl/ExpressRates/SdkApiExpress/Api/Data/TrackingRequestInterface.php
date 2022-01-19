@@ -14,7 +14,6 @@ use Dhl\Express\Api\Data\Request\Tracking\MessageInterface;
  *
  * @api
  * @package  Dhl\Express\Api
- * @author   Ronny Gertler <ronny.gertler@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 interface TrackingRequestInterface

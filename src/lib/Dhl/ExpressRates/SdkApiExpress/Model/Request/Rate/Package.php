@@ -10,7 +10,6 @@ use Dhl\Express\Api\Data\Request\Rate\PackageInterface;
  * Package.
  *
  * @package  Dhl\Express\Model
- * @author   Ronny Gertler <ronny.gertler@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 class Package implements PackageInterface

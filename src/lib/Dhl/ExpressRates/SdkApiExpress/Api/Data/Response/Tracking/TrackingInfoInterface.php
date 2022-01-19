@@ -15,7 +15,6 @@ use Dhl\Express\Api\Data\Response\Tracking\TrackingInfo\ShipmentEventInterface;
  *
  * @api
  * @package  Dhl\Express\Api
- * @author   Ronny Gertler <ronny.gertler@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 interface TrackingInfoInterface

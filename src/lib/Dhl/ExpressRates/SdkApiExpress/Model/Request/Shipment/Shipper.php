@@ -11,7 +11,6 @@ use Dhl\Express\Api\Data\Request\Shipment\ShipperInterface;
  * Shipper.
  *
  * @package  Dhl\Express\Model
- * @author   Ronny Gertler <ronny.gertler@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 class Shipper implements ShipperInterface

@@ -7,7 +7,6 @@
  * Dhl_ExpressRates_Block_Checkout_Onepage_Shipping_Method_Service
  *
  * @package Dhl\ExpressRates\Block
- * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link    https://www.netresearch.de/
  */

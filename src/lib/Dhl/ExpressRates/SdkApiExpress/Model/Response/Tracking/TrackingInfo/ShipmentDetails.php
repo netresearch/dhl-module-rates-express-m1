@@ -11,7 +11,6 @@ use Dhl\Express\Api\Data\Response\Tracking\TrackingInfo\ShipmentDetailsInterface
  * Shipping details class.
  *
  * @package  Dhl\Express\Model
- * @author   Ronny Gertler <ronny.gertler@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 class ShipmentDetails implements ShipmentDetailsInterface

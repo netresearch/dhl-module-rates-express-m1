@@ -7,7 +7,6 @@
  * Dhl_ExpressRates_Model_Rate_PickupTime
  *
  * @package Dhl\ExpressRates\Model\Rate
- * @author  Rico Sonntag <rico.sonntag@netresearch.de>
  * @license https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link    https://www.netresearch.de/
  */
@@ -38,12 +37,13 @@ class Dhl_ExpressRates_Model_Rate_PickupTime
      * Returns the timestamp when the offer is ready. When the current time is after today's cut off time,
      * tomorrows cut off time will be returned. If it's not, today's cut off time will be returned.
      *
+     * @param mixed $store
      * @return int
      */
-    public function getReadyAtTimestamp()
+    public function getReadyAtTimestamp($store = null)
     {
-        $cutOffTimeRaw = explode(',', $this->moduleConfig->getCutOffTime());
-        $pickUpTimeRaw = explode(',', $this->moduleConfig->getPickupTime());
+        $cutOffTimeRaw = explode(',', $this->moduleConfig->getCutOffTime($store));
+        $pickUpTimeRaw = explode(',', $this->moduleConfig->getPickupTime($store));
 
         $cutOffTime = new \DateTime($this->date->date());
         $cutOffTime->setTime((int) $cutOffTimeRaw[0], (int) $cutOffTimeRaw[1], (int) $cutOffTimeRaw[2]);

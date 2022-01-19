@@ -9,7 +9,6 @@ use Dhl\Express\Api\Data\ShippingProductsInterface as ShippingProducts;
  * Dhl_ExpressRates_Model_Data_ShippingProducts
  *
  * @package  Dhl\Express\Model
- * @author   Andreas Müller <andreas.mueller@netresearch.de>
  * @license  https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link     https://www.netresearch.de/
  */

@@ -9,7 +9,6 @@ use Mage_Shipping_Model_Carrier_Abstract as AbstractCarrier;
  * Dhl_ExpressRates_Model_Rate_Processor_HandlingFee
  *
  * @package Dhl\ExpressRates\Model\Rate
- * @author  Andreas Müller <andreas.mueller@netresearch.de>
  * @license https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link    https://www.netresearch.de/
  */

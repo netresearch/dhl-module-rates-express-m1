@@ -11,7 +11,6 @@ use Dhl\Express\Webservice\Soap\ValueInterface;
  *
  * @api
  * @package  Dhl\Express\Api
- * @author   Rico Sonntag <rico.sonntag@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 class Dimension implements ValueInterface

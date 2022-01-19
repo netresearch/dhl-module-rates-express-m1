@@ -11,7 +11,6 @@ use Dhl\Express\Webservice\Soap\Type\ShipmentRequest\Ship\Contact as ShipmentCon
  *
  * @api
  * @package  Dhl\Express\Api
- * @author   Rico Sonntag <rico.sonntag@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 class BuyerContact extends ShipmentContact

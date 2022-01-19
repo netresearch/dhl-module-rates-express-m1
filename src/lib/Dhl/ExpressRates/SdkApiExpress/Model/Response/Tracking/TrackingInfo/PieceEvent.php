@@ -11,7 +11,6 @@ use Dhl\Express\Api\Data\Response\Tracking\TrackingInfo\PieceEventInterface;
  * Piece event class.
  *
  * @package  Dhl\Express\Model
- * @author   Ronny Gertler <ronny.gertler@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 class PieceEvent implements PieceEventInterface

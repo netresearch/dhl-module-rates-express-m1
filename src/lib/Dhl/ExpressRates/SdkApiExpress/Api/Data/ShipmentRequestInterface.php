@@ -19,8 +19,6 @@ use Dhl\Express\Api\Data\Request\Shipment\ShipperInterface;
  *
  * @api
  * @package  Dhl\Express\Api
- * @author   Christoph Aßmann <christoph.assmann@netresearch.de>
- * @author   Ronny Gertler <ronny.gertler@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 interface ShipmentRequestInterface

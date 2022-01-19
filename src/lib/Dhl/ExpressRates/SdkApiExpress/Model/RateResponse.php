@@ -10,7 +10,6 @@ use Dhl\Express\Api\Data\RateResponseInterface;
  * Rate response.
  *
  * @package  Dhl\Express\Model
- * @author   Rico Sonntag <rico.sonntag@netresearch.de>
  * @link     https://www.netresearch.de/
  */
 class RateResponse implements RateResponseInterface

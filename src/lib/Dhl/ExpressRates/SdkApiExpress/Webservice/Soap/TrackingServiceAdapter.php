@@ -17,7 +17,6 @@ use Dhl\Express\Webservice\Soap\TypeMapper\TrackingResponseMapper;
  * Tracking Service SOAP Adapter.
  *
  * @package Dhl\Express\Webservice
- * @author  Ronny Gertler <ronny.gertler@netresearch.de>
  * @link    https://www.netresearch.de/
  */
 class TrackingServiceAdapter implements TrackingServiceAdapterInterface, TraceableInterface
